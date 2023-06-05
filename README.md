@@ -1,57 +1,79 @@
-# 🚀 Getting started with Strapi
+# CoW Content Management System
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+This project is a content management system for the CoW Protocol. It is an instance of Strapi, a headless CMS. It is intended to be used for content for CoW websites.
 
-### `develop`
+# 💻 System requirements
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+It is recommended to have a system that has at least 4+ GB memory and 32+ GB disk space with a dual core or better CPU. However, at a bare minimum having 2 GB memory, 8 GB disk space and a single core CPU should be enough to run this project.
 
-```
-npm run develop
-# or
+# 🚀 How to run locally?
+
+## Node
+
+This project uses Node. To be able to run this project on your local, you'll need to have `node` installed. You can check this by running `node --version` in your terminal. If you don't have it installed, you can follow the instructions [here](https://nodejs.org/en/download/).
+
+You will need to use at least version 14 of Node. Ideally, you should use LTS versions (i.e. 14, 16, 18, etc.) That is because Strapi does not support officially non-LTS versions, meaning there is a slight chance you might end up seeing some bugs.
+
+## Yarn
+
+To be able to run this project on your local, you'll need to have `yarn` installed. You can check this by running `yarn --version` in your terminal. If you don't have it installed, you can follow the instructions [here](https://classic.yarnpkg.com/en/docs/install/).
+
+## PostreSQL
+
+This project relies on having a PostgreSQL instance up and running. There are many ways of achieving this. You can read more at PostgreSQL's own website [here](https://www.postgresql.org/download/). If you're on a Mac, you can use [Postgres.app](https://postgresapp.com/). If you're on Windows, you can use [PostgreSQL for Windows](https://www.postgresql.org/download/windows/). If you're on Linux, you can use [PostgreSQL for Linux](https://www.postgresql.org/download/linux/). You will need your database information for the next step.
+
+To be able to run this project, you'll need to use at least version 11, but preferably version 14 of PostgreSQL.
+
+## Environment Variables
+
+This project relies on a `.env` file to supply the environment variables. For this, you'll need to create a `.env` file in the root directory of the project. The contents of the file should be as outlined in the `.env.example` file. You can copy the contents of the `.env.example` file into your `.env` file and fill in the values.
+
+Environment variables here are following closely what Strapi makes available, for which docs can be found at [Strapi's documentation](https://docs.strapi.io/dev-docs/configurations/environment).
+
+## Running the project
+
+You are now set! You can run the following commands on your terminal to run the project:
+
+### Run the project in development mode
+
+This will run the project in development mode, with auto reload enabled. This mode is used when you want to update your instance, add new models, plugins etc.
+
+```bash
 yarn develop
 ```
 
-### `start`
+### Build the project
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
-
-```
-npm run build
-# or
+```bash
 yarn build
 ```
 
-## ⚙️ Deployment
+### Run the project from a previous build
 
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+🚨 For this command to work you must first have a build in place. You can do this via the previous command, `yarn build`.
 
-## 📚 Learn more
+```bash
+yarn start
+```
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### Use the Strapi CLI
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Strapi comes with a powerful CLI tooling. This is made available to you here as well, via the following command:
 
-## ✨ Community
+```bash
+yarn strapi
+```
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+Simply, append your desired command to the end of the above command. For more information on the CLI you can visit the [Strapi documentation](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html).
 
----
+## ⚙️ How to run this project using Docker?
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+As we deploy this project using Docker, we've included a `Dockerfile` and `docker-compose.yml` file to manage this. You can use the following commands to run this project using Docker:
+
+```bash
+docker compose up
+```
+
+This would give you a running instance of the project. You can then access the project at `http://localhost:1337`.
+
+If you use Docker, you will also end up with an instance of [adminer](https://www.adminer.org/) running at `http://localhost:9090`. You can use this to access your database.
