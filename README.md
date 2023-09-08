@@ -14,11 +14,11 @@ Some requiremets are:
 
 - At least Node v16 (use a LTS version)
 - Yarn
-- PostgreSQL (only to run the Docker image), for local dev you can use sqlite3
+- PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
 # Dev locally using PostreSQL
 
-The easiest is to develop using sqlite, but if you need to run the CMS with Docker, you can install an instance of PostgreSQL:
+The easiest is to develop using sqlite, but if you want to use PostgreSQL, you need to install it first:
 
 - **Mac**: [Postgres.app](https://postgresapp.com/).
 - **Linux**: [PostgreSQL for Linux](https://www.postgresql.org/download/linux/)
