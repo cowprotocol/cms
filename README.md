@@ -24,7 +24,7 @@ The easiest is to develop using sqlite, but if you need to run the CMS with Dock
 - **Linux**: [PostgreSQL for Linux](https://www.postgresql.org/download/linux/)
 - **Windows**: [PostgreSQL for Windows](https://www.postgresql.org/download/windows/)
 
-Once you know the running port, you can setup th .env file:
+Once you know the running port, you can setup the .env file:
 
 ```bash
 # Create an ENV file from the example
