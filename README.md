@@ -16,7 +16,7 @@ Some requiremets are:
 - Yarn
 - PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
-# Dev locally using PostreSQL
+## Dev locally using PostreSQL
 
 The easiest is to develop using sqlite, but if you want to use PostgreSQL, you need to install it first:
 
@@ -41,13 +41,13 @@ To start with the new database, you simply start the dev server:
 yarn dev
 ```
 
-### Build the project
+# 👷‍♀️ Build
 
 ```bash
 yarn build
 ```
 
-### Run the project from a previous build
+## Run project (from a previous build)
 
 🚨 For this command to work you must first have a build in place. You can do this via the previous command, `yarn build`.
 
@@ -55,7 +55,23 @@ yarn build
 yarn start
 ```
 
-### Use the Strapi CLI
+# 🐳 Run with Docker
+
+```bash
+# Create an ENV file from the example
+cp .env.example .env
+
+# Start the project
+docker compose up
+```
+
+Then visit:
+
+- [http://localhost:1337/admin](http://localhost:1337/admin)
+
+Also, a Postgres database will be exposed on port `5432`.
+
+# ⌨️ Strapi CLI
 
 Strapi comes with a powerful CLI tooling
 [Strapi documentation](https://docs.strapi.io/dev-docs/cli)
