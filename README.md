@@ -1,57 +1,69 @@
-# 🚀 Getting started with Strapi
+# CoW CMS - Content Management System
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This project is a Content Management System for the [cow.fi](https://cow.fi).
 
-### `develop`
+> It is an instance of Strapi, a headless CMS.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+# 👨‍💻 Develop
 
 ```
-npm run start
-# or
-yarn start
+yarn dev
 ```
 
-### `build`
+Some requiremets are:
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+- At least Node v16 (use a LTS version)
+- Yarn
+- PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
+# Dev locally using PostreSQL
+
+The easiest is to develop using sqlite, but if you want to use PostgreSQL, you need to install it first:
+
+- **Mac**: [Postgres.app](https://postgresapp.com/).
+- **Linux**: [PostgreSQL for Linux](https://www.postgresql.org/download/linux/)
+- **Windows**: [PostgreSQL for Windows](https://www.postgresql.org/download/windows/)
+
+Once you know the running port, you can setup the .env file:
+
+```bash
+# Create an ENV file from the example
+cp .env.example .env
 ```
-npm run build
-# or
+
+Edit the .env file and set the database connection
+
+- See https://docs.strapi.io/dev-docs/configurations/environment
+
+To start with the new database, you simply start the dev server:
+
+```bash
+yarn dev
+```
+
+### Build the project
+
+```bash
 yarn build
 ```
 
-## ⚙️ Deployment
+### Run the project from a previous build
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+🚨 For this command to work you must first have a build in place. You can do this via the previous command, `yarn build`.
 
-## 📚 Learn more
+```bash
+yarn start
+```
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### Use the Strapi CLI
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+Strapi comes with a powerful CLI tooling
+[Strapi documentation](https://docs.strapi.io/dev-docs/cli)
 
-## ✨ Community
+```bash
+# Check version of the Strapi CLI
+yarn strapi version
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+# Help command
+yarn strapi help
+```
