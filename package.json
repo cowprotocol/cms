@@ -1,10 +1,15 @@
 {
-  "name": "cms",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "name": "@cowprotocol/cms",
+  "version": "0.1.0-rc.0",
+  "description": "Cow Protocol CMS",
   "main": "dist/lib.js",
   "types": "dist/lib.d.ts",
+  "source": "src/lib.ts",
+  "exports": {
+    "require": "./dist/lib.js",
+    "default": "./dist/lib.js"
+  },
+  "license": "(MIT OR Apache-2.0)",
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
@@ -16,8 +21,8 @@
     "types:local": "npx openapi-typescript http://localhost:1337/api/docs/openapi.json -o src/gen/types.ts",
     "types:prod": "npx openapi-typescript https://cms.cow.fi/api/docs/openapi.json -o src/gen/types.ts"
   },
-  "devDependencies": {},
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@strapi/plugin-documentation": "4.13.3",
     "@strapi/plugin-i18n": "4.13.3",
     "@strapi/plugin-users-permissions": "4.13.3",
@@ -35,6 +40,5 @@
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+  }
 }
