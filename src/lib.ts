@@ -1,7 +1,7 @@
 export * from "./gen/types";
 
 import createClient from "openapi-fetch";
-import type { paths, components } from "./gen/types";
+import type { paths } from "./gen/types";
 
 export interface CmsClientOptions {
   url?: string;
