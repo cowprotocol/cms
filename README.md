@@ -4,6 +4,10 @@ This project is a Content Management System for the [cow.fi](https://cow.fi).
 
 > It is an instance of Strapi, a headless CMS.
 
+# API
+Swagger Docs: https://cms.cow.fi/swagger.html
+
+
 # 👨‍💻 Develop
 
 ```
