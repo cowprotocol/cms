@@ -97,9 +97,6 @@ To build the library, run:
 # Create a new version (patch, minor or major)
 npm version minor
 
-# Build library
-yarn build:lib
-
-# Publish to NPM
+# Build and Publish to NPM
 (cd lib && npm publish --access public)
 ```
