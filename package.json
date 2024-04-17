@@ -13,7 +13,7 @@
     "publish:lib": "scripts/publish-lib.sh",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
-    "prepare": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99"
+    "prepublishOnly": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99"
   },
   "dependencies": {
     "@strapi/plugin-documentation": "4.13.3",
