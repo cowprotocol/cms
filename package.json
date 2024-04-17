@@ -13,20 +13,21 @@
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
-    "build": "npm run types && npm run build:strapi && npm run build:lib",
+    "build": "npm run build:strapi && npm run build:lib",
+    "clean": "rimraf dist",
     "build:strapi": "strapi build",
-    "build:lib": "npx tsc -p tsconfig.lib.json",
+    "build:lib": "npm run types && npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
-    "prepare": "npm run build"
+    "prepare": "npm run clean && npm run build:lib"
   },
   "dependencies": {
-    "openapi-fetch": "^0.9.3",
     "@strapi/plugin-documentation": "4.13.3",
     "@strapi/plugin-i18n": "4.13.3",
     "@strapi/plugin-users-permissions": "4.13.3",
     "@strapi/strapi": "4.13.3",
     "better-sqlite3": "8.5.0",
+    "openapi-fetch": "^0.9.3",
     "pg": "^8.11.3"
   },
   "devDependencies": {
@@ -36,7 +37,8 @@
     "@strapi/strapi": "4.13.3",
     "better-sqlite3": "8.5.0",
     "openapi-typescript": "^6.7.5",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "rimraf": "^5.0.5"
   },
   "author": {
     "name": "A Strapi developer"
