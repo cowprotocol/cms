@@ -10,7 +10,7 @@
     "build": "npm run build:strapi && npm run build:lib",
     "build:strapi": "strapi build",
     "build:lib": "npm run lib:update-version && npm run types && npx tsc -p lib/tsconfig.json",
-    "publish:lib": "yarn build:lib && (cd lib && npm publish --access public)",
+    "publish:lib": "yarn build:lib && (cd lib && npm publish --access public) || git checkout -- lib/package.json",
     "lib:update-version": "scripts/update-version.sh",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
