@@ -94,11 +94,11 @@ This project also exposes a library that can be used to interact with the CMS AP
 To build the library, run:
 
 ```bash
-# Build library
-yarn build:library
-
 # Create a new version (patch, minor or major)
 npm version minor
+
+# Build library
+yarn build:lib
 
 # Publish to NPM
 (cd lib && npm publish --access public)
