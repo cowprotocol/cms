@@ -1,0 +1,19 @@
+{
+  "name": "@cowprotocol/cms",
+  "version": "0.1.0-rc.5",
+  "description": "Cow Protocol CMS",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "source": "src/lib.ts",
+  "exports": {
+    "require": "./dist/lib.js",
+    "default": "./dist/lib.js"
+  },
+  "license": "(MIT OR Apache-2.0)",
+  "dependencies": {
+    "openapi-fetch": "^0.9.3"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5"
+  }
+}

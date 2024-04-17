@@ -1,25 +1,19 @@
 {
-  "name": "@cowprotocol/cms",
+  "name": "@cowprotocol/cms-parent",
   "version": "0.1.0-rc.5",
   "description": "Cow Protocol CMS",
-  "main": "dist/lib.js",
-  "types": "dist/lib.d.ts",
-  "source": "src/lib.ts",
-  "exports": {
-    "require": "./dist/lib.js",
-    "default": "./dist/lib.js"
-  },
+  "private": true,
   "license": "(MIT OR Apache-2.0)",
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "npm run build:strapi && npm run build:lib",
-    "clean": "rimraf dist",
     "build:strapi": "strapi build",
-    "build:lib": "npm run types && npx tsc -p tsconfig.lib.json",
+    "build:lib": "npm run lib:update-version && npm run types && npx tsc -p lib/tsconfig.json",
+    "lib:update-version": "scripts/update-version.sh",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
-    "prepare": "npm run clean && npm run build:lib"
+    "prepare": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99"
   },
   "dependencies": {
     "@strapi/plugin-documentation": "4.13.3",
