@@ -1,6 +1,6 @@
 {
   "name": "@cowprotocol/cms",
-  "version": "0.1.0-rc.2",
+  "version": "0.1.0-rc.4",
   "description": "Cow Protocol CMS",
   "main": "dist/lib.js",
   "types": "dist/lib.d.ts",
@@ -18,7 +18,7 @@
     "build:lib": "npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "openapi-fetch": "^0.9.3"
