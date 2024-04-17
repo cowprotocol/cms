@@ -14,7 +14,7 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "npm run types && npm run build:strapi && npm run build:lib",
-    "build:strapi": "npx tsc -p tsconfig.lib.json",
+    "build:strapi": "strapi build",
     "build:lib": "npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
