@@ -13,11 +13,12 @@
   "scripts": {
     "dev": "strapi develop",
     "start": "strapi start",
-    "build": "npm run build:strapi && npm run build:lib",
+    "build": "npm run types && npm run build:strapi && npm run build:lib",
     "build:strapi": "npx tsc -p tsconfig.lib.json",
     "build:lib": "npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
-    "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts"
+    "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
+    "prepublish": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
