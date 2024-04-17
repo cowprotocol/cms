@@ -17,9 +17,7 @@
     "build:strapi": "npx tsc -p tsconfig.lib.json",
     "build:lib": "npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
-    "types": "npm run types:prod",
-    "types:local": "npx openapi-typescript http://localhost:1337/api/docs/openapi.json -o src/gen/types.ts",
-    "types:prod": "npx openapi-typescript https://cms.cow.fi/api/docs/openapi.json -o src/gen/types.ts"
+    "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts"
   },
   "dependencies": {},
   "devDependencies": {
