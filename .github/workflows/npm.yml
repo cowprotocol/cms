@@ -28,6 +28,6 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Publish to NPM
-        run: npm publish --access public
+        run: scripts/publish-lib.sh
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
