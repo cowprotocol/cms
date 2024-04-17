@@ -98,5 +98,5 @@ To build the library, run:
 npm version minor
 
 # Build and Publish to NPM
-yarn publish:lib
+./scripts/publish-lib.sh
 ```

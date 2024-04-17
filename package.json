@@ -1,6 +1,6 @@
 {
   "name": "@cowprotocol/cms-parent",
-  "version": "0.1.0-rc.8",
+  "version": "0.1.0-rc.17",
   "description": "Cow Protocol CMS",
   "private": true,
   "license": "(MIT OR Apache-2.0)",
@@ -10,8 +10,7 @@
     "build": "npm run build:strapi && npm run build:lib",
     "build:strapi": "strapi build",
     "build:lib": "npm run lib:update-version && npm run types && npx tsc -p lib/tsconfig.json",
-    "publish:lib": "yarn build:lib && (cd lib && npm publish --access public) || git checkout -- lib/package.json",
-    "lib:update-version": "scripts/update-version.sh",
+    "publish:lib": "scripts/publish-lib.sh",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
     "prepare": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99"
