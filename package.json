@@ -14,14 +14,20 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "npm run types && npm run build:strapi && npm run build:lib",
-    "build:strapi": "npx tsc -p tsconfig.lib.json",
+    "build:strapi": "strapi build",
     "build:lib": "npx tsc -p tsconfig.lib.json",
     "strapi": "strapi",
     "types": "npx openapi-typescript src/extensions/documentation/documentation/1.0.0/full_documentation.json -o src/gen/types.ts",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "openapi-fetch": "^0.9.3"
+    "openapi-fetch": "^0.9.3",
+    "@strapi/plugin-documentation": "4.13.3",
+    "@strapi/plugin-i18n": "4.13.3",
+    "@strapi/plugin-users-permissions": "4.13.3",
+    "@strapi/strapi": "4.13.3",
+    "better-sqlite3": "8.5.0",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "@strapi/plugin-documentation": "4.13.3",
