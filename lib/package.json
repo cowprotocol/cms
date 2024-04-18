@@ -13,7 +13,5 @@
   "dependencies": {
     "openapi-fetch": "^0.9.3"
   },
-  "devDependencies": {
-    "rimraf": "^5.0.5"
-  }
+  "devDependencies": {}
 }
