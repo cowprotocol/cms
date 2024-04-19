@@ -1,5 +1,5 @@
 {
-  "include": ["src/lib.ts", "src/gen/**/*"],
+  "include": ["../src/lib.ts", "../src/gen/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist",

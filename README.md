@@ -59,7 +59,7 @@ yarn build
 yarn start
 ```
 
-# 🐳 Run with Docker
+## 🐳 Run with Docker
 
 ```bash
 # Create an ENV file from the example
@@ -75,7 +75,7 @@ Then visit:
 
 Also, a Postgres database will be exposed on port `5432`.
 
-# ⌨️ Strapi CLI
+## ⌨️ Strapi CLI
 
 Strapi comes with a powerful CLI tooling
 [Strapi documentation](https://docs.strapi.io/dev-docs/cli)
@@ -86,4 +86,17 @@ yarn strapi version
 
 # Help command
 yarn strapi help
+```
+
+# Library
+This project also exposes a library that can be used to interact with the CMS API.
+
+To build the library, run:
+
+```bash
+# Create a new version (patch, minor or major)
+npm version minor
+
+# Build and Publish to NPM
+./scripts/publish-lib.sh
 ```

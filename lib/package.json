@@ -1,0 +1,17 @@
+{
+  "name": "@cowprotocol/cms",
+  "version": "*** THE VERSION IS OVERRIDDEN AT PUBLISHING TIME ***",
+  "description": "Cow Protocol CMS",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "source": "src/lib.ts",
+  "exports": {
+    "require": "./dist/lib.js",
+    "default": "./dist/lib.js"
+  },
+  "license": "(MIT OR Apache-2.0)",
+  "dependencies": {
+    "openapi-fetch": "^0.9.3"
+  },
+  "devDependencies": {}
+}
