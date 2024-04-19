@@ -10,7 +10,7 @@ import { CoWClient } from 'cow-cms';
 
 // Create a new client
 const client = new CoWClient({
-  url: 'https://cms.cow.fi
+  url: 'https://cms.cow.fi'
 });
 
 // Get 25 articles
