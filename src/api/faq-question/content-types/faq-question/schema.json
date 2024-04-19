@@ -4,7 +4,8 @@
   "info": {
     "singularName": "faq-question",
     "pluralName": "faq-questions",
-    "displayName": "FAQ question"
+    "displayName": "FAQ question",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,11 @@
     },
     "Answer": {
       "type": "richtext"
+    },
+    "faq_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::faq-category.faq-category"
     }
   }
 }
