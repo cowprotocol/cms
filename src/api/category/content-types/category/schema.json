@@ -35,6 +35,14 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
