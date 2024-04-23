@@ -31,7 +31,7 @@
       "target": "api::article.article",
       "mappedBy": "categories"
     },
-    "bgColor": {
+    "backgroundColor": {
       "type": "string",
       "required": false,
       "unique": false

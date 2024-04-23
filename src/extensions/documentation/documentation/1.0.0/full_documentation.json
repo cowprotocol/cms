@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-04-23T12:57:47.148Z"
+    "x-generation-date": "2024-04-23T14:53:12.089Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1948,7 +1948,7 @@
                             }
                           }
                         },
-                        "bgColor": {
+                        "backgroundColor": {
                           "type": "string"
                         },
                         "image": {
@@ -3703,7 +3703,7 @@
                                           }
                                         }
                                       },
-                                      "bgColor": {
+                                      "backgroundColor": {
                                         "type": "string"
                                       },
                                       "image": {
@@ -4875,7 +4875,7 @@
                   "example": "string or id"
                 }
               },
-              "bgColor": {
+              "backgroundColor": {
                 "type": "string"
               },
               "image": {
@@ -5646,7 +5646,7 @@
                                           }
                                         }
                                       },
-                                      "bgColor": {
+                                      "backgroundColor": {
                                         "type": "string"
                                       },
                                       "image": {
@@ -6715,7 +6715,7 @@
               }
             }
           },
-          "bgColor": {
+          "backgroundColor": {
             "type": "string"
           },
           "image": {
@@ -11035,7 +11035,7 @@
                             }
                           }
                         },
-                        "bgColor": {
+                        "backgroundColor": {
                           "type": "string"
                         },
                         "image": {
@@ -15098,7 +15098,7 @@
                                           }
                                         }
                                       },
-                                      "bgColor": {
+                                      "backgroundColor": {
                                         "type": "string"
                                       },
                                       "image": {
