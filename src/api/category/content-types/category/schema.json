@@ -31,10 +31,10 @@
       "target": "api::article.article",
       "mappedBy": "categories"
     },
-    "color": {
+    "bgColor": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": false,
+      "unique": false
     },
     "image": {
       "type": "media",
@@ -43,6 +43,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "textColor": {
+      "type": "string"
     }
   }
 }
