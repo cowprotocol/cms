@@ -14,11 +14,14 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-04-23T11:50:07.100Z"
+    "x-generation-date": "2024-04-23T14:53:12.089Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
-    "plugins": ["upload", "users-permissions"]
+    "plugins": [
+      "upload",
+      "users-permissions"
+    ]
   },
   "servers": [
     {
@@ -46,7 +49,9 @@
     "schemas": {
       "Error": {
         "type": "object",
-        "required": ["error"],
+        "required": [
+          "error"
+        ],
         "properties": {
           "data": {
             "nullable": true,
@@ -83,10 +88,14 @@
       },
       "ArticleRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["description"],
+            "required": [
+              "description"
+            ],
             "type": "object",
             "properties": {
               "title": {
@@ -225,7 +234,9 @@
       },
       "Article": {
         "type": "object",
-        "required": ["description"],
+        "required": [
+          "description"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -1937,7 +1948,7 @@
                             }
                           }
                         },
-                        "color": {
+                        "backgroundColor": {
                           "type": "string"
                         },
                         "image": {
@@ -2078,6 +2089,9 @@
                               }
                             }
                           }
+                        },
+                        "textColor": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
@@ -2766,7 +2780,9 @@
       },
       "AuthorRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -3687,7 +3703,7 @@
                                           }
                                         }
                                       },
-                                      "color": {
+                                      "backgroundColor": {
                                         "type": "string"
                                       },
                                       "image": {
@@ -3828,6 +3844,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "textColor": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -4821,10 +4840,16 @@
       },
       "CategoryRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["name", "slug", "description", "color"],
+            "required": [
+              "name",
+              "slug",
+              "description"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -4850,7 +4875,7 @@
                   "example": "string or id"
                 }
               },
-              "color": {
+              "backgroundColor": {
                 "type": "string"
               },
               "image": {
@@ -4863,6 +4888,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "textColor": {
+                "type": "string"
               }
             }
           }
@@ -4916,7 +4944,11 @@
       },
       "Category": {
         "type": "object",
-        "required": ["name", "slug", "description", "color"],
+        "required": [
+          "name",
+          "slug",
+          "description"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -5614,7 +5646,7 @@
                                           }
                                         }
                                       },
-                                      "color": {
+                                      "backgroundColor": {
                                         "type": "string"
                                       },
                                       "image": {
@@ -5755,6 +5787,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "textColor": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -6680,7 +6715,7 @@
               }
             }
           },
-          "color": {
+          "backgroundColor": {
             "type": "string"
           },
           "image": {
@@ -6822,6 +6857,9 @@
               }
             }
           },
+          "textColor": {
+            "type": "string"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -6890,10 +6928,15 @@
       },
       "FaqCategoryRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["name", "description"],
+            "required": [
+              "name",
+              "description"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -6965,7 +7008,10 @@
       },
       "FaqCategory": {
         "type": "object",
-        "required": ["name", "description"],
+        "required": [
+          "name",
+          "description"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -7666,7 +7712,9 @@
       },
       "FaqQuestionRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -8515,7 +8563,10 @@
         }
       },
       "GlobalLocalizationRequest": {
-        "required": ["favicon", "locale"],
+        "required": [
+          "favicon",
+          "locale"
+        ],
         "type": "object",
         "properties": {
           "metadata": {
@@ -8548,10 +8599,14 @@
       },
       "GlobalRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["favicon"],
+            "required": [
+              "favicon"
+            ],
             "type": "object",
             "properties": {
               "metadata": {
@@ -8700,7 +8755,9 @@
       },
       "Global": {
         "type": "object",
-        "required": ["favicon"],
+        "required": [
+          "favicon"
+        ],
         "properties": {
           "metadata": {
             "$ref": "#/components/schemas/MetaMetadataComponent"
@@ -9437,7 +9494,11 @@
           },
           "type": {
             "type": "string",
-            "enum": ["alert", "info", "warning"]
+            "enum": [
+              "alert",
+              "info",
+              "warning"
+            ]
           },
           "heading": {
             "type": "string"
@@ -9510,7 +9571,10 @@
               },
               "type": {
                 "type": "string",
-                "enum": ["primary", "secondary"]
+                "enum": [
+                  "primary",
+                  "secondary"
+                ]
               }
             }
           },
@@ -9881,7 +9945,12 @@
                 },
                 "social": {
                   "type": "string",
-                  "enum": ["YOUTUBE", "TWITTER", "DISCORD", "WEBSITE"]
+                  "enum": [
+                    "YOUTUBE",
+                    "TWITTER",
+                    "DISCORD",
+                    "WEBSITE"
+                  ]
                 }
               }
             }
@@ -10966,7 +11035,7 @@
                             }
                           }
                         },
-                        "color": {
+                        "backgroundColor": {
                           "type": "string"
                         },
                         "image": {
@@ -11108,6 +11177,9 @@
                             }
                           }
                         },
+                        "textColor": {
+                          "type": "string"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -11161,7 +11233,9 @@
       },
       "LeadFormSubmissionRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
             "type": "object",
@@ -11171,7 +11245,11 @@
               },
               "status": {
                 "type": "string",
-                "enum": ["seen", "contacted", "ignored"]
+                "enum": [
+                  "seen",
+                  "contacted",
+                  "ignored"
+                ]
               }
             }
           }
@@ -11231,7 +11309,11 @@
           },
           "status": {
             "type": "string",
-            "enum": ["seen", "contacted", "ignored"]
+            "enum": [
+              "seen",
+              "contacted",
+              "ignored"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -11551,7 +11633,10 @@
         }
       },
       "PageLocalizationRequest": {
-        "required": ["metadata", "locale"],
+        "required": [
+          "metadata",
+          "locale"
+        ],
         "type": "object",
         "properties": {
           "shortName": {
@@ -11616,10 +11701,14 @@
       },
       "PageRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["metadata"],
+            "required": [
+              "metadata"
+            ],
             "type": "object",
             "properties": {
               "shortName": {
@@ -11800,7 +11889,9 @@
       },
       "Page": {
         "type": "object",
-        "required": ["metadata"],
+        "required": [
+          "metadata"
+        ],
         "properties": {
           "shortName": {
             "type": "string"
@@ -11958,7 +12049,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["primary", "secondary"]
+            "enum": [
+              "primary",
+              "secondary"
+            ]
           }
         }
       },
@@ -13596,7 +13690,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["primary", "secondary"]
+            "enum": [
+              "primary",
+              "secondary"
+            ]
           }
         }
       },
@@ -13833,10 +13930,14 @@
       },
       "ProductFeatureRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -13894,7 +13995,9 @@
       },
       "ProductFeature": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -14222,10 +14325,14 @@
       },
       "TagRequest": {
         "type": "object",
-        "required": ["data"],
+        "required": [
+          "data"
+        ],
         "properties": {
           "data": {
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "type": "object",
             "properties": {
               "name": {
@@ -14297,7 +14404,9 @@
       },
       "Tag": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "properties": {
           "name": {
             "type": "string"
@@ -14988,6 +15097,151 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "backgroundColor": {
+                                        "type": "string"
+                                      },
+                                      "image": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "string"
+                                                  },
+                                                  "alternativeText": {
+                                                    "type": "string"
+                                                  },
+                                                  "caption": {
+                                                    "type": "string"
+                                                  },
+                                                  "width": {
+                                                    "type": "integer"
+                                                  },
+                                                  "height": {
+                                                    "type": "integer"
+                                                  },
+                                                  "formats": {},
+                                                  "hash": {
+                                                    "type": "string"
+                                                  },
+                                                  "ext": {
+                                                    "type": "string"
+                                                  },
+                                                  "mime": {
+                                                    "type": "string"
+                                                  },
+                                                  "size": {
+                                                    "type": "number",
+                                                    "format": "float"
+                                                  },
+                                                  "url": {
+                                                    "type": "string"
+                                                  },
+                                                  "previewUrl": {
+                                                    "type": "string"
+                                                  },
+                                                  "provider": {
+                                                    "type": "string"
+                                                  },
+                                                  "provider_metadata": {},
+                                                  "related": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "array",
+                                                        "items": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "id": {
+                                                              "type": "number"
+                                                            },
+                                                            "attributes": {
+                                                              "type": "object",
+                                                              "properties": {}
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "folder": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "folderPath": {
+                                                    "type": "string"
+                                                  },
+                                                  "createdAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "updatedAt": {
+                                                    "type": "string",
+                                                    "format": "date-time"
+                                                  },
+                                                  "createdBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "updatedBy": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "data": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                          "id": {
+                                                            "type": "number"
+                                                          },
+                                                          "attributes": {
+                                                            "type": "object",
+                                                            "properties": {}
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "textColor": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -16251,7 +16505,9 @@
             }
           }
         },
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -16420,7 +16676,9 @@
             }
           }
         },
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [],
         "operationId": "post/articles",
         "requestBody": {
@@ -16499,7 +16757,9 @@
             }
           }
         },
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -16577,7 +16837,9 @@
             }
           }
         },
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -16666,7 +16928,9 @@
             }
           }
         },
-        "tags": ["Article"],
+        "tags": [
+          "Article"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -16746,7 +17010,9 @@
             }
           }
         },
-        "tags": ["Author"],
+        "tags": [
+          "Author"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -16915,7 +17181,9 @@
             }
           }
         },
-        "tags": ["Author"],
+        "tags": [
+          "Author"
+        ],
         "parameters": [],
         "operationId": "post/authors",
         "requestBody": {
@@ -16994,7 +17262,9 @@
             }
           }
         },
-        "tags": ["Author"],
+        "tags": [
+          "Author"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17072,7 +17342,9 @@
             }
           }
         },
-        "tags": ["Author"],
+        "tags": [
+          "Author"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17161,7 +17433,9 @@
             }
           }
         },
-        "tags": ["Author"],
+        "tags": [
+          "Author"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17241,7 +17515,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -17410,7 +17686,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [],
         "operationId": "post/categories",
         "requestBody": {
@@ -17489,7 +17767,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17567,7 +17847,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17656,7 +17938,9 @@
             }
           }
         },
-        "tags": ["Category"],
+        "tags": [
+          "Category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -17736,7 +18020,9 @@
             }
           }
         },
-        "tags": ["Faq-category"],
+        "tags": [
+          "Faq-category"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -17905,7 +18191,9 @@
             }
           }
         },
-        "tags": ["Faq-category"],
+        "tags": [
+          "Faq-category"
+        ],
         "parameters": [],
         "operationId": "post/faq-categories",
         "requestBody": {
@@ -17984,7 +18272,9 @@
             }
           }
         },
-        "tags": ["Faq-category"],
+        "tags": [
+          "Faq-category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18062,7 +18352,9 @@
             }
           }
         },
-        "tags": ["Faq-category"],
+        "tags": [
+          "Faq-category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18151,7 +18443,9 @@
             }
           }
         },
-        "tags": ["Faq-category"],
+        "tags": [
+          "Faq-category"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18231,7 +18525,9 @@
             }
           }
         },
-        "tags": ["Faq-question"],
+        "tags": [
+          "Faq-question"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -18400,7 +18696,9 @@
             }
           }
         },
-        "tags": ["Faq-question"],
+        "tags": [
+          "Faq-question"
+        ],
         "parameters": [],
         "operationId": "post/faq-questions",
         "requestBody": {
@@ -18479,7 +18777,9 @@
             }
           }
         },
-        "tags": ["Faq-question"],
+        "tags": [
+          "Faq-question"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18557,7 +18857,9 @@
             }
           }
         },
-        "tags": ["Faq-question"],
+        "tags": [
+          "Faq-question"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18646,7 +18948,9 @@
             }
           }
         },
-        "tags": ["Faq-question"],
+        "tags": [
+          "Faq-question"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -18726,7 +19030,9 @@
             }
           }
         },
-        "tags": ["Global"],
+        "tags": [
+          "Global"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -18895,7 +19201,9 @@
             }
           }
         },
-        "tags": ["Global"],
+        "tags": [
+          "Global"
+        ],
         "parameters": [],
         "operationId": "put/global",
         "requestBody": {
@@ -18973,7 +19281,9 @@
             }
           }
         },
-        "tags": ["Global"],
+        "tags": [
+          "Global"
+        ],
         "parameters": [],
         "operationId": "delete/global"
       }
@@ -19042,7 +19352,9 @@
             }
           }
         },
-        "tags": ["Global"],
+        "tags": [
+          "Global"
+        ],
         "parameters": [],
         "operationId": "post/global/localizations",
         "requestBody": {
@@ -19121,7 +19433,9 @@
             }
           }
         },
-        "tags": ["Lead-form-submission"],
+        "tags": [
+          "Lead-form-submission"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -19290,7 +19604,9 @@
             }
           }
         },
-        "tags": ["Lead-form-submission"],
+        "tags": [
+          "Lead-form-submission"
+        ],
         "parameters": [],
         "operationId": "post/lead-form-submissions",
         "requestBody": {
@@ -19369,7 +19685,9 @@
             }
           }
         },
-        "tags": ["Lead-form-submission"],
+        "tags": [
+          "Lead-form-submission"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19447,7 +19765,9 @@
             }
           }
         },
-        "tags": ["Lead-form-submission"],
+        "tags": [
+          "Lead-form-submission"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19536,7 +19856,9 @@
             }
           }
         },
-        "tags": ["Lead-form-submission"],
+        "tags": [
+          "Lead-form-submission"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19616,7 +19938,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -19785,7 +20109,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [],
         "operationId": "post/pages",
         "requestBody": {
@@ -19864,7 +20190,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -19942,7 +20270,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20031,7 +20361,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20111,7 +20443,9 @@
             }
           }
         },
-        "tags": ["Page"],
+        "tags": [
+          "Page"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20201,7 +20535,9 @@
             }
           }
         },
-        "tags": ["Product-feature"],
+        "tags": [
+          "Product-feature"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -20370,7 +20706,9 @@
             }
           }
         },
-        "tags": ["Product-feature"],
+        "tags": [
+          "Product-feature"
+        ],
         "parameters": [],
         "operationId": "post/product-features",
         "requestBody": {
@@ -20449,7 +20787,9 @@
             }
           }
         },
-        "tags": ["Product-feature"],
+        "tags": [
+          "Product-feature"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20527,7 +20867,9 @@
             }
           }
         },
-        "tags": ["Product-feature"],
+        "tags": [
+          "Product-feature"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20616,7 +20958,9 @@
             }
           }
         },
-        "tags": ["Product-feature"],
+        "tags": [
+          "Product-feature"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -20696,7 +21040,9 @@
             }
           }
         },
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "sort",
@@ -20865,7 +21211,9 @@
             }
           }
         },
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [],
         "operationId": "post/tags",
         "requestBody": {
@@ -20944,7 +21292,9 @@
             }
           }
         },
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21022,7 +21372,9 @@
             }
           }
         },
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21111,7 +21463,9 @@
             }
           }
         },
-        "tags": ["Tag"],
+        "tags": [
+          "Tag"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -21146,14 +21500,18 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "requestBody": {
           "description": "Upload files",
           "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
-                "required": ["files"],
+                "required": [
+                  "files"
+                ],
                 "type": "object",
                 "properties": {
                   "path": {
@@ -21216,7 +21574,9 @@
           }
         },
         "summary": "",
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "requestBody": {
           "description": "Upload files",
           "required": true,
@@ -21252,7 +21612,9 @@
     },
     "/upload/files": {
       "get": {
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Get a list of files",
@@ -21284,7 +21646,9 @@
             }
           }
         ],
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Get a specific file",
@@ -21311,7 +21675,9 @@
             }
           }
         ],
-        "tags": ["Upload - File"],
+        "tags": [
+          "Upload - File"
+        ],
         "responses": {
           "200": {
             "description": "Delete a file",
@@ -21340,7 +21706,9 @@
             }
           }
         ],
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Login with a provider",
         "description": "Redirects to provider login before being redirect to /auth/{provider}/callback",
         "responses": {
@@ -21362,7 +21730,9 @@
     },
     "/auth/local": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Local login",
         "description": "Returns a jwt token and user info",
         "requestBody": {
@@ -21413,7 +21783,9 @@
     },
     "/auth/local/register": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Register a user",
         "description": "Returns a jwt token and user info",
         "requestBody": {
@@ -21468,7 +21840,9 @@
     },
     "/auth/{provider}/callback": {
       "get": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Default Callback from provider auth",
         "parameters": [
           {
@@ -21507,7 +21881,9 @@
     },
     "/auth/forgot-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Send rest password email",
         "requestBody": {
           "required": true,
@@ -21537,7 +21913,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -21559,7 +21937,9 @@
     },
     "/auth/reset-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Rest user password",
         "requestBody": {
           "required": true,
@@ -21613,7 +21993,9 @@
     },
     "/auth/change-password": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Update user's own password",
         "requestBody": {
           "required": true,
@@ -21667,7 +22049,9 @@
     },
     "/auth/email-confirmation": {
       "get": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Confirm user email",
         "parameters": [
           {
@@ -21698,7 +22082,9 @@
     },
     "/auth/send-email-confirmation": {
       "post": {
-        "tags": ["Users-Permissions - Auth"],
+        "tags": [
+          "Users-Permissions - Auth"
+        ],
         "summary": "Send confirmation email",
         "requestBody": {
           "required": true,
@@ -21728,7 +22114,9 @@
                     },
                     "sent": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -21750,7 +22138,9 @@
     },
     "/users-permissions/permissions": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get default generated permissions",
         "responses": {
           "200": {
@@ -21819,7 +22209,9 @@
     },
     "/users-permissions/roles": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "List roles",
         "responses": {
           "200": {
@@ -21878,7 +22270,9 @@
         }
       },
       "post": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Create a role",
         "requestBody": {
           "$ref": "#/components/requestBodies/Users-Permissions-RoleRequest"
@@ -21893,7 +22287,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -21915,7 +22311,9 @@
     },
     "/users-permissions/roles/{id}": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get a role",
         "parameters": [
           {
@@ -21980,7 +22378,9 @@
     },
     "/users-permissions/roles/{role}": {
       "put": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Update a role",
         "parameters": [
           {
@@ -22006,7 +22406,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -22026,7 +22428,9 @@
         }
       },
       "delete": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Delete a role",
         "parameters": [
           {
@@ -22049,7 +22453,9 @@
                   "properties": {
                     "ok": {
                       "type": "string",
-                      "enum": [true]
+                      "enum": [
+                        true
+                      ]
                     }
                   }
                 }
@@ -22071,7 +22477,9 @@
     },
     "/users": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get list of users",
         "responses": {
           "200": {
@@ -22112,7 +22520,9 @@
         }
       },
       "post": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Create a user",
         "requestBody": {
           "required": true,
@@ -22120,7 +22530,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["username", "email", "password"],
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
                 "properties": {
                   "email": {
                     "type": "string"
@@ -22197,7 +22611,9 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get a user",
         "parameters": [
           {
@@ -22244,7 +22660,9 @@
         }
       },
       "put": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Update a user",
         "parameters": [
           {
@@ -22263,7 +22681,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["username", "email", "password"],
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
                 "properties": {
                   "email": {
                     "type": "string"
@@ -22338,7 +22760,9 @@
         }
       },
       "delete": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Delete a user",
         "parameters": [
           {
@@ -22391,7 +22815,9 @@
     },
     "/users/me": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get authenticated user info",
         "responses": {
           "200": {
@@ -22429,7 +22855,9 @@
     },
     "/users/count": {
       "get": {
-        "tags": ["Users-Permissions - Users & Roles"],
+        "tags": [
+          "Users-Permissions - Users & Roles"
+        ],
         "summary": "Get user count",
         "responses": {
           "200": {
