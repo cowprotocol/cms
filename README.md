@@ -10,19 +10,37 @@ Swagger Docs: https://cms.cow.fi/swagger.html
 
 # 👨‍💻 Develop
 
-```
-yarn dev
-```
-
 Some requiremets are:
 
 - At least Node v16 (use a LTS version)
 - Yarn
 - PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
+
+## Run locally using sqlite3
+The CMS relies on a database. The simplest is to use `Sqlite` for development.
+
+You actually don't need to do anything for this! If you run the project with `yarn dev`, it will automatically create a sqlite database in `data/sqlite.db`
+
+```
+yarn dev
+```
+
+Then visit:
+* **Admin**: http://localhost:1337/admin
+
+
+On its basic setup, you don't need to add any configuration parameter, however you might want to do so. You can do this by creating a `.env` file.
+
+```bash
+# Create an ENV file from the example
+cp .env.example .env
+```
+
+
 ## Dev locally using PostreSQL
 
-The easiest is to develop using sqlite, but if you want to use PostgreSQL, you need to install it first:
+If you want to use `PostgreSQL` (instead of `sqlite3`), you need to install it first:
 
 - **Mac**: [Postgres.app](https://postgresapp.com/).
 - **Linux**: [PostgreSQL for Linux](https://www.postgresql.org/download/linux/)
