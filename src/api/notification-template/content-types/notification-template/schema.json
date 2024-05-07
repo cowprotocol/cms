@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notification_templates",
+  "info": {
+    "singularName": "notification-template",
+    "pluralName": "notification-templates",
+    "displayName": "Notification template",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "url": {
+      "type": "string"
+    },
+    "push": {
+      "type": "boolean"
+    },
+    "thumbnail": {
+      "type": "string"
+    }
+  }
+}
