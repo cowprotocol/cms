@@ -8,7 +8,7 @@ const MODULE_ID = 'api::notification.notification'
 
 export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
   return {
-    async getNotificationList(account: string, push: boolean) {
+    async getNotificationList(account: string) {
       const notifications = await strapi.entityService.findMany(
         MODULE_ID,
         {
@@ -16,7 +16,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           limit: 50,
           filters: {
             account,
-            notification_template: { push }
+            notification_template: { push: false }
           },
           populate: {
             notification_template: {
