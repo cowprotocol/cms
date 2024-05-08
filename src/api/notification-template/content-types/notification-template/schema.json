@@ -26,6 +26,9 @@
     },
     "thumbnail": {
       "type": "string"
+    },
+    "due_date": {
+      "type": "datetime"
     }
   }
 }
