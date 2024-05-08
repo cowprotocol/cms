@@ -1,6 +1,6 @@
 {
   "name": "@cowprotocol/cms-parent",
-  "version": "0.2.2",
+  "version": "0.3.0-RC.1",
   "description": "Cow Protocol CMS",
   "private": true,
   "license": "(MIT OR Apache-2.0)",
