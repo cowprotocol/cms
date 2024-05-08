@@ -28,6 +28,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
 
       return notifications.map(notification => ({
         id: notification.id,
+        account: notification.account,
         title: notification.notification_template.title,
         description: templateNotification(notification.notification_template.description, notification.data),
         url: notification.notification_template.url,
@@ -39,6 +40,8 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
 
 function templateNotification(description: string, data: {[key: string]: string}): string {
   let result = description
+
+  if (!data) return result
 
   Object.keys(data).forEach(key => {
     result = result.replace(`{{ ${key} }}`, data[key])
