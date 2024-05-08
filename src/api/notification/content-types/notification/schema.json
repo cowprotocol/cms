@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "json"
+    },
+    "notification_template": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::notification-template.notification-template"
+    }
+  }
+}

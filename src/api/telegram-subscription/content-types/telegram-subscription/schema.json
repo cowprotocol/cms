@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "telegram_subscriptions",
+  "info": {
+    "singularName": "telegram-subscription",
+    "pluralName": "telegram-subscriptions",
+    "displayName": "Telegram subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "account": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "auth_date": {
+      "type": "biginteger"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "hash": {
+      "type": "string"
+    },
+    "chat_id": {
+      "type": "biginteger"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  }
+}
