@@ -24,11 +24,15 @@
     "push": {
       "type": "boolean"
     },
-    "thumbnail": {
-      "type": "string"
-    },
     "due_date": {
       "type": "datetime"
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
