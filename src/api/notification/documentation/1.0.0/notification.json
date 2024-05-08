@@ -586,7 +586,7 @@
       "operationId": "get/notification-list/{account}"
     }
   },
-  "/push-notifications/{account}": {
+  "/push-notifications": {
     "get": {
       "responses": {
         "200": {
@@ -653,19 +653,8 @@
       "tags": [
         "Notification"
       ],
-      "parameters": [
-        {
-          "name": "account",
-          "in": "path",
-          "description": "",
-          "deprecated": false,
-          "required": true,
-          "schema": {
-            "type": "number"
-          }
-        }
-      ],
-      "operationId": "get/push-notifications/{account}"
+      "parameters": [],
+      "operationId": "get/push-notifications"
     }
   }
 }

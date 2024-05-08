@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "notifications_consumers",
+  "info": {
+    "singularName": "notifications-consumer",
+    "pluralName": "notifications-consumers",
+    "displayName": "NotificationsConsumer"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lastConsumedNotificationDate": {
+      "type": "datetime"
+    }
+  }
+}

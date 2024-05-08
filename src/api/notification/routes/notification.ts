@@ -32,7 +32,7 @@ const myExtraRoutes = [
   },
   {
     method: 'GET',
-    path: '/push-notifications/:account',
+    path: '/push-notifications',
     handler: 'notification.getPushNotifications',
     config: {
       policies: [],
