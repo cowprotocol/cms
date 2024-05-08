@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-05-07T09:27:31.910Z"
+    "x-generation-date": "2024-05-08T09:37:18.172Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -17141,23 +17141,34 @@
         "properties": {
           "data": {
             "required": [
-              "account",
-              "login",
-              "verified"
+              "account"
             ],
             "type": "object",
             "properties": {
               "account": {
                 "type": "string"
               },
-              "login": {
+              "auth_date": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
+              "first_name": {
                 "type": "string"
               },
-              "verified": {
-                "type": "boolean"
+              "hash": {
+                "type": "string"
               },
-              "verificationCode": {
-                "type": "integer"
+              "chat_id": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
+              "photo_url": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
               }
             }
           }
@@ -17212,22 +17223,33 @@
       "TelegramSubscription": {
         "type": "object",
         "required": [
-          "account",
-          "login",
-          "verified"
+          "account"
         ],
         "properties": {
           "account": {
             "type": "string"
           },
-          "login": {
+          "auth_date": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "first_name": {
             "type": "string"
           },
-          "verified": {
-            "type": "boolean"
+          "hash": {
+            "type": "string"
           },
-          "verificationCode": {
-            "type": "integer"
+          "chat_id": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
+          "photo_url": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

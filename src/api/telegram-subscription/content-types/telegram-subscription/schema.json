@@ -4,7 +4,8 @@
   "info": {
     "singularName": "telegram-subscription",
     "pluralName": "telegram-subscriptions",
-    "displayName": "Telegram subscription"
+    "displayName": "Telegram subscription",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,17 +17,23 @@
       "required": true,
       "unique": false
     },
-    "login": {
-      "type": "string",
-      "required": true
+    "auth_date": {
+      "type": "biginteger"
     },
-    "verified": {
-      "type": "boolean",
-      "default": false,
-      "required": true
+    "first_name": {
+      "type": "string"
     },
-    "verificationCode": {
-      "type": "integer"
+    "hash": {
+      "type": "string"
+    },
+    "chat_id": {
+      "type": "biginteger"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
     }
   }
 }
