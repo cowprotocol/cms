@@ -20,9 +20,14 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           },
           populate: {
             notification_template: {
-              fields: ['id', 'title', 'description', 'url', 'push', 'thumbnail']
+              fields: ['id', 'title', 'description', 'url', 'push'],
+              populate: {
+                thumbnail: {
+                  fields: ['url']
+                }
+              }
             }
-          },
+          }
         }
       )
 
@@ -32,7 +37,8 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         title: notification.notification_template.title,
         description: templateNotification(notification.notification_template.description, notification.data),
         url: notification.notification_template.url,
-        thumbnail: notification.notification_template.thumbnail
+        createdAt: notification.createdAt,
+        thumbnail: notification.notification_template.thumbnail.url
       }))
     },
   }
