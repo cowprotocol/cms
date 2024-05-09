@@ -30,14 +30,21 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
       return true
     },
     async getSubscriptions(context) {
+      const { accounts } = context.query
+
+      const accountsArray = accounts ? accounts.split(',') : []
+
+      if (!accountsArray.length) return []
+
+      return strapi.service(MODULE_ID).getSubscriptions(accountsArray)
+    },
+    async getAccountSubscriptions(context) {
       const account = context.params.account
 
       return strapi.service(MODULE_ID).getAccountSubscriptions(account)
     },
     async sendNotifications(context) {
-      const account = context.params.account
-
-      return strapi.service(MODULE_ID).sendNotifications(account)
+      return strapi.service(MODULE_ID).sendNotifications()
     }
   }
 });

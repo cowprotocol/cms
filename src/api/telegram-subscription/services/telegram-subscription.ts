@@ -7,6 +7,7 @@ import { env } from '@strapi/utils'
 import fetch from 'node-fetch'
 import crypto from 'crypto'
 import { TelegramData } from '../types'
+import { templateNotification } from '../../notification/services/notification'
 
 const MODULE_ID = 'api::telegram-subscription.telegram-subscription'
 
@@ -42,6 +43,19 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
           }
         })
     },
+    async getSubscriptions(accounts: string[]) {
+      return strapi.entityService.findMany(
+        MODULE_ID,
+        {
+          filters: {
+            account: {
+              $in: accounts
+            }
+          },
+          fields: ['id', 'account', 'chat_id']
+        }
+      )
+    },
     async getAccountSubscriptions(account: string) {
       return strapi.entityService.findMany(
         MODULE_ID,
@@ -54,12 +68,12 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
       )
     },
     // TODO: temporary implementation
-    async sendNotifications(account: string): Promise<number> {
-      const notifications = await strapi.service('api::notification.notification').getNotificationList(account, true)
+    async sendNotifications(): Promise<number> {
+      const notifications = await strapi.service('api::notification.notification').getPushNotifications()
 
       if (notifications.length === 0) return 0
 
-      const subscriptions = await this.getAccountSubscriptions(account)
+      const subscriptions = await this.getSubscriptions(notifications.map(n => n.account))
 
       const requests = subscriptions.map(subscription => {
         return notifications.map(notification => {
@@ -70,7 +84,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
             },
             body: JSON.stringify({
               chat_id: subscription.chat_id,
-              text: notification.description
+              text: templateNotification(notification.notification_template.description, notification.data)
             })
           })
         })
