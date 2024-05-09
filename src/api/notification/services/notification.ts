@@ -69,8 +69,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
 
       const lastConsumedNotificationDate = global?.lastConsumedNotificationDate
 
-      const notificationsForAll = await this.getNotificationsForAll(push)
-      const notifications = await strapi.entityService.findMany(
+      return strapi.entityService.findMany(
         MODULE_ID,
         {
           limit: 200,
@@ -83,8 +82,6 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           populate: NOTIFICATIONS_POPULATE
         }
       )
-
-      return [notifications, notificationsForAll]
     },
     updateLastConsumedNotificationDate() {
       return strapi.entityService.update(
