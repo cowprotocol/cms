@@ -5,6 +5,8 @@
 import { factories } from '@strapi/strapi';
 
 const MODULE_ID = 'api::notification.notification'
+const GLOBAL_MODULE_ID = 'api::notifications-consumer.notifications-consumer'
+const SINGLETON_ID = 1
 
 export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
   return {
@@ -41,10 +43,49 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         thumbnail: notification.notification_template.thumbnail.url
       }))
     },
+    async getPushNotifications() {
+      const global = await strapi.entityService.findOne(GLOBAL_MODULE_ID, SINGLETON_ID, {
+        populate: ['id', 'lastConsumedNotificationDate']
+      })
+
+      const lastConsumedNotificationDate = global?.lastConsumedNotificationDate
+
+      return strapi.entityService.findMany(
+        MODULE_ID,
+        {
+          limit: 200,
+          filters: {
+            notification_template: { push: true },
+            ...(lastConsumedNotificationDate ? {
+              createdAt: {$gt: lastConsumedNotificationDate}
+            } : undefined)
+          },
+          populate: {
+            notification_template: {
+              fields: ['id', 'title', 'description', 'url', 'push'],
+              populate: {
+                thumbnail: {
+                  fields: ['url']
+                }
+              }
+            }
+          }
+        }
+      )
+    },
+    updateLastConsumedNotificationDate() {
+      return strapi.entityService.update(
+        GLOBAL_MODULE_ID,
+        SINGLETON_ID,
+        {
+          data: { lastConsumedNotificationDate: new Date() }
+        }
+      )
+    }
   }
 });
 
-function templateNotification(description: string, data: {[key: string]: string}): string {
+export function templateNotification(description: string, data: {[key: string]: string}): string {
   let result = description
 
   if (!data) return result
