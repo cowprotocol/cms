@@ -8,9 +8,35 @@ const MODULE_ID = 'api::notification.notification'
 const GLOBAL_MODULE_ID = 'api::notifications-consumer.notifications-consumer'
 const SINGLETON_ID = 1
 
+const NOTIFICATIONS_POPULATE = {
+  notification_template: {
+    fields: ['id', 'title', 'description', 'url', 'push'],
+    populate: {
+      thumbnail: {
+        fields: ['url']
+      }
+    }
+  }
+}
+
 export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
   return {
+    async getNotificationsForAll(push: boolean) {
+      return strapi.entityService.findMany(
+        MODULE_ID,
+        {
+          start: 0,
+          limit: 50,
+          filters: {
+            account: { $null: true },
+            notification_template: { push }
+          },
+          populate: NOTIFICATIONS_POPULATE
+        }
+      )
+    },
     async getNotificationList(account: string) {
+      const push = false
       const notifications = await strapi.entityService.findMany(
         MODULE_ID,
         {
@@ -18,60 +44,47 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           limit: 50,
           filters: {
             account,
-            notification_template: { push: false }
+            notification_template: { push }
           },
-          populate: {
-            notification_template: {
-              fields: ['id', 'title', 'description', 'url', 'push'],
-              populate: {
-                thumbnail: {
-                  fields: ['url']
-                }
-              }
-            }
-          }
+          populate: NOTIFICATIONS_POPULATE
         }
       )
+      const notificationsForAll = await this.getNotificationsForAll(push)
 
-      return notifications.map(notification => ({
+      return [...notifications, ...notificationsForAll].map(notification => ({
         id: notification.id,
         account: notification.account,
         title: notification.notification_template.title,
         description: templateNotification(notification.notification_template.description, notification.data),
         url: notification.notification_template.url,
         createdAt: notification.createdAt,
-        thumbnail: notification.notification_template.thumbnail.url
+        thumbnail: notification.notification_template.thumbnail?.url
       }))
     },
     async getPushNotifications() {
+      const push = true
       const global = await strapi.entityService.findOne(GLOBAL_MODULE_ID, SINGLETON_ID, {
         populate: ['id', 'lastConsumedNotificationDate']
       })
 
       const lastConsumedNotificationDate = global?.lastConsumedNotificationDate
 
-      return strapi.entityService.findMany(
+      const notificationsForAll = await this.getNotificationsForAll(push)
+      const notifications = await strapi.entityService.findMany(
         MODULE_ID,
         {
           limit: 200,
           filters: {
-            notification_template: { push: true },
+            notification_template: { push },
             ...(lastConsumedNotificationDate ? {
               createdAt: {$gt: lastConsumedNotificationDate}
             } : undefined)
           },
-          populate: {
-            notification_template: {
-              fields: ['id', 'title', 'description', 'url', 'push'],
-              populate: {
-                thumbnail: {
-                  fields: ['url']
-                }
-              }
-            }
-          }
+          populate: NOTIFICATIONS_POPULATE
         }
       )
+
+      return [notifications, notificationsForAll]
     },
     updateLastConsumedNotificationDate() {
       return strapi.entityService.update(
