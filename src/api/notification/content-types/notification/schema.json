@@ -8,13 +8,13 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "account": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "data": {
       "type": "json"
