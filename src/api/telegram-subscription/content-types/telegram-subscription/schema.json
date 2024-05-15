@@ -17,19 +17,19 @@
       "required": true,
       "unique": false
     },
-    "auth_date": {
+    "authDate": {
       "type": "biginteger"
     },
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
     "hash": {
       "type": "string"
     },
-    "chat_id": {
+    "chatId": {
       "type": "biginteger"
     },
-    "photo_url": {
+    "photoUrl": {
       "type": "string"
     },
     "username": {
