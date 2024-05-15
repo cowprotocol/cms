@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-05-15T11:47:58.759Z"
+    "x-generation-date": "2024-05-15T11:56:08.250Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -18281,23 +18281,23 @@
               "account": {
                 "type": "string"
               },
-              "auth_date": {
+              "authDate": {
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "first_name": {
+              "firstName": {
                 "type": "string"
               },
               "hash": {
                 "type": "string"
               },
-              "chat_id": {
+              "chatId": {
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "photo_url": {
+              "photoUrl": {
                 "type": "string"
               },
               "username": {
@@ -18362,23 +18362,23 @@
           "account": {
             "type": "string"
           },
-          "auth_date": {
+          "authDate": {
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "first_name": {
+          "firstName": {
             "type": "string"
           },
           "hash": {
             "type": "string"
           },
-          "chat_id": {
+          "chatId": {
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "photo_url": {
+          "photoUrl": {
             "type": "string"
           },
           "username": {
