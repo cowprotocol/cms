@@ -19,6 +19,19 @@ const NOTIFICATIONS_POPULATE = {
   }
 }
 
+const notificationsTemplateFilter = (push: boolean) => ({
+  $or: [
+    {
+      push,
+      dueDate: { $gt: new Date() }
+    },
+    {
+      push,
+      dueDate: { $null: true }
+    }
+  ]
+})
+
 export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
   return {
     async getNotificationsForAll(push: boolean) {
@@ -29,7 +42,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           limit: 50,
           filters: {
             account: { $null: true },
-            notification_template: { push }
+            notification_template: notificationsTemplateFilter(push)
           },
           populate: NOTIFICATIONS_POPULATE
         }
@@ -44,7 +57,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           limit: 50,
           filters: {
             account,
-            notification_template: { push }
+            notification_template: notificationsTemplateFilter(push)
           },
           populate: NOTIFICATIONS_POPULATE
         }
@@ -56,6 +69,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         account: notification.account,
         title: notification.notification_template.title,
         description: templateNotification(notification.notification_template.description, notification.data),
+        dueDate: notification.notification_template.dueDate,
         url: notification.notification_template.url,
         createdAt: notification.createdAt,
         thumbnail: notification.notification_template.thumbnail?.url
@@ -74,7 +88,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         {
           limit: 200,
           filters: {
-            notification_template: { push },
+            notification_template: notificationsTemplateFilter(push),
             ...(lastConsumedNotificationDate ? {
               createdAt: {$gt: lastConsumedNotificationDate}
             } : undefined)
