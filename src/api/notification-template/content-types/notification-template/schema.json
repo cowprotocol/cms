@@ -24,7 +24,7 @@
     "push": {
       "type": "boolean"
     },
-    "due_date": {
+    "dueDate": {
       "type": "datetime"
     },
     "thumbnail": {
