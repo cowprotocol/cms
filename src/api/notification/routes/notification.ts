@@ -23,7 +23,7 @@ const customRouter = (innerRouter, extraRoutes = []) => {
 const myExtraRoutes = [
   {
     method: 'GET',
-    path: '/notification-list/:account',
+    path: '/accounts/:account/notifications',
     handler: 'notification.getNotificationList',
     config: {
       policies: [],

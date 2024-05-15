@@ -504,7 +504,7 @@
       "operationId": "delete/notifications/{id}"
     }
   },
-  "/notification-list/{account}": {
+  "/accounts/{account}/notifications": {
     "get": {
       "responses": {
         "200": {
@@ -583,7 +583,7 @@
           }
         }
       ],
-      "operationId": "get/notification-list/{account}"
+      "operationId": "get/accounts/{account}/notifications"
     }
   },
   "/push-notifications": {
