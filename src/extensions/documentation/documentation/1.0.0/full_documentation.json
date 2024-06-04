@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-05-15T10:34:01.347Z"
+    "x-generation-date": "2024-06-03T21:24:21.562Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -94,7 +94,8 @@
         "properties": {
           "data": {
             "required": [
-              "description"
+              "description",
+              "featured"
             ],
             "type": "object",
             "properties": {
@@ -181,6 +182,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "featured": {
+                "type": "boolean"
               }
             }
           }
@@ -235,7 +239,8 @@
       "Article": {
         "type": "object",
         "required": [
-          "description"
+          "description",
+          "featured"
         ],
         "properties": {
           "title": {
@@ -1895,6 +1900,9 @@
                                           }
                                         }
                                       },
+                                      "featured": {
+                                        "type": "boolean"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -2203,6 +2211,9 @@
                 }
               }
             }
+          },
+          "featured": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -4719,6 +4730,9 @@
                             }
                           }
                         },
+                        "featured": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -6661,6 +6675,9 @@
                               }
                             }
                           }
+                        },
+                        "featured": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -10981,6 +10998,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "featured": {
+                                        "type": "boolean"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -18144,6 +18164,9 @@
                               }
                             }
                           }
+                        },
+                        "featured": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
