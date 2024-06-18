@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-05-29T09:43:12.037Z"
+    "x-generation-date": "2024-06-07T17:23:18.291Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -94,7 +94,9 @@
         "properties": {
           "data": {
             "required": [
-              "description"
+              "description",
+              "featured",
+              "publishDateVisible"
             ],
             "type": "object",
             "properties": {
@@ -181,6 +183,16 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "featured": {
+                "type": "boolean"
+              },
+              "publishDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishDateVisible": {
+                "type": "boolean"
               }
             }
           }
@@ -235,7 +247,9 @@
       "Article": {
         "type": "object",
         "required": [
-          "description"
+          "description",
+          "featured",
+          "publishDateVisible"
         ],
         "properties": {
           "title": {
@@ -1895,6 +1909,16 @@
                                           }
                                         }
                                       },
+                                      "featured": {
+                                        "type": "boolean"
+                                      },
+                                      "publishDate": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                      },
+                                      "publishDateVisible": {
+                                        "type": "boolean"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -2203,6 +2227,16 @@
                 }
               }
             }
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "publishDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishDateVisible": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -4719,6 +4753,16 @@
                             }
                           }
                         },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "publishDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishDateVisible": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -6661,6 +6705,16 @@
                               }
                             }
                           }
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "publishDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishDateVisible": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -10981,6 +11035,16 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "featured": {
+                                        "type": "boolean"
+                                      },
+                                      "publishDate": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                      },
+                                      "publishDateVisible": {
+                                        "type": "boolean"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -18144,6 +18208,16 @@
                               }
                             }
                           }
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "publishDate": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "publishDateVisible": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",

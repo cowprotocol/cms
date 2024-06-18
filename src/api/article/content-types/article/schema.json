@@ -66,6 +66,19 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "mappedBy": "articles"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "publishDate": {
+      "type": "datetime"
+    },
+    "publishDateVisible": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
