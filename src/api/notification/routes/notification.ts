@@ -21,19 +21,9 @@ const customRouter = (innerRouter, extraRoutes = []) => {
 };
 
 const myExtraRoutes = [
-  // TODO: For backward-compatibility, remove after August 2024
   {
     method: 'GET',
     path: '/notification-list/:account',
-    handler: 'notification.getNotificationList',
-    config: {
-      policies: [],
-      middlewares: [],
-    },
-  },
-  {
-    method: 'GET',
-    path: '/accounts/:account/notifications',
     handler: 'notification.getNotificationList',
     config: {
       policies: [],

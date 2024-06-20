@@ -34,11 +34,11 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         {
           data: {
             account,
-            authDate: data.auth_date,
-            firstName: data.first_name,
+            auth_date: data.auth_date,
+            first_name: data.first_name,
             hash: data.hash,
-            chatId: data.id,
-            photoUrl: data.photo_url,
+            chat_id: data.id,
+            photo_url: data.photo_url,
             username: data.username,
           }
         })
@@ -52,7 +52,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
               $in: accounts
             }
           },
-          fields: ['id', 'account', 'chatId']
+          fields: ['id', 'account', 'chat_id']
         }
       )
     },
@@ -63,7 +63,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
           filters: {
             account
           },
-          fields: ['id', 'account', 'chatId']
+          fields: ['id', 'account', 'chat_id']
         }
       )
     },
@@ -83,7 +83,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              chat_id: subscription.chatId,
+              chat_id: subscription.chat_id,
               text: templateNotification(notification.notification_template.description, notification.data)
             })
           })

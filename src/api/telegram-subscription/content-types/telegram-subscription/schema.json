@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -17,19 +17,19 @@
       "required": true,
       "unique": false
     },
-    "authDate": {
+    "auth_date": {
       "type": "biginteger"
     },
-    "firstName": {
+    "first_name": {
       "type": "string"
     },
     "hash": {
       "type": "string"
     },
-    "chatId": {
+    "chat_id": {
       "type": "biginteger"
     },
-    "photoUrl": {
+    "photo_url": {
       "type": "string"
     },
     "username": {

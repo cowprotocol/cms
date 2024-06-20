@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-06-20T08:45:59.032Z"
+    "x-generation-date": "2024-06-07T17:23:18.291Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -12434,6 +12434,10 @@
                         "type": "string",
                         "format": "date-time"
                       },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "createdBy": {
                         "type": "object",
                         "properties": {
@@ -12547,11 +12551,6 @@
         ],
         "properties": {
           "data": {
-            "required": [
-              "title",
-              "description",
-              "push"
-            ],
             "type": "object",
             "properties": {
               "title": {
@@ -12633,11 +12632,6 @@
       },
       "NotificationTemplate": {
         "type": "object",
-        "required": [
-          "title",
-          "description",
-          "push"
-        ],
         "properties": {
           "title": {
             "type": "string"
@@ -13281,6 +13275,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -18355,23 +18353,23 @@
               "account": {
                 "type": "string"
               },
-              "authDate": {
+              "auth_date": {
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "firstName": {
+              "first_name": {
                 "type": "string"
               },
               "hash": {
                 "type": "string"
               },
-              "chatId": {
+              "chat_id": {
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "photoUrl": {
+              "photo_url": {
                 "type": "string"
               },
               "username": {
@@ -18436,23 +18434,23 @@
           "account": {
             "type": "string"
           },
-          "authDate": {
+          "auth_date": {
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "firstName": {
+          "first_name": {
             "type": "string"
           },
           "hash": {
             "type": "string"
           },
-          "chatId": {
+          "chat_id": {
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "photoUrl": {
+          "photo_url": {
             "type": "string"
           },
           "username": {
@@ -18463,6 +18461,10 @@
             "format": "date-time"
           },
           "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "publishedAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -23001,88 +23003,6 @@
           }
         ],
         "operationId": "get/notification-list/{account}"
-      }
-    },
-    "/accounts/{account}/notifications": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NotificationResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Notification"
-        ],
-        "parameters": [
-          {
-            "name": "account",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "get/accounts/{account}/notifications"
       }
     },
     "/push-notifications": {

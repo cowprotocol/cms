@@ -8,36 +8,31 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
     },
     "url": {
       "type": "string"
     },
     "push": {
-      "type": "boolean",
-      "default": false,
-      "required": true
+      "type": "boolean"
     },
     "dueDate": {
       "type": "datetime"
     },
     "thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
