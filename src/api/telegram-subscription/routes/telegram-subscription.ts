@@ -22,7 +22,7 @@ const customRouter = (innerRouter, extraRoutes = []) => {
 const myExtraRoutes = [
   {
     method: 'GET',
-    path: '/tg-subscriptions',
+    path: '/subscriptions/telegram',
     handler: 'telegram-subscription.getSubscriptions',
     config: {
       policies: [],
@@ -31,7 +31,7 @@ const myExtraRoutes = [
   },
   {
     method: 'GET',
-    path: '/tg-subscriptions/:account',
+    path: '/accounts/:account/subscriptions/telegram',
     handler: 'telegram-subscription.getAccountSubscriptions',
     config: {
       policies: [],

@@ -15,7 +15,7 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
 
       const service = strapi.service(MODULE_ID)
 
-      const existing = await strapi.entityService.findMany(MODULE_ID, { filters: { account, chat_id: data.id } })
+      const existing = await strapi.entityService.findMany(MODULE_ID, { filters: { account, chatId: data.id } })
 
       if (existing.length > 0) return true
 

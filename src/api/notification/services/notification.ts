@@ -5,8 +5,9 @@
 import { factories } from '@strapi/strapi';
 
 const MODULE_ID = 'api::notification.notification'
-const GLOBAL_MODULE_ID = 'api::notifications-consumer.notifications-consumer'
+const NOTIFICATIONS_CONSUMER_MODULE_ID = 'api::notifications-consumer.notifications-consumer'
 const SINGLETON_ID = 1
+const NOTIFICATIONS_LIMIT = 50
 
 const NOTIFICATIONS_POPULATE = {
   notification_template: {
@@ -39,7 +40,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         MODULE_ID,
         {
           start: 0,
-          limit: 50,
+          limit: NOTIFICATIONS_LIMIT,
           filters: {
             account: { $null: true },
             notification_template: notificationsTemplateFilter(push)
@@ -55,7 +56,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         MODULE_ID,
         {
           start: 0,
-          limit: 50,
+          limit: NOTIFICATIONS_LIMIT,
           filters: {
             $or: [
               { account, notification_template: templateFilter },
@@ -80,11 +81,11 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
     },
     async getPushNotifications() {
       const push = true
-      const global = await strapi.entityService.findOne(GLOBAL_MODULE_ID, SINGLETON_ID, {
+      const notificationsConsumer = await strapi.entityService.findOne(NOTIFICATIONS_CONSUMER_MODULE_ID, SINGLETON_ID, {
         populate: ['id', 'lastConsumedNotificationDate']
       })
 
-      const lastConsumedNotificationDate = global?.lastConsumedNotificationDate
+      const lastConsumedNotificationDate = notificationsConsumer?.lastConsumedNotificationDate
 
       return strapi.entityService.findMany(
         MODULE_ID,
@@ -102,7 +103,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
     },
     updateLastConsumedNotificationDate() {
       return strapi.entityService.update(
-        GLOBAL_MODULE_ID,
+        NOTIFICATIONS_CONSUMER_MODULE_ID,
         SINGLETON_ID,
         {
           data: { lastConsumedNotificationDate: new Date() }
