@@ -51,14 +51,17 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
     },
     async getNotificationList(account: string) {
       const push = false
+      const templateFilter = notificationsTemplateFilter(push)
       const notifications = await strapi.entityService.findMany(
         MODULE_ID,
         {
           start: 0,
           limit: NOTIFICATIONS_LIMIT,
           filters: {
-            account,
-            notification_template: notificationsTemplateFilter(push)
+            $or: [
+              { account, notification_template: templateFilter },
+              { account: account.toLowerCase(), notification_template: templateFilter },
+            ]
           },
           populate: NOTIFICATIONS_POPULATE
         }
