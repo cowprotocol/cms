@@ -25,7 +25,8 @@
     "@strapi/strapi": "4.13.3",
     "better-sqlite3": "8.5.0",
     "openapi-fetch": "^0.9.3",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "strapi-plugin-import-export-entries": "^1.23.1"
   },
   "devDependencies": {
     "@strapi/plugin-documentation": "4.13.3",
