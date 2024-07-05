@@ -16,7 +16,8 @@
     "compile:lib": "npx tsc -p lib/tsconfig.json",
     "strapi": "strapi",
     "publish:lib": "scripts/publish-lib.sh",
-    "prepublishOnly": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99"
+    "prepublishOnly": "echo '❌ ERROR: The lib should be published from \"lib\" directory. Read README for more information.' && exit 99",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@strapi/plugin-documentation": "4.13.3",
@@ -35,6 +36,7 @@
     "@strapi/strapi": "4.13.3",
     "better-sqlite3": "8.5.0",
     "openapi-typescript": "^6.7.5",
+    "patch-package": "^8.0.0",
     "pg": "^8.11.3",
     "rimraf": "^5.0.5"
   },

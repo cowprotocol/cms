@@ -1,0 +1,16 @@
+diff --git a/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.js b/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.js
+index a390077..19722a1 100644
+--- a/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.js
++++ b/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.js
+@@ -10,7 +10,10 @@ import { AssetCardBase } from './AssetCardBase';
+ export const ImageAssetCard = ({ height, width, thumbnail, size, alt, ...props }) => {
+   // Prevents the browser from caching the URL for all sizes and allow react-query to make a smooth update
+   // instead of a full refresh
+-  const urlWithCacheBusting = appendSearchParamsToUrl({ url: thumbnail, params: { updatedAt: props.updatedAt } });
++  const urlWithCacheBusting = appendSearchParamsToUrl({
++    url: thumbnail.startsWith('/') ? location.origin + thumbnail : thumbnail,
++    params: { updatedAt: props.updatedAt }
++  });
+ 
+   return (
+     <AssetCardBase {...props} subtitle={height && width && ` - ${width}✕${height}`} variant="Image">
