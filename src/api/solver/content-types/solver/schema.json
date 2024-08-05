@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "solvers",
+  "info": {
+    "singularName": "solver",
+    "pluralName": "solvers",
+    "displayName": "Solver"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "regex": "^(0x)?[0-9a-fA-F]{40}$",
+      "required": true
+    },
+    "payoutAddress": {
+      "type": "string",
+      "regex": "^(0x)?[0-9a-fA-F]{40}$"
+    },
+    "networks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::network.network",
+      "inversedBy": "solvers"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "organization": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string",
+      "regex": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

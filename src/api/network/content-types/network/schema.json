@@ -18,6 +18,12 @@
     },
     "chainId": {
       "type": "integer"
+    },
+    "solvers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::solver.solver",
+      "mappedBy": "networks"
     }
   }
 }
