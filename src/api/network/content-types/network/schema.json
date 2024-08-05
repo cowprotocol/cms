@@ -4,10 +4,11 @@
   "info": {
     "singularName": "network",
     "pluralName": "networks",
-    "displayName": "Network"
+    "displayName": "Network",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

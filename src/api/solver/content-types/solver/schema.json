@@ -4,10 +4,11 @@
   "info": {
     "singularName": "solver",
     "pluralName": "solvers",
-    "displayName": "Solver"
+    "displayName": "Solver",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -36,11 +37,12 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "organization": {
       "type": "string"
@@ -51,6 +53,12 @@
     },
     "description": {
       "type": "string"
+    },
+    "solverId": {
+      "required": true,
+      "unique": true,
+      "default": 0,
+      "type": "integer"
     }
   }
 }
