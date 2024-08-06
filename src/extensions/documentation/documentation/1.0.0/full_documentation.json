@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-05T14:34:04.237Z"
+    "x-generation-date": "2024-08-06T12:36:58.099Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11804,7 +11804,7 @@
                     "attributes": {
                       "type": "object",
                       "properties": {
-                        "name": {
+                        "displayName": {
                           "type": "string"
                         },
                         "address": {
@@ -12536,7 +12536,7 @@
                           "type": "string"
                         },
                         "solverId": {
-                          "type": "integer"
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string",
@@ -17385,14 +17385,14 @@
         "properties": {
           "data": {
             "required": [
-              "name",
+              "displayName",
               "address",
               "active",
               "solverId"
             ],
             "type": "object",
             "properties": {
-              "name": {
+              "displayName": {
                 "type": "string"
               },
               "address": {
@@ -17439,7 +17439,7 @@
                 "type": "string"
               },
               "solverId": {
-                "type": "integer"
+                "type": "string"
               }
             }
           }
@@ -17494,13 +17494,13 @@
       "Solver": {
         "type": "object",
         "required": [
-          "name",
+          "displayName",
           "address",
           "active",
           "solverId"
         ],
         "properties": {
-          "name": {
+          "displayName": {
             "type": "string"
           },
           "address": {
@@ -17543,7 +17543,7 @@
                                   "attributes": {
                                     "type": "object",
                                     "properties": {
-                                      "name": {
+                                      "displayName": {
                                         "type": "string"
                                       },
                                       "address": {
@@ -18206,7 +18206,7 @@
                                         "type": "string"
                                       },
                                       "solverId": {
-                                        "type": "integer"
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -18458,7 +18458,7 @@
             "type": "string"
           },
           "solverId": {
-            "type": "integer"
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
