@@ -20,11 +20,11 @@
     "chainId": {
       "type": "integer"
     },
-    "solvers": {
+    "solver_networks": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::solver.solver",
-      "mappedBy": "networks"
+      "relation": "oneToMany",
+      "target": "api::solver-network.solver-network",
+      "mappedBy": "network"
     }
   }
 }

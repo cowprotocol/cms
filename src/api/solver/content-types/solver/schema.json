@@ -16,12 +16,6 @@
       "type": "string",
       "required": true
     },
-    "networks": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::network.network",
-      "inversedBy": "solvers"
-    },
     "active": {
       "type": "boolean",
       "default": true,
@@ -48,6 +42,12 @@
     "solverId": {
       "type": "string",
       "required": true
+    },
+    "solver_networks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solver-network.solver-network",
+      "mappedBy": "solver"
     }
   }
 }
