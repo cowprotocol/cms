@@ -36,6 +36,11 @@
       "type": "boolean",
       "default": true,
       "required": true
+    },
+    "environment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::environment.environment"
     }
   }
 }
