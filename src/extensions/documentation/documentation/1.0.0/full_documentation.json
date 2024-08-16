@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-06T12:36:58.099Z"
+    "x-generation-date": "2024-08-16T14:04:42.137Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11807,12 +11807,6 @@
                         "displayName": {
                           "type": "string"
                         },
-                        "address": {
-                          "type": "string"
-                        },
-                        "payoutAddress": {
-                          "type": "string"
-                        },
                         "networks": {
                           "type": "object",
                           "properties": {
@@ -17386,19 +17380,12 @@
           "data": {
             "required": [
               "displayName",
-              "address",
               "active",
               "solverId"
             ],
             "type": "object",
             "properties": {
               "displayName": {
-                "type": "string"
-              },
-              "address": {
-                "type": "string"
-              },
-              "payoutAddress": {
                 "type": "string"
               },
               "networks": {
@@ -17495,18 +17482,11 @@
         "type": "object",
         "required": [
           "displayName",
-          "address",
           "active",
           "solverId"
         ],
         "properties": {
           "displayName": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "payoutAddress": {
             "type": "string"
           },
           "networks": {
@@ -17544,12 +17524,6 @@
                                     "type": "object",
                                     "properties": {
                                       "displayName": {
-                                        "type": "string"
-                                      },
-                                      "address": {
-                                        "type": "string"
-                                      },
-                                      "payoutAddress": {
                                         "type": "string"
                                       },
                                       "networks": {
