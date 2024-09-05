@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "solver_bonding_pools",
+  "info": {
+    "singularName": "solver-bonding-pool",
+    "pluralName": "solver-bonding-pools",
+    "displayName": "Solver Bonding Pool"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "string",
+      "regex": "^(0x)?[0-9a-fA-F]{40}$",
+      "required": true
+    },
+    "joinedOn": {
+      "type": "datetime",
+      "required": true
+    },
+    "bonding_pool": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bonding-pool.bonding-pool",
+      "inversedBy": "solver_bonding_pools"
+    },
+    "solvers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::solver.solver",
+      "inversedBy": "solver_bonding_pools"
+    }
+  }
+}

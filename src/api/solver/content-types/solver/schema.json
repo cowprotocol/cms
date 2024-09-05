@@ -48,6 +48,12 @@
       "relation": "oneToMany",
       "target": "api::solver-network.solver-network",
       "mappedBy": "solver"
+    },
+    "solver_bonding_pools": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::solver-bonding-pool.solver-bonding-pool",
+      "mappedBy": "solvers"
     }
   }
 }
