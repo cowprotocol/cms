@@ -5,8 +5,8 @@ This project is a Content Management System for the [cow.fi](https://cow.fi).
 > It is an instance of Strapi, a headless CMS.
 
 # API
-Swagger Docs: https://cms.cow.fi/swagger.html
 
+Swagger Docs: <https://cms.cow.fi/swagger.html>
 
 # 👨‍💻 Develop
 
@@ -16,8 +16,8 @@ Some requiremets are:
 - Yarn
 - PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
-
 ## Run locally using sqlite3
+
 The CMS relies on a database. The simplest is to use `Sqlite` for development.
 
 You actually don't need to do anything for this! If you run the project with `yarn dev`, it will automatically create a sqlite database in `data/sqlite.db`
@@ -27,8 +27,8 @@ yarn dev
 ```
 
 Then visit:
-* **Admin**: http://localhost:1337/admin
 
+- **Admin**: <http://localhost:1337/admin>
 
 On its basic setup, you don't need to add any configuration parameter, however you might want to do so. You can do this by creating a `.env` file.
 
@@ -36,7 +36,6 @@ On its basic setup, you don't need to add any configuration parameter, however y
 # Create an ENV file from the example
 cp .env.example .env
 ```
-
 
 ## Dev locally using PostreSQL
 
@@ -55,7 +54,7 @@ cp .env.example .env
 
 Edit the .env file and set the database connection
 
-- See https://docs.strapi.io/dev-docs/configurations/environment
+- See <https://docs.strapi.io/dev-docs/configurations/environment>
 
 To start with the new database, you simply start the dev server:
 
@@ -64,6 +63,8 @@ yarn dev
 ```
 
 # 👷‍♀️ Build
+
+Before running the server for the first time, you need to build it:
 
 ```bash
 yarn build
@@ -107,6 +108,7 @@ yarn strapi help
 ```
 
 # Library
+
 This project also exposes a library that can be used to interact with the CMS API.
 
 To build the library, run:

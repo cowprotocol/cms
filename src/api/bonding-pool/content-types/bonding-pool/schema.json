@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bonding_pools",
+  "info": {
+    "singularName": "bonding-pool",
+    "pluralName": "bonding-pools",
+    "displayName": "Bonding Pool"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "solver_bonding_pools": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solver-bonding-pool.solver-bonding-pool",
+      "mappedBy": "bonding_pool"
+    }
+  }
+}
