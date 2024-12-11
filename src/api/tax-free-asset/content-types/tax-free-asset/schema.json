@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tax_free_assets",
+  "info": {
+    "singularName": "tax-free-asset",
+    "pluralName": "tax-free-assets",
+    "displayName": "Tax Free Assets",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "chainId": {
+      "type": "enumeration",
+      "enum": [
+        "MAINNET",
+        "GNOSIS_CHAIN",
+        "ARBITRUM_ONE",
+        "BASE",
+        "SEPOLIA"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "tokenIds": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
