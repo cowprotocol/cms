@@ -12,23 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "chainId": {
-      "type": "enumeration",
-      "enum": [
-        "MAINNET",
-        "GNOSIS_CHAIN",
-        "ARBITRUM_ONE",
-        "BASE",
-        "SEPOLIA"
-      ],
-      "required": true
-    },
     "description": {
       "type": "string"
     },
     "tokenIds": {
       "type": "string",
       "required": true
+    },
+    "chainId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::network.network"
     }
   }
 }
