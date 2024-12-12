@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tax_free_assets",
+  "info": {
+    "singularName": "tax-free-asset",
+    "pluralName": "tax-free-assets",
+    "displayName": "Tax Free Assets",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "tokenIds": {
+      "type": "string",
+      "required": true
+    },
+    "chainId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::network.network"
+    }
+  }
+}
