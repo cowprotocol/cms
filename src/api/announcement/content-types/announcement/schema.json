@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "announcements",
+  "info": {
+    "singularName": "announcement",
+    "pluralName": "announcements",
+    "displayName": "Announcement"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "networks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::network.network"
+    },
+    "environments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::environment.environment"
+    },
+    "isCritical": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
