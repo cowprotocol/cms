@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-06T16:20:28.828Z"
+    "x-generation-date": "2025-01-06T16:25:21.759Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -241,9 +241,6 @@
                                                 "properties": {
                                                   "displayName": {
                                                     "type": "string"
-                                                  },
-                                                  "active": {
-                                                    "type": "boolean"
                                                   },
                                                   "image": {
                                                     "type": "object",
@@ -6653,9 +6650,6 @@
                                     "properties": {
                                       "displayName": {
                                         "type": "string"
-                                      },
-                                      "active": {
-                                        "type": "boolean"
                                       },
                                       "image": {
                                         "type": "object",
@@ -14792,9 +14786,6 @@
                                     "displayName": {
                                       "type": "string"
                                     },
-                                    "active": {
-                                      "type": "boolean"
-                                    },
                                     "image": {
                                       "type": "object",
                                       "properties": {
@@ -20678,16 +20669,12 @@
           "data": {
             "required": [
               "displayName",
-              "active",
               "solverId"
             ],
             "type": "object",
             "properties": {
               "displayName": {
                 "type": "string"
-              },
-              "active": {
-                "type": "boolean"
               },
               "image": {
                 "oneOf": [
@@ -20794,15 +20781,11 @@
         "type": "object",
         "required": [
           "displayName",
-          "active",
           "solverId"
         ],
         "properties": {
           "displayName": {
             "type": "string"
-          },
-          "active": {
-            "type": "boolean"
           },
           "image": {
             "type": "object",
@@ -21465,9 +21448,6 @@
                                   "properties": {
                                     "displayName": {
                                       "type": "string"
-                                    },
-                                    "active": {
-                                      "type": "boolean"
                                     },
                                     "image": {
                                       "type": "object",
@@ -22335,9 +22315,6 @@
                                                 "properties": {
                                                   "displayName": {
                                                     "type": "string"
-                                                  },
-                                                  "active": {
-                                                    "type": "boolean"
                                                   },
                                                   "image": {
                                                     "type": "object",
@@ -23594,9 +23571,6 @@
                     "properties": {
                       "displayName": {
                         "type": "string"
-                      },
-                      "active": {
-                        "type": "boolean"
                       },
                       "image": {
                         "type": "object",
@@ -26862,9 +26836,6 @@
                                               "properties": {
                                                 "displayName": {
                                                   "type": "string"
-                                                },
-                                                "active": {
-                                                  "type": "boolean"
                                                 },
                                                 "image": {
                                                   "type": "object",
