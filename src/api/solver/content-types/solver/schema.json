@@ -54,6 +54,9 @@
       "relation": "manyToMany",
       "target": "api::solver-bonding-pool.solver-bonding-pool",
       "mappedBy": "solvers"
+    },
+    "isServiceFeeEnabled": {
+      "type": "boolean"
     }
   }
 }
