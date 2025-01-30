@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-16T11:10:37.171Z"
+    "x-generation-date": "2025-01-30T13:48:22.852Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1022,6 +1022,9 @@
                                                                     }
                                                                   }
                                                                 },
+                                                                "isReducedBondingPool": {
+                                                                  "type": "boolean"
+                                                                },
                                                                 "createdAt": {
                                                                   "type": "string",
                                                                   "format": "date-time"
@@ -1070,6 +1073,9 @@
                                                         }
                                                       }
                                                     }
+                                                  },
+                                                  "isServiceFeeEnabled": {
+                                                    "type": "boolean"
                                                   },
                                                   "createdAt": {
                                                     "type": "string",
@@ -1207,6 +1213,12 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "isWhiteListed": {
+                                        "type": "boolean"
+                                      },
+                                      "isVouched": {
+                                        "type": "boolean"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -7225,6 +7237,12 @@
                                                         }
                                                       }
                                                     },
+                                                    "isWhiteListed": {
+                                                      "type": "boolean"
+                                                    },
+                                                    "isVouched": {
+                                                      "type": "boolean"
+                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -7294,6 +7312,9 @@
                                           }
                                         }
                                       },
+                                      "isServiceFeeEnabled": {
+                                        "type": "boolean"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -7342,6 +7363,9 @@
                               }
                             }
                           }
+                        },
+                        "isReducedBondingPool": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -15566,6 +15590,9 @@
                                                       }
                                                     }
                                                   },
+                                                  "isReducedBondingPool": {
+                                                    "type": "boolean"
+                                                  },
                                                   "createdAt": {
                                                     "type": "string",
                                                     "format": "date-time"
@@ -15614,6 +15641,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "isServiceFeeEnabled": {
+                                      "type": "boolean"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -15820,6 +15850,12 @@
                               }
                             }
                           }
+                        },
+                        "isWhiteListed": {
+                          "type": "boolean"
+                        },
+                        "isVouched": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -20730,6 +20766,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "isServiceFeeEnabled": {
+                "type": "boolean"
               }
             }
           }
@@ -21755,6 +21794,9 @@
                                                       }
                                                     }
                                                   },
+                                                  "isReducedBondingPool": {
+                                                    "type": "boolean"
+                                                  },
                                                   "createdAt": {
                                                     "type": "string",
                                                     "format": "date-time"
@@ -21803,6 +21845,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "isServiceFeeEnabled": {
+                                      "type": "boolean"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -22010,6 +22055,12 @@
                             }
                           }
                         },
+                        "isWhiteListed": {
+                          "type": "boolean"
+                        },
+                        "isVouched": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -22078,6 +22129,9 @@
                 }
               }
             }
+          },
+          "isServiceFeeEnabled": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -22189,6 +22243,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "isReducedBondingPool": {
+                "type": "boolean"
               }
             }
           }
@@ -23149,6 +23206,12 @@
                                                                     }
                                                                   }
                                                                 },
+                                                                "isWhiteListed": {
+                                                                  "type": "boolean"
+                                                                },
+                                                                "isVouched": {
+                                                                  "type": "boolean"
+                                                                },
                                                                 "createdAt": {
                                                                   "type": "string",
                                                                   "format": "date-time"
@@ -23218,6 +23281,9 @@
                                                       }
                                                     }
                                                   },
+                                                  "isServiceFeeEnabled": {
+                                                    "type": "boolean"
+                                                  },
                                                   "createdAt": {
                                                     "type": "string",
                                                     "format": "date-time"
@@ -23266,6 +23332,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "isReducedBondingPool": {
+                                      "type": "boolean"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -23383,6 +23452,9 @@
                 }
               }
             }
+          },
+          "isReducedBondingPool": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -23503,6 +23575,12 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "isWhiteListed": {
+                "type": "boolean"
+              },
+              "isVouched": {
+                "type": "boolean"
               }
             }
           }
@@ -24400,6 +24478,12 @@
                                         }
                                       }
                                     },
+                                    "isWhiteListed": {
+                                      "type": "boolean"
+                                    },
+                                    "isVouched": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -24573,6 +24657,9 @@
                                         }
                                       }
                                     },
+                                    "isReducedBondingPool": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -24621,6 +24708,9 @@
                             }
                           }
                         }
+                      },
+                      "isServiceFeeEnabled": {
+                        "type": "boolean"
                       },
                       "createdAt": {
                         "type": "string",
@@ -24712,6 +24802,12 @@
                 }
               }
             }
+          },
+          "isWhiteListed": {
+            "type": "boolean"
+          },
+          "isVouched": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -27617,6 +27713,9 @@
                                                                   }
                                                                 }
                                                               },
+                                                              "isReducedBondingPool": {
+                                                                "type": "boolean"
+                                                              },
                                                               "createdAt": {
                                                                 "type": "string",
                                                                 "format": "date-time"
@@ -27665,6 +27764,9 @@
                                                       }
                                                     }
                                                   }
+                                                },
+                                                "isServiceFeeEnabled": {
+                                                  "type": "boolean"
                                                 },
                                                 "createdAt": {
                                                   "type": "string",
@@ -27802,6 +27904,12 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "isWhiteListed": {
+                                      "type": "boolean"
+                                    },
+                                    "isVouched": {
+                                      "type": "boolean"
                                     },
                                     "createdAt": {
                                       "type": "string",
