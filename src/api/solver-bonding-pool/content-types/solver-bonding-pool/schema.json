@@ -34,7 +34,9 @@
       "inversedBy": "solver_bonding_pools"
     },
     "isReducedBondingPool": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   }
 }

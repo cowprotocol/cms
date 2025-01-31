@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-01-30T13:48:22.852Z"
+    "x-generation-date": "2025-01-31T10:25:10.551Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -20706,7 +20706,8 @@
             "required": [
               "displayName",
               "active",
-              "solverId"
+              "solverId",
+              "isServiceFeeEnabled"
             ],
             "type": "object",
             "properties": {
@@ -20825,7 +20826,8 @@
         "required": [
           "displayName",
           "active",
-          "solverId"
+          "solverId",
+          "isServiceFeeEnabled"
         ],
         "properties": {
           "displayName": {
@@ -22208,7 +22210,8 @@
           "data": {
             "required": [
               "address",
-              "joinedOn"
+              "joinedOn",
+              "isReducedBondingPool"
             ],
             "type": "object",
             "properties": {
@@ -22301,7 +22304,8 @@
         "type": "object",
         "required": [
           "address",
-          "joinedOn"
+          "joinedOn",
+          "isReducedBondingPool"
         ],
         "properties": {
           "address": {

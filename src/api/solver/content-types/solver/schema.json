@@ -56,7 +56,9 @@
       "mappedBy": "solvers"
     },
     "isServiceFeeEnabled": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   }
 }
