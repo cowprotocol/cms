@@ -43,10 +43,12 @@
       "target": "api::environment.environment"
     },
     "isWhiteListed": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "isVouched": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }

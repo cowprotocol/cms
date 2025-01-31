@@ -21969,7 +21969,8 @@
             "required": [
               "displayName",
               "active",
-              "solverId"
+              "solverId",
+              "isServiceFeeEnabled"
             ],
             "type": "object",
             "properties": {
@@ -22088,7 +22089,8 @@
         "required": [
           "displayName",
           "active",
-          "solverId"
+          "solverId",
+          "isServiceFeeEnabled"
         ],
         "properties": {
           "displayName": {
@@ -23471,7 +23473,8 @@
           "data": {
             "required": [
               "address",
-              "joinedOn"
+              "joinedOn",
+              "isReducedBondingPool"
             ],
             "type": "object",
             "properties": {
@@ -23564,7 +23567,8 @@
         "type": "object",
         "required": [
           "address",
-          "joinedOn"
+          "joinedOn",
+          "isReducedBondingPool"
         ],
         "properties": {
           "address": {
