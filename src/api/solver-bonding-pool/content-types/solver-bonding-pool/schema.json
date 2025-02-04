@@ -4,7 +4,8 @@
   "info": {
     "singularName": "solver-bonding-pool",
     "pluralName": "solver-bonding-pools",
-    "displayName": "Solver Bonding Pool"
+    "displayName": "Solver Bonding Pool",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -31,6 +32,11 @@
       "relation": "manyToMany",
       "target": "api::solver.solver",
       "inversedBy": "solver_bonding_pools"
+    },
+    "isReducedBondingPool": {
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   }
 }

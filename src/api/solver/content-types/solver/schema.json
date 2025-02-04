@@ -54,6 +54,21 @@
       "relation": "manyToMany",
       "target": "api::solver-bonding-pool.solver-bonding-pool",
       "mappedBy": "solvers"
+    },
+    "isServiceFeeEnabled": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "isColocated": {
+      "type": "enumeration",
+      "enum": [
+        "Yes",
+        "No",
+        "Partial"
+      ],
+      "required": true,
+      "default": "No"
     }
   }
 }

@@ -41,6 +41,19 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::environment.environment"
+    },
+    "isWhiteListed": {
+      "type": "boolean",
+      "default": false
+    },
+    "isVouched": {
+      "type": "boolean",
+      "default": false
+    },
+    "isColocated": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
