@@ -1077,6 +1077,14 @@
                                                   "isServiceFeeEnabled": {
                                                     "type": "boolean"
                                                   },
+                                                  "isColocated": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "Yes",
+                                                      "No",
+                                                      "Partial"
+                                                    ]
+                                                  },
                                                   "createdAt": {
                                                     "type": "string",
                                                     "format": "date-time"
@@ -1218,6 +1226,9 @@
                                         "type": "boolean"
                                       },
                                       "isVouched": {
+                                        "type": "boolean"
+                                      },
+                                      "isColocated": {
                                         "type": "boolean"
                                       },
                                       "createdAt": {
@@ -7243,6 +7254,9 @@
                                                     "isVouched": {
                                                       "type": "boolean"
                                                     },
+                                                    "isColocated": {
+                                                      "type": "boolean"
+                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -7314,6 +7328,14 @@
                                       },
                                       "isServiceFeeEnabled": {
                                         "type": "boolean"
+                                      },
+                                      "isColocated": {
+                                        "type": "string",
+                                        "enum": [
+                                          "Yes",
+                                          "No",
+                                          "Partial"
+                                        ]
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -16908,6 +16930,14 @@
                                     "isServiceFeeEnabled": {
                                       "type": "boolean"
                                     },
+                                    "isColocated": {
+                                      "type": "string",
+                                      "enum": [
+                                        "Yes",
+                                        "No",
+                                        "Partial"
+                                      ]
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -17118,6 +17148,9 @@
                           "type": "boolean"
                         },
                         "isVouched": {
+                          "type": "boolean"
+                        },
+                        "isColocated": {
                           "type": "boolean"
                         },
                         "createdAt": {
@@ -21970,7 +22003,8 @@
               "displayName",
               "active",
               "solverId",
-              "isServiceFeeEnabled"
+              "isServiceFeeEnabled",
+              "isColocated"
             ],
             "type": "object",
             "properties": {
@@ -22033,6 +22067,14 @@
               },
               "isServiceFeeEnabled": {
                 "type": "boolean"
+              },
+              "isColocated": {
+                "type": "string",
+                "enum": [
+                  "Yes",
+                  "No",
+                  "Partial"
+                ]
               }
             }
           }
@@ -22090,7 +22132,8 @@
           "displayName",
           "active",
           "solverId",
-          "isServiceFeeEnabled"
+          "isServiceFeeEnabled",
+          "isColocated"
         ],
         "properties": {
           "displayName": {
@@ -23114,6 +23157,14 @@
                                     "isServiceFeeEnabled": {
                                       "type": "boolean"
                                     },
+                                    "isColocated": {
+                                      "type": "string",
+                                      "enum": [
+                                        "Yes",
+                                        "No",
+                                        "Partial"
+                                      ]
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -23326,6 +23377,9 @@
                         "isVouched": {
                           "type": "boolean"
                         },
+                        "isColocated": {
+                          "type": "boolean"
+                        },
                         "createdAt": {
                           "type": "string",
                           "format": "date-time"
@@ -23397,6 +23451,14 @@
           },
           "isServiceFeeEnabled": {
             "type": "boolean"
+          },
+          "isColocated": {
+            "type": "string",
+            "enum": [
+              "Yes",
+              "No",
+              "Partial"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -24479,6 +24541,9 @@
                                                                 "isVouched": {
                                                                   "type": "boolean"
                                                                 },
+                                                                "isColocated": {
+                                                                  "type": "boolean"
+                                                                },
                                                                 "createdAt": {
                                                                   "type": "string",
                                                                   "format": "date-time"
@@ -24550,6 +24615,14 @@
                                                   },
                                                   "isServiceFeeEnabled": {
                                                     "type": "boolean"
+                                                  },
+                                                  "isColocated": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "Yes",
+                                                      "No",
+                                                      "Partial"
+                                                    ]
                                                   },
                                                   "createdAt": {
                                                     "type": "string",
@@ -24797,7 +24870,8 @@
         "properties": {
           "data": {
             "required": [
-              "active"
+              "active",
+              "isColocated"
             ],
             "type": "object",
             "properties": {
@@ -24847,6 +24921,9 @@
                 "type": "boolean"
               },
               "isVouched": {
+                "type": "boolean"
+              },
+              "isColocated": {
                 "type": "boolean"
               }
             }
@@ -24902,7 +24979,8 @@
       "SolverNetwork": {
         "type": "object",
         "required": [
-          "active"
+          "active",
+          "isColocated"
         ],
         "properties": {
           "solver": {
@@ -25751,6 +25829,9 @@
                                     "isVouched": {
                                       "type": "boolean"
                                     },
+                                    "isColocated": {
+                                      "type": "boolean"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -25979,6 +26060,14 @@
                       "isServiceFeeEnabled": {
                         "type": "boolean"
                       },
+                      "isColocated": {
+                        "type": "string",
+                        "enum": [
+                          "Yes",
+                          "No",
+                          "Partial"
+                        ]
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -26074,6 +26163,9 @@
             "type": "boolean"
           },
           "isVouched": {
+            "type": "boolean"
+          },
+          "isColocated": {
             "type": "boolean"
           },
           "createdAt": {
@@ -29035,6 +29127,14 @@
                                                 "isServiceFeeEnabled": {
                                                   "type": "boolean"
                                                 },
+                                                "isColocated": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "Yes",
+                                                    "No",
+                                                    "Partial"
+                                                  ]
+                                                },
                                                 "createdAt": {
                                                   "type": "string",
                                                   "format": "date-time"
@@ -29176,6 +29276,9 @@
                                       "type": "boolean"
                                     },
                                     "isVouched": {
+                                      "type": "boolean"
+                                    },
+                                    "isColocated": {
                                       "type": "boolean"
                                     },
                                     "createdAt": {

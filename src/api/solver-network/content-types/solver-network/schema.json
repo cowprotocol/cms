@@ -49,6 +49,11 @@
     "isVouched": {
       "type": "boolean",
       "default": false
+    },
+    "isColocated": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
