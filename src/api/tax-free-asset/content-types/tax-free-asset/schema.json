@@ -16,7 +16,7 @@
       "type": "string"
     },
     "tokenIds": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "chainId": {
