@@ -4,6 +4,11 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  http: {
+    serverOptions: {
+      timeout: 120_000, // 2 minutes
+    },
+  },
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
