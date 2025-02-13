@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "correlated_tokens",
+  "info": {
+    "singularName": "correlated-token",
+    "pluralName": "correlated-tokens",
+    "displayName": "Correlated Tokens"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tokens": {
+      "type": "json"
+    },
+    "network": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::network.network"
+    }
+  }
+}
