@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prime_assets",
+  "info": {
+    "singularName": "prime-asset",
+    "pluralName": "prime-assets",
+    "displayName": "Prime Assets"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "network": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::network.network"
+    },
+    "assets": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
