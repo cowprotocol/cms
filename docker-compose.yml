@@ -29,6 +29,7 @@ services:
       - cow-cms
     depends_on:
       - cow-cms-db
+      - meilisearch
 
   cow-cms-db:
     container_name: cow-cms-db
@@ -48,6 +49,16 @@ services:
       - "5432:5432"
     networks:
       - cow-cms
+
+  meilisearch:
+    image: getmeili/meilisearch
+    command: meilisearch
+    volumes:
+      - ../meilisearch/data.ms:/data.ms
+    networks:
+      - cow-cms
+    ports:
+      - "7700:7700"
 
 volumes:
   cow-cms-data:

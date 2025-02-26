@@ -4,4 +4,16 @@
 
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreRouter('api::solver-network.solver-network');
+export default {
+  routes: [
+    {
+      method: 'GET',
+      path: '/solver-network/search',
+      handler: 'solver-network.search',
+      config: {
+        auth: false, // TODO: Should this be true?
+      },
+    },
+  ],
+};
+
