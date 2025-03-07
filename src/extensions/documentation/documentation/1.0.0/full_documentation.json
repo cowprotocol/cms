@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-02-13T15:53:59.140Z"
+    "x-generation-date": "2025-03-07T17:29:38.606Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -10516,6 +10516,9 @@
                                                                   }
                                                                 }
                                                               },
+                                                              "isReducedBondingPool": {
+                                                                "type": "boolean"
+                                                              },
                                                               "createdAt": {
                                                                 "type": "string",
                                                                 "format": "date-time"
@@ -10564,6 +10567,17 @@
                                                       }
                                                     }
                                                   }
+                                                },
+                                                "isServiceFeeEnabled": {
+                                                  "type": "boolean"
+                                                },
+                                                "isColocated": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "Yes",
+                                                    "No",
+                                                    "Partial"
+                                                  ]
                                                 },
                                                 "createdAt": {
                                                   "type": "string",
@@ -10701,6 +10715,15 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "isWhiteListed": {
+                                      "type": "boolean"
+                                    },
+                                    "isVouched": {
+                                      "type": "boolean"
+                                    },
+                                    "isColocated": {
+                                      "type": "boolean"
                                     },
                                     "createdAt": {
                                       "type": "string",
