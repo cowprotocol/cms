@@ -969,13 +969,13 @@ export interface components {
     Announcement: {
       text: string;
       networks?: {
-        data?: {
+        data?: ({
             id?: number;
             attributes?: {
               name?: string;
               chainId?: number;
               solver_networks?: {
-                data?: {
+                data?: ({
                     id?: number;
                     attributes?: {
                       solver?: {
@@ -1263,6 +1263,7 @@ export interface components {
                                           attributes?: Record<string, never>;
                                         }[];
                                     };
+                                    isReducedBondingPool?: boolean;
                                     /** Format: date-time */
                                     createdAt?: string;
                                     /** Format: date-time */
@@ -1282,6 +1283,9 @@ export interface components {
                                   };
                                 }[];
                             };
+                            isServiceFeeEnabled?: boolean;
+                            /** @enum {string} */
+                            isColocated?: "Yes" | "No" | "Partial";
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -1334,6 +1338,9 @@ export interface components {
                           };
                         };
                       };
+                      isWhiteListed?: boolean;
+                      isVouched?: boolean;
+                      isColocated?: boolean;
                       /** Format: date-time */
                       createdAt?: string;
                       /** Format: date-time */
@@ -1351,7 +1358,7 @@ export interface components {
                         };
                       };
                     };
-                  }[];
+                  })[];
               };
               /** Format: date-time */
               createdAt?: string;
@@ -1370,7 +1377,7 @@ export interface components {
                 };
               };
             };
-          }[];
+          })[];
       };
       environments?: {
         data?: {
@@ -3116,7 +3123,7 @@ export interface components {
     BondingPool: {
       name: string;
       solver_bonding_pools?: {
-        data?: {
+        data?: ({
             id?: number;
             attributes?: {
               address?: string;
@@ -3245,7 +3252,7 @@ export interface components {
                 };
               };
               solvers?: {
-                data?: {
+                data?: ({
                     id?: number;
                     attributes?: {
                       displayName?: string;
@@ -3456,6 +3463,9 @@ export interface components {
                                   };
                                 };
                               };
+                              isWhiteListed?: boolean;
+                              isVouched?: boolean;
+                              isColocated?: boolean;
                               /** Format: date-time */
                               createdAt?: string;
                               /** Format: date-time */
@@ -3481,6 +3491,9 @@ export interface components {
                             attributes?: Record<string, never>;
                           }[];
                       };
+                      isServiceFeeEnabled?: boolean;
+                      /** @enum {string} */
+                      isColocated?: "Yes" | "No" | "Partial";
                       /** Format: date-time */
                       createdAt?: string;
                       /** Format: date-time */
@@ -3498,8 +3511,9 @@ export interface components {
                         };
                       };
                     };
-                  }[];
+                  })[];
               };
+              isReducedBondingPool?: boolean;
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -3517,7 +3531,7 @@ export interface components {
                 };
               };
             };
-          }[];
+          })[];
       };
       /** Format: date-time */
       createdAt?: string;
@@ -4320,7 +4334,7 @@ export interface components {
             name?: string;
             chainId?: number;
             solver_networks?: {
-              data?: {
+              data?: ({
                   id?: number;
                   attributes?: {
                     solver?: {
@@ -4608,6 +4622,7 @@ export interface components {
                                         attributes?: Record<string, never>;
                                       }[];
                                   };
+                                  isReducedBondingPool?: boolean;
                                   /** Format: date-time */
                                   createdAt?: string;
                                   /** Format: date-time */
@@ -4627,6 +4642,9 @@ export interface components {
                                 };
                               }[];
                           };
+                          isServiceFeeEnabled?: boolean;
+                          /** @enum {string} */
+                          isColocated?: "Yes" | "No" | "Partial";
                           /** Format: date-time */
                           createdAt?: string;
                           /** Format: date-time */
@@ -4679,6 +4697,9 @@ export interface components {
                         };
                       };
                     };
+                    isWhiteListed?: boolean;
+                    isVouched?: boolean;
+                    isColocated?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -4696,7 +4717,7 @@ export interface components {
                       };
                     };
                   };
-                }[];
+                })[];
             };
             /** Format: date-time */
             createdAt?: string;
@@ -6583,7 +6604,7 @@ export interface components {
       name: string;
       chainId?: number;
       solver_networks?: {
-        data?: {
+        data?: ({
             id?: number;
             attributes?: {
               solver?: {
@@ -6871,6 +6892,7 @@ export interface components {
                                   attributes?: Record<string, never>;
                                 }[];
                             };
+                            isReducedBondingPool?: boolean;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -6890,6 +6912,9 @@ export interface components {
                           };
                         }[];
                     };
+                    isServiceFeeEnabled?: boolean;
+                    /** @enum {string} */
+                    isColocated?: "Yes" | "No" | "Partial";
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6967,6 +6992,9 @@ export interface components {
                   };
                 };
               };
+              isWhiteListed?: boolean;
+              isVouched?: boolean;
+              isColocated?: boolean;
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -6984,7 +7012,7 @@ export interface components {
                 };
               };
             };
-          }[];
+          })[];
       };
       /** Format: date-time */
       createdAt?: string;
@@ -8673,6 +8701,9 @@ export interface components {
         solverId: string;
         solver_networks?: (number | string)[];
         solver_bonding_pools?: (number | string)[];
+        isServiceFeeEnabled: boolean;
+        /** @enum {string} */
+        isColocated: "Yes" | "No" | "Partial";
       };
     };
     SolverListResponseDataItem: {
@@ -8924,7 +8955,7 @@ export interface components {
       description?: string;
       solverId: string;
       solver_networks?: {
-        data?: {
+        data?: ({
             id?: number;
             attributes?: {
               solver?: {
@@ -9037,6 +9068,7 @@ export interface components {
                                   attributes?: Record<string, never>;
                                 }[];
                             };
+                            isReducedBondingPool?: boolean;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -9056,6 +9088,9 @@ export interface components {
                           };
                         }[];
                     };
+                    isServiceFeeEnabled?: boolean;
+                    /** @enum {string} */
+                    isColocated?: "Yes" | "No" | "Partial";
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9133,6 +9168,9 @@ export interface components {
                   };
                 };
               };
+              isWhiteListed?: boolean;
+              isVouched?: boolean;
+              isColocated?: boolean;
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -9150,7 +9188,7 @@ export interface components {
                 };
               };
             };
-          }[];
+          })[];
       };
       solver_bonding_pools?: {
         data?: {
@@ -9158,6 +9196,9 @@ export interface components {
             attributes?: Record<string, never>;
           }[];
       };
+      isServiceFeeEnabled: boolean;
+      /** @enum {string} */
+      isColocated: "Yes" | "No" | "Partial";
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -9191,6 +9232,7 @@ export interface components {
         /** @example string or id */
         bonding_pool?: number | string;
         solvers?: (number | string)[];
+        isReducedBondingPool: boolean;
       };
     };
     SolverBondingPoolListResponseDataItem: {
@@ -9218,7 +9260,7 @@ export interface components {
           attributes?: {
             name?: string;
             solver_bonding_pools?: {
-              data?: {
+              data?: ({
                   id?: number;
                   attributes?: {
                     address?: string;
@@ -9231,7 +9273,7 @@ export interface components {
                       };
                     };
                     solvers?: {
-                      data?: {
+                      data?: ({
                           id?: number;
                           attributes?: {
                             displayName?: string;
@@ -9534,6 +9576,9 @@ export interface components {
                                         };
                                       };
                                     };
+                                    isWhiteListed?: boolean;
+                                    isVouched?: boolean;
+                                    isColocated?: boolean;
                                     /** Format: date-time */
                                     createdAt?: string;
                                     /** Format: date-time */
@@ -9559,6 +9604,9 @@ export interface components {
                                   attributes?: Record<string, never>;
                                 }[];
                             };
+                            isServiceFeeEnabled?: boolean;
+                            /** @enum {string} */
+                            isColocated?: "Yes" | "No" | "Partial";
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -9576,8 +9624,9 @@ export interface components {
                               };
                             };
                           };
-                        }[];
+                        })[];
                     };
+                    isReducedBondingPool?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9595,7 +9644,7 @@ export interface components {
                       };
                     };
                   };
-                }[];
+                })[];
             };
             /** Format: date-time */
             createdAt?: string;
@@ -9622,6 +9671,7 @@ export interface components {
             attributes?: Record<string, never>;
           }[];
       };
+      isReducedBondingPool: boolean;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -9658,6 +9708,9 @@ export interface components {
         active: boolean;
         /** @example string or id */
         environment?: number | string;
+        isWhiteListed?: boolean;
+        isVouched?: boolean;
+        isColocated: boolean;
       };
     };
     SolverNetworkListResponseDataItem: {
@@ -9980,6 +10033,9 @@ export interface components {
                         };
                       };
                     };
+                    isWhiteListed?: boolean;
+                    isVouched?: boolean;
+                    isColocated?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -10042,6 +10098,7 @@ export interface components {
                           attributes?: Record<string, never>;
                         }[];
                     };
+                    isReducedBondingPool?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -10061,6 +10118,9 @@ export interface components {
                   };
                 }[];
             };
+            isServiceFeeEnabled?: boolean;
+            /** @enum {string} */
+            isColocated?: "Yes" | "No" | "Partial";
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -10095,6 +10155,9 @@ export interface components {
           attributes?: Record<string, never>;
         };
       };
+      isWhiteListed?: boolean;
+      isVouched?: boolean;
+      isColocated: boolean;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -10835,7 +10898,7 @@ export interface components {
             name?: string;
             chainId?: number;
             solver_networks?: {
-              data?: {
+              data?: ({
                   id?: number;
                   attributes?: {
                     solver?: {
@@ -11123,6 +11186,7 @@ export interface components {
                                         attributes?: Record<string, never>;
                                       }[];
                                   };
+                                  isReducedBondingPool?: boolean;
                                   /** Format: date-time */
                                   createdAt?: string;
                                   /** Format: date-time */
@@ -11142,6 +11206,9 @@ export interface components {
                                 };
                               }[];
                           };
+                          isServiceFeeEnabled?: boolean;
+                          /** @enum {string} */
+                          isColocated?: "Yes" | "No" | "Partial";
                           /** Format: date-time */
                           createdAt?: string;
                           /** Format: date-time */
@@ -11194,6 +11261,9 @@ export interface components {
                         };
                       };
                     };
+                    isWhiteListed?: boolean;
+                    isVouched?: boolean;
+                    isColocated?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -11211,7 +11281,7 @@ export interface components {
                       };
                     };
                   };
-                }[];
+                })[];
             };
             /** Format: date-time */
             createdAt?: string;
