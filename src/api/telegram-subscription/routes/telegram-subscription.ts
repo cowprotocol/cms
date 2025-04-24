@@ -48,6 +48,15 @@ const myExtraRoutes = [
     },
   },
   {
+    method: 'POST',
+    path: '/check-tg-subscription',
+    handler: 'telegram-subscription.checkSubscription',
+    config: {
+      policies: [],
+      middlewares: [],
+    },
+  },
+  {
     method: 'GET',
     path: '/send-tg-notifications',
     handler: 'telegram-subscription.sendNotifications',
