@@ -49,6 +49,15 @@ const myExtraRoutes = [
   },
   {
     method: 'POST',
+    path: '/remove-tg-subscription',
+    handler: 'telegram-subscription.removeSubscription',
+    config: {
+      policies: [],
+      middlewares: [],
+    },
+  },
+  {
+    method: 'POST',
     path: '/check-tg-subscription',
     handler: 'telegram-subscription.checkSubscription',
     config: {

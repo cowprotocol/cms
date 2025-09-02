@@ -43,6 +43,15 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
           }
         })
     },
+    async removeSubscriptions(account: string) {
+      const subscriptions = await this.getAccountSubscriptions(account)
+
+      for (const subscription of subscriptions) {
+        await strapi.entityService.delete(MODULE_ID, subscription.id)
+      }
+
+      return true
+    },
     async getSubscriptions(accounts: string[]) {
       return strapi.entityService.findMany(
         MODULE_ID,
