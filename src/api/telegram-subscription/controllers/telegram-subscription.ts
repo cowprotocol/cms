@@ -25,6 +25,21 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
 
       return true
     },
+    async removeSubscription(context) {
+      const {account} : { account: string, data: TelegramData } = context.request.body
+
+      const service = strapi.service(MODULE_ID)
+
+      const isAlreadySubscribed = await this.checkSubscription(context)
+
+      if (!isAlreadySubscribed) {
+        return true
+      }
+
+      await service.removeSubscriptions(account)
+
+      return true
+    },
     async checkSubscription(context) {
       const {account, data} : { account: string, data: TelegramData } = context.request.body
 
