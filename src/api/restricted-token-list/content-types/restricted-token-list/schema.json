@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restricted_token_lists",
+  "info": {
+    "singularName": "restricted-token-list",
+    "pluralName": "restricted-token-lists",
+    "displayName": "Restricted Token List"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tokenListUrl": {
+      "type": "string",
+      "required": true
+    },
+    "restrictedCountries": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
+
