@@ -10,6 +10,7 @@ export default {
 
 async function updateActiveNetworks(event) {
   const { data, where } = event.params;
+  const solverData: SolverData = data;
 
   // If this is an update operation and we're not updating solver_networks relation
   if (where && !data.solver_networks) {
@@ -22,13 +23,19 @@ async function updateActiveNetworks(event) {
 
     if (solver) {
       // Calculate active networks
-      await calculateActiveNetworks(solver, data);
+      await calculateActiveNetworks(solver, solverData);
     }
   } else if (data.solver_networks) {
     // For create or when solver_networks is being updated
     // We'll need to fetch the networks after the operation in afterCreate/afterUpdate
     // as the relations might not be fully established yet
   }
+}
+
+// Define interface for the data object
+interface SolverData {
+  activeNetworks?: string[];
+  hasActiveNetworks?: boolean;
 }
 
 // This function will be called after create/update to ensure relations are established
@@ -43,7 +50,7 @@ export async function calculateActiveNetworksForSolver(solverId) {
 
     if (solver) {
       // Calculate active networks
-      const data = {};
+      const data: SolverData = {};
       await calculateActiveNetworks(solver, data);
 
       // Update the solver with the calculated values
@@ -60,7 +67,7 @@ export async function calculateActiveNetworksForSolver(solverId) {
   }
 }
 
-async function calculateActiveNetworks(solver, data) {
+async function calculateActiveNetworks(solver, data: SolverData) {
   if (!solver.solver_networks) {
     data.activeNetworks = [];
     data.hasActiveNetworks = false;
