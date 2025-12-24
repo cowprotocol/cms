@@ -69,6 +69,14 @@
       ],
       "required": true,
       "default": "No"
+    },
+    "activeNetworks": {
+      "type": "json",
+      "private": false
+    },
+    "hasActiveNetworks": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

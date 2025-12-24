@@ -21,11 +21,9 @@
       "type": "datetime",
       "required": true
     },
-    "bonding_pool": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::bonding-pool.bonding-pool",
-      "inversedBy": "solver_bonding_pools"
+    "name": {
+      "type": "string",
+      "required": true
     },
     "solvers": {
       "type": "relation",
@@ -37,6 +35,12 @@
       "type": "boolean",
       "required": true,
       "default": false
+    },
+    "solver_networks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solver-network.solver-network",
+      "mappedBy": "vouchedBy"
     }
   }
 }
