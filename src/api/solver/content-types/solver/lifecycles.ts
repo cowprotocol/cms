@@ -1,16 +1,18 @@
-export default {
+import { Strapi } from '@strapi/strapi';
+
+export default ({ strapi }: { strapi: Strapi }) => ({
   async beforeCreate(event) {
-    await updateActiveNetworks(event);
-    await updateServiceFeeEnabled(event);
+    // await updateActiveNetworks(event, strapi);
+    // await updateServiceFeeEnabled(event, strapi);
   },
 
   async beforeUpdate(event) {
-    await updateActiveNetworks(event);
-    await updateServiceFeeEnabled(event);
+    // await updateActiveNetworks(event, strapi);
+    // await updateServiceFeeEnabled(event, strapi);
   },
-};
+});
 
-async function updateActiveNetworks(event) {
+async function updateActiveNetworks(event, strapi) {
   const { data, where } = event.params;
   const solverData: SolverData = data;
 
@@ -42,7 +44,7 @@ interface SolverData {
 }
 
 // This function will be called after create/update to ensure relations are established
-export async function calculateActiveNetworksForSolver(solverId) {
+export async function calculateActiveNetworksForSolver(solverId, strapi) {
   try {
     // Get the solver with its networks
     const solver = await strapi.entityService.findOne(
@@ -71,7 +73,7 @@ export async function calculateActiveNetworksForSolver(solverId) {
 }
 
 // This function will be called to update the service fee enabled status for a solver
-export async function updateServiceFeeEnabledForSolver(solverId) {
+export async function updateServiceFeeEnabledForSolver(solverId, strapi) {
   try {
     // Get the solver with its bonding pools
     const solver = await strapi.entityService.findOne(
@@ -122,7 +124,7 @@ async function calculateActiveNetworks(solver, data: SolverData) {
   data.hasActiveNetworks = activeNetworkNames.length > 0;
 }
 
-async function updateServiceFeeEnabled(event) {
+async function updateServiceFeeEnabled(event, strapi) {
   const { data, where } = event.params;
   const solverData: SolverData = data;
 

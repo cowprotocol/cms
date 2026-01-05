@@ -1,27 +1,28 @@
+import { Strapi } from '@strapi/strapi';
 import { updateServiceFeeEnabledForSolver } from '../../../solver/content-types/solver/lifecycles';
 
-export default {
+export default ({ strapi }: { strapi: Strapi }) => ({
   async afterCreate(event) {
-    await updateRelatedSolvers(event);
+    // await updateRelatedSolvers(event, strapi);
   },
 
   async afterUpdate(event) {
-    await updateRelatedSolvers(event);
+    // await updateRelatedSolvers(event, strapi);
   },
 
   async beforeDelete(event) {
-    await storeRelatedSolversForUpdate(event);
+    // await storeRelatedSolversForUpdate(event, strapi);
   },
 
   async afterDelete(event) {
-    await updateStoredSolvers(event);
+    // await updateStoredSolvers(event, strapi);
   },
-};
+});
 
 // Store for temporarily keeping solver IDs between beforeDelete and afterDelete
 const solverIdsToUpdate = new Map();
 
-async function updateRelatedSolvers(event) {
+async function updateRelatedSolvers(event, strapi) {
   try {
     const { result } = event;
 
@@ -53,7 +54,7 @@ async function updateRelatedSolvers(event) {
     // Update each solver's service fee enabled status
     for (const solverId of solverIds) {
       if (solverId) {
-        await updateServiceFeeEnabledForSolver(solverId);
+        await updateServiceFeeEnabledForSolver(solverId, strapi);
       }
     }
   } catch (error) {
@@ -61,7 +62,7 @@ async function updateRelatedSolvers(event) {
   }
 }
 
-async function storeRelatedSolversForUpdate(event) {
+async function storeRelatedSolversForUpdate(event, strapi) {
   try {
     const { where } = event.params;
     const { id } = where;
@@ -83,7 +84,7 @@ async function storeRelatedSolversForUpdate(event) {
   }
 }
 
-async function updateStoredSolvers(event) {
+async function updateStoredSolvers(event, strapi) {
   try {
     const { where } = event.params;
     const { id } = where;
@@ -94,7 +95,7 @@ async function updateStoredSolvers(event) {
     // Update each solver's service fee enabled status
     for (const solverId of solverIds) {
       if (solverId) {
-        await updateServiceFeeEnabledForSolver(solverId);
+        await updateServiceFeeEnabledForSolver(solverId, strapi);
       }
     }
 

@@ -1,26 +1,27 @@
+import { Strapi } from '@strapi/strapi';
 import { calculateActiveNetworksForSolver } from '../../../solver/content-types/solver/lifecycles';
 
-export default {
+export default ({ strapi }: { strapi: Strapi }) => ({
   async beforeCreate(event) {
-    await validateVouchedBy(event);
+    // await validateVouchedBy(event);
   },
 
   async beforeUpdate(event) {
-    await validateVouchedBy(event);
+    // await validateVouchedBy(event);
   },
 
   async afterCreate(event) {
-    await updateParentSolver(event);
+    // await updateParentSolver(event, strapi);
   },
 
   async afterUpdate(event) {
-    await updateParentSolver(event);
+    // await updateParentSolver(event, strapi);
   },
 
   async afterDelete(event) {
-    await updateParentSolver(event);
+    // await updateParentSolver(event, strapi);
   },
-};
+});
 
 async function validateVouchedBy(event) {
   const { data } = event.params;
@@ -31,7 +32,7 @@ async function validateVouchedBy(event) {
   }
 }
 
-async function updateParentSolver(event) {
+async function updateParentSolver(event, strapi) {
   try {
     const { result } = event;
 
@@ -45,7 +46,7 @@ async function updateParentSolver(event) {
 
     if (solverId) {
       // Update the solver's activeNetworks field
-      await calculateActiveNetworksForSolver(solverId);
+      await calculateActiveNetworksForSolver(solverId, strapi);
     }
   } catch (error) {
     console.error('Error updating parent solver:', error);
