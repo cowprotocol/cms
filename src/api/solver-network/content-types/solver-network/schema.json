@@ -61,7 +61,8 @@
     "vouchedBy": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::solver-bonding-pool.name"
+      "target": "api::solver-bonding-pool.solver-bonding-pool",
+      "inversedBy": "solver_networks"
     }
   }
 }
