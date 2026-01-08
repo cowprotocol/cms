@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "affiliates",
+  "info": {
+    "singularName": "affiliate",
+    "pluralName": "affiliates",
+    "displayName": "Affiliate"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "walletAddress": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "signedMessage": {
+      "type": "text"
+    },
+    "enabled": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  }
+}
