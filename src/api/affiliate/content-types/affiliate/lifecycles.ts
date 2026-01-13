@@ -66,7 +66,6 @@ export default {
       }
       delete data.walletAddress;
     }
-    console.log("📜 LOG > data:", data, existing);
     if (Object.prototype.hasOwnProperty.call(data, "signedMessage")) {
       if (data.signedMessage !== existing.signedMessage) {
         throw new errors.ValidationError("signedMessage is immutable");
