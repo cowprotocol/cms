@@ -28,6 +28,27 @@
       "type": "boolean",
       "required": true,
       "default": true
+    },
+    "rewardAmount": {
+      "type": "float"
+    },
+    "triggerVolume": {
+      "type": "float"
+    },
+    "timeCapDays": {
+      "type": "integer"
+    },
+    "volumeCap": {
+      "type": "float"
+    },
+    "revenueSplitAffiliatePct": {
+      "type": "float"
+    },
+    "revenueSplitTraderPct": {
+      "type": "float"
+    },
+    "revenueSplitDaoPct": {
+      "type": "float"
     }
   }
 }

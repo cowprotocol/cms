@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-01-13T14:06:07.275Z"
+    "x-generation-date": "2026-01-19T13:11:16.323Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -111,6 +111,33 @@
               },
               "enabled": {
                 "type": "boolean"
+              },
+              "rewardAmount": {
+                "type": "number",
+                "format": "float"
+              },
+              "triggerVolume": {
+                "type": "number",
+                "format": "float"
+              },
+              "timeCapDays": {
+                "type": "integer"
+              },
+              "volumeCap": {
+                "type": "number",
+                "format": "float"
+              },
+              "revenueSplitAffiliatePct": {
+                "type": "number",
+                "format": "float"
+              },
+              "revenueSplitTraderPct": {
+                "type": "number",
+                "format": "float"
+              },
+              "revenueSplitDaoPct": {
+                "type": "number",
+                "format": "float"
               }
             }
           }
@@ -181,6 +208,33 @@
           },
           "enabled": {
             "type": "boolean"
+          },
+          "rewardAmount": {
+            "type": "number",
+            "format": "float"
+          },
+          "triggerVolume": {
+            "type": "number",
+            "format": "float"
+          },
+          "timeCapDays": {
+            "type": "integer"
+          },
+          "volumeCap": {
+            "type": "number",
+            "format": "float"
+          },
+          "revenueSplitAffiliatePct": {
+            "type": "number",
+            "format": "float"
+          },
+          "revenueSplitTraderPct": {
+            "type": "number",
+            "format": "float"
+          },
+          "revenueSplitDaoPct": {
+            "type": "number",
+            "format": "float"
           },
           "createdAt": {
             "type": "string",
