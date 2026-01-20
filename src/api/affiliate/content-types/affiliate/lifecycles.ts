@@ -186,7 +186,7 @@ export default {
       if (!hasOwn(data, field)) continue;
 
       if (data[field] !== existing[field]) {
-        throw new errors.ValidationError("only enabled field can be modified");
+        throw new errors.ValidationError(`cannot modify immutable field "${field}"`);
       }
 
       delete data[field];
