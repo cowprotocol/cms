@@ -131,7 +131,10 @@ function normalizeParams(data: AffiliateParamsPayload): AffiliateParamsPayload {
       allowZero: false,
     }),
     timeCapDays: parseInteger(data.timeCapDays, "timeCapDays"),
-    volumeCap: parseNumber(data.volumeCap, "volumeCap"),
+    // volumeCap explicitly allows 0; a value of 0 indicates no cap / unlimited volume.
+    volumeCap: parseNumber(data.volumeCap, "volumeCap", {
+      allowZero: true,
+    }),
     revenueSplitAffiliatePct: revenueSplit.affiliate,
     revenueSplitTraderPct: revenueSplit.trader,
     revenueSplitDaoPct: revenueSplit.dao,
