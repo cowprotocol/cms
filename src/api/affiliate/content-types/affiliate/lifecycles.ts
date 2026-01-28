@@ -1,6 +1,7 @@
 import { errors } from "@strapi/utils";
 
-const CODE_REGEX = /^[A-Z0-9_-]{6,12}$/;
+const CODE_REGEX = /^[A-Z0-9_-]{5,20}$/;
+const codeErrorMsg = 'affiliate code must be 5-20 chars of A-Z, 0-9, "-" or "_"'
 
 type AffiliateParamValues = {
   rewardAmount: number;
@@ -149,7 +150,7 @@ export default {
       const normalized = normalizeCode(String(data.code));
       if (!normalized || !CODE_REGEX.test(normalized)) {
         throw new errors.ValidationError(
-          'affiliate code must be 6-12 chars of A-Z, 0-9, "-" or "_"'
+          codeErrorMsg
         );
       }
       data.code = normalized;
