@@ -2,6 +2,7 @@ import { errors } from "@strapi/utils";
 
 const CODE_REGEX = /^[A-Z0-9_-]{5,20}$/;
 const codeErrorMsg = 'affiliate code must be 5-20 chars of A-Z, 0-9, "-" or "_"'
+const maxPct = 100;
 
 type AffiliateParamValues = {
   rewardAmount: number;
@@ -90,13 +91,13 @@ function validateRevenueSplit(params: AffiliateParamsPayload) {
   );
   const dao = parseNumber(params.revenueSplitDaoPct, "revenueSplitDaoPct");
 
-  if (affiliate > 100 || trader > 100 || dao > 100) {
-    throw new errors.ValidationError("revenue split values must be <= 100");
+  if (affiliate > maxPct || trader > maxPct || dao > maxPct) {
+    throw new errors.ValidationError(`revenue split values must be <= ${maxPct}`);
   }
 
   const sum = affiliate + trader + dao;
-  if (Math.abs(sum - 100) > 0.01) {
-    throw new errors.ValidationError("revenue split values must sum to 100");
+  if (Math.abs(sum - maxPct) > 0.01) {
+    throw new errors.ValidationError(`revenue split values must sum to ${maxPct}`);
   }
 
   return { affiliate, trader, dao };
