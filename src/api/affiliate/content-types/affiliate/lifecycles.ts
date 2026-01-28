@@ -46,11 +46,8 @@ function getDefaultProgramParams(): AffiliateParamsPayload {
 const hasOwn = (obj: object, key: string) =>
   Object.prototype.hasOwnProperty.call(obj, key);
 
-const normalizeWallet = (value?: string | null) =>
+const trimAndLower = (value?: string | null) =>
   value ? value.trim().toLowerCase() : value;
-
-const normalizeCode = (value?: string | null) =>
-  value ? value.trim().toUpperCase() : value;
 
 function parseNumber(
   value: unknown,
@@ -147,7 +144,7 @@ export default {
     const data = event.params.data ?? {};
 
     if (data.code) {
-      const normalized = normalizeCode(String(data.code));
+      const normalized = trimAndLower(String(data.code));
       if (!normalized || !CODE_REGEX.test(normalized)) {
         throw new errors.ValidationError(
           codeErrorMsg
@@ -157,7 +154,7 @@ export default {
     }
 
     if (data.walletAddress) {
-      data.walletAddress = normalizeWallet(String(data.walletAddress));
+      data.walletAddress = trimAndLower(String(data.walletAddress));
     }
 
     const defaults = getDefaultProgramParams();
