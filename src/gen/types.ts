@@ -5,6 +5,15 @@
 
 
 export interface paths {
+  "/affiliates": {
+    get: operations["get/affiliates"];
+    post: operations["post/affiliates"];
+  };
+  "/affiliates/{id}": {
+    get: operations["get/affiliates/{id}"];
+    put: operations["put/affiliates/{id}"];
+    delete: operations["delete/affiliates/{id}"];
+  };
   "/announcements": {
     get: operations["get/announcements"];
     post: operations["post/announcements"];
@@ -164,6 +173,15 @@ export interface paths {
     get: operations["get/product-features/{id}"];
     put: operations["put/product-features/{id}"];
     delete: operations["delete/product-features/{id}"];
+  };
+  "/restricted-token-lists": {
+    get: operations["get/restricted-token-lists"];
+    post: operations["post/restricted-token-lists"];
+  };
+  "/restricted-token-lists/{id}": {
+    get: operations["get/restricted-token-lists/{id}"];
+    put: operations["put/restricted-token-lists/{id}"];
+    delete: operations["delete/restricted-token-lists/{id}"];
   };
   "/solvers": {
     get: operations["get/solvers"];
@@ -934,6 +952,151 @@ export interface components {
         details?: Record<string, never>;
       };
     };
+    AffiliateRequest: {
+      data: {
+        code: string;
+        walletAddress: string;
+        signedMessage?: string;
+        enabled: boolean;
+      };
+    };
+    AffiliateListResponseDataItem: {
+      id?: number;
+      attributes?: components["schemas"]["Affiliate"];
+    };
+    AffiliateListResponse: {
+      data?: components["schemas"]["AffiliateListResponseDataItem"][];
+      meta?: {
+        pagination?: {
+          page?: number;
+          pageSize?: number;
+          pageCount?: number;
+          total?: number;
+        };
+      };
+    };
+    Affiliate: {
+      code: string;
+      walletAddress: string;
+      signedMessage?: string;
+      enabled: boolean;
+      /** Format: date-time */
+      createdAt?: string;
+      /** Format: date-time */
+      updatedAt?: string;
+      createdBy?: {
+        data?: {
+          id?: number;
+          attributes?: {
+            firstname?: string;
+            lastname?: string;
+            username?: string;
+            /** Format: email */
+            email?: string;
+            resetPasswordToken?: string;
+            registrationToken?: string;
+            isActive?: boolean;
+            roles?: {
+              data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    code?: string;
+                    description?: string;
+                    users?: {
+                      data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        }[];
+                    };
+                    permissions?: {
+                      data?: {
+                          id?: number;
+                          attributes?: {
+                            action?: string;
+                            subject?: string;
+                            properties?: unknown;
+                            conditions?: unknown;
+                            role?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            createdBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            updatedBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                          };
+                        }[];
+                    };
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: Record<string, never>;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: Record<string, never>;
+                      };
+                    };
+                  };
+                }[];
+            };
+            blocked?: boolean;
+            preferedLanguage?: string;
+            /** Format: date-time */
+            createdAt?: string;
+            /** Format: date-time */
+            updatedAt?: string;
+            createdBy?: {
+              data?: {
+                id?: number;
+                attributes?: Record<string, never>;
+              };
+            };
+            updatedBy?: {
+              data?: {
+                id?: number;
+                attributes?: Record<string, never>;
+              };
+            };
+          };
+        };
+      };
+      updatedBy?: {
+        data?: {
+          id?: number;
+          attributes?: Record<string, never>;
+        };
+      };
+    };
+    AffiliateResponseDataObject: {
+      id?: number;
+      attributes?: components["schemas"]["Affiliate"];
+    };
+    AffiliateResponse: {
+      data?: components["schemas"]["AffiliateResponseDataObject"];
+      meta?: Record<string, never>;
+    };
     AnnouncementRequest: {
       data: {
         text: string;
@@ -1218,36 +1381,7 @@ export interface components {
                                     address?: string;
                                     /** Format: date-time */
                                     joinedOn?: string;
-                                    bonding_pool?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: {
-                                          name?: string;
-                                          solver_bonding_pools?: {
-                                            data?: {
-                                                id?: number;
-                                                attributes?: Record<string, never>;
-                                              }[];
-                                          };
-                                          /** Format: date-time */
-                                          createdAt?: string;
-                                          /** Format: date-time */
-                                          updatedAt?: string;
-                                          createdBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                          updatedBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                        };
-                                      };
-                                    };
+                                    name?: string;
                                     solvers?: {
                                       data?: {
                                           id?: number;
@@ -1255,6 +1389,12 @@ export interface components {
                                         }[];
                                     };
                                     isReducedBondingPool?: boolean;
+                                    solver_networks?: {
+                                      data?: {
+                                          id?: number;
+                                          attributes?: Record<string, never>;
+                                        }[];
+                                    };
                                     /** Format: date-time */
                                     createdAt?: string;
                                     /** Format: date-time */
@@ -1277,6 +1417,8 @@ export interface components {
                             isServiceFeeEnabled?: boolean;
                             /** @enum {string} */
                             isColocated?: "Yes" | "No" | "Partial";
+                            activeNetworks?: unknown;
+                            hasActiveNetworks?: boolean;
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -1332,6 +1474,12 @@ export interface components {
                       isWhiteListed?: boolean;
                       isVouched?: boolean;
                       isColocated?: boolean;
+                      vouchedBy?: {
+                        data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        };
+                      };
                       /** Format: date-time */
                       createdAt?: string;
                       /** Format: date-time */
@@ -3120,128 +3268,7 @@ export interface components {
               address?: string;
               /** Format: date-time */
               joinedOn?: string;
-              bonding_pool?: {
-                data?: {
-                  id?: number;
-                  attributes?: {
-                    name?: string;
-                    solver_bonding_pools?: {
-                      data?: {
-                          id?: number;
-                          attributes?: Record<string, never>;
-                        }[];
-                    };
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    createdBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: {
-                          firstname?: string;
-                          lastname?: string;
-                          username?: string;
-                          /** Format: email */
-                          email?: string;
-                          resetPasswordToken?: string;
-                          registrationToken?: string;
-                          isActive?: boolean;
-                          roles?: {
-                            data?: {
-                                id?: number;
-                                attributes?: {
-                                  name?: string;
-                                  code?: string;
-                                  description?: string;
-                                  users?: {
-                                    data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      }[];
-                                  };
-                                  permissions?: {
-                                    data?: {
-                                        id?: number;
-                                        attributes?: {
-                                          action?: string;
-                                          subject?: string;
-                                          properties?: unknown;
-                                          conditions?: unknown;
-                                          role?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                          /** Format: date-time */
-                                          createdAt?: string;
-                                          /** Format: date-time */
-                                          updatedAt?: string;
-                                          createdBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                          updatedBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                        };
-                                      }[];
-                                  };
-                                  /** Format: date-time */
-                                  createdAt?: string;
-                                  /** Format: date-time */
-                                  updatedAt?: string;
-                                  createdBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                  updatedBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                };
-                              }[];
-                          };
-                          blocked?: boolean;
-                          preferedLanguage?: string;
-                          /** Format: date-time */
-                          createdAt?: string;
-                          /** Format: date-time */
-                          updatedAt?: string;
-                          createdBy?: {
-                            data?: {
-                              id?: number;
-                              attributes?: Record<string, never>;
-                            };
-                          };
-                          updatedBy?: {
-                            data?: {
-                              id?: number;
-                              attributes?: Record<string, never>;
-                            };
-                          };
-                        };
-                      };
-                    };
-                    updatedBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: Record<string, never>;
-                      };
-                    };
-                  };
-                };
-              };
+              name?: string;
               solvers?: {
                 data?: ({
                     id?: number;
@@ -3330,7 +3357,99 @@ export interface components {
                                           createdBy?: {
                                             data?: {
                                               id?: number;
-                                              attributes?: Record<string, never>;
+                                              attributes?: {
+                                                firstname?: string;
+                                                lastname?: string;
+                                                username?: string;
+                                                /** Format: email */
+                                                email?: string;
+                                                resetPasswordToken?: string;
+                                                registrationToken?: string;
+                                                isActive?: boolean;
+                                                roles?: {
+                                                  data?: {
+                                                      id?: number;
+                                                      attributes?: {
+                                                        name?: string;
+                                                        code?: string;
+                                                        description?: string;
+                                                        users?: {
+                                                          data?: {
+                                                              id?: number;
+                                                              attributes?: Record<string, never>;
+                                                            }[];
+                                                        };
+                                                        permissions?: {
+                                                          data?: {
+                                                              id?: number;
+                                                              attributes?: {
+                                                                action?: string;
+                                                                subject?: string;
+                                                                properties?: unknown;
+                                                                conditions?: unknown;
+                                                                role?: {
+                                                                  data?: {
+                                                                    id?: number;
+                                                                    attributes?: Record<string, never>;
+                                                                  };
+                                                                };
+                                                                /** Format: date-time */
+                                                                createdAt?: string;
+                                                                /** Format: date-time */
+                                                                updatedAt?: string;
+                                                                createdBy?: {
+                                                                  data?: {
+                                                                    id?: number;
+                                                                    attributes?: Record<string, never>;
+                                                                  };
+                                                                };
+                                                                updatedBy?: {
+                                                                  data?: {
+                                                                    id?: number;
+                                                                    attributes?: Record<string, never>;
+                                                                  };
+                                                                };
+                                                              };
+                                                            }[];
+                                                        };
+                                                        /** Format: date-time */
+                                                        createdAt?: string;
+                                                        /** Format: date-time */
+                                                        updatedAt?: string;
+                                                        createdBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: Record<string, never>;
+                                                          };
+                                                        };
+                                                        updatedBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: Record<string, never>;
+                                                          };
+                                                        };
+                                                      };
+                                                    }[];
+                                                };
+                                                blocked?: boolean;
+                                                preferedLanguage?: string;
+                                                /** Format: date-time */
+                                                createdAt?: string;
+                                                /** Format: date-time */
+                                                updatedAt?: string;
+                                                createdBy?: {
+                                                  data?: {
+                                                    id?: number;
+                                                    attributes?: Record<string, never>;
+                                                  };
+                                                };
+                                                updatedBy?: {
+                                                  data?: {
+                                                    id?: number;
+                                                    attributes?: Record<string, never>;
+                                                  };
+                                                };
+                                              };
                                             };
                                           };
                                           updatedBy?: {
@@ -3457,6 +3576,12 @@ export interface components {
                               isWhiteListed?: boolean;
                               isVouched?: boolean;
                               isColocated?: boolean;
+                              vouchedBy?: {
+                                data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                };
+                              };
                               /** Format: date-time */
                               createdAt?: string;
                               /** Format: date-time */
@@ -3485,6 +3610,8 @@ export interface components {
                       isServiceFeeEnabled?: boolean;
                       /** @enum {string} */
                       isColocated?: "Yes" | "No" | "Partial";
+                      activeNetworks?: unknown;
+                      hasActiveNetworks?: boolean;
                       /** Format: date-time */
                       createdAt?: string;
                       /** Format: date-time */
@@ -3505,6 +3632,12 @@ export interface components {
                   })[];
               };
               isReducedBondingPool?: boolean;
+              solver_networks?: {
+                data?: {
+                    id?: number;
+                    attributes?: Record<string, never>;
+                  }[];
+              };
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -4577,36 +4710,7 @@ export interface components {
                                   address?: string;
                                   /** Format: date-time */
                                   joinedOn?: string;
-                                  bonding_pool?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: {
-                                        name?: string;
-                                        solver_bonding_pools?: {
-                                          data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            }[];
-                                        };
-                                        /** Format: date-time */
-                                        createdAt?: string;
-                                        /** Format: date-time */
-                                        updatedAt?: string;
-                                        createdBy?: {
-                                          data?: {
-                                            id?: number;
-                                            attributes?: Record<string, never>;
-                                          };
-                                        };
-                                        updatedBy?: {
-                                          data?: {
-                                            id?: number;
-                                            attributes?: Record<string, never>;
-                                          };
-                                        };
-                                      };
-                                    };
-                                  };
+                                  name?: string;
                                   solvers?: {
                                     data?: {
                                         id?: number;
@@ -4614,6 +4718,12 @@ export interface components {
                                       }[];
                                   };
                                   isReducedBondingPool?: boolean;
+                                  solver_networks?: {
+                                    data?: {
+                                        id?: number;
+                                        attributes?: Record<string, never>;
+                                      }[];
+                                  };
                                   /** Format: date-time */
                                   createdAt?: string;
                                   /** Format: date-time */
@@ -4636,6 +4746,8 @@ export interface components {
                           isServiceFeeEnabled?: boolean;
                           /** @enum {string} */
                           isColocated?: "Yes" | "No" | "Partial";
+                          activeNetworks?: unknown;
+                          hasActiveNetworks?: boolean;
                           /** Format: date-time */
                           createdAt?: string;
                           /** Format: date-time */
@@ -4691,6 +4803,12 @@ export interface components {
                     isWhiteListed?: boolean;
                     isVouched?: boolean;
                     isColocated?: boolean;
+                    vouchedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: Record<string, never>;
+                      };
+                    };
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6847,36 +6965,7 @@ export interface components {
                             address?: string;
                             /** Format: date-time */
                             joinedOn?: string;
-                            bonding_pool?: {
-                              data?: {
-                                id?: number;
-                                attributes?: {
-                                  name?: string;
-                                  solver_bonding_pools?: {
-                                    data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      }[];
-                                  };
-                                  /** Format: date-time */
-                                  createdAt?: string;
-                                  /** Format: date-time */
-                                  updatedAt?: string;
-                                  createdBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                  updatedBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                };
-                              };
-                            };
+                            name?: string;
                             solvers?: {
                               data?: {
                                   id?: number;
@@ -6884,6 +6973,12 @@ export interface components {
                                 }[];
                             };
                             isReducedBondingPool?: boolean;
+                            solver_networks?: {
+                              data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                }[];
+                            };
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -6906,6 +7001,8 @@ export interface components {
                     isServiceFeeEnabled?: boolean;
                     /** @enum {string} */
                     isColocated?: "Yes" | "No" | "Partial";
+                    activeNetworks?: unknown;
+                    hasActiveNetworks?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -6986,6 +7083,12 @@ export interface components {
               isWhiteListed?: boolean;
               isVouched?: boolean;
               isColocated?: boolean;
+              vouchedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: Record<string, never>;
+                };
+              };
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -8680,6 +8783,149 @@ export interface components {
       data?: components["schemas"]["ProductFeatureResponseDataObject"];
       meta?: Record<string, never>;
     };
+    RestrictedTokenListRequest: {
+      data: {
+        name: string;
+        tokenListUrl: string;
+        restrictedCountries: unknown;
+      };
+    };
+    RestrictedTokenListListResponseDataItem: {
+      id?: number;
+      attributes?: components["schemas"]["RestrictedTokenList"];
+    };
+    RestrictedTokenListListResponse: {
+      data?: components["schemas"]["RestrictedTokenListListResponseDataItem"][];
+      meta?: {
+        pagination?: {
+          page?: number;
+          pageSize?: number;
+          pageCount?: number;
+          total?: number;
+        };
+      };
+    };
+    RestrictedTokenList: {
+      name: string;
+      tokenListUrl: string;
+      restrictedCountries: unknown;
+      /** Format: date-time */
+      createdAt?: string;
+      /** Format: date-time */
+      updatedAt?: string;
+      createdBy?: {
+        data?: {
+          id?: number;
+          attributes?: {
+            firstname?: string;
+            lastname?: string;
+            username?: string;
+            /** Format: email */
+            email?: string;
+            resetPasswordToken?: string;
+            registrationToken?: string;
+            isActive?: boolean;
+            roles?: {
+              data?: {
+                  id?: number;
+                  attributes?: {
+                    name?: string;
+                    code?: string;
+                    description?: string;
+                    users?: {
+                      data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        }[];
+                    };
+                    permissions?: {
+                      data?: {
+                          id?: number;
+                          attributes?: {
+                            action?: string;
+                            subject?: string;
+                            properties?: unknown;
+                            conditions?: unknown;
+                            role?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            createdBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            updatedBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                          };
+                        }[];
+                    };
+                    /** Format: date-time */
+                    createdAt?: string;
+                    /** Format: date-time */
+                    updatedAt?: string;
+                    createdBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: Record<string, never>;
+                      };
+                    };
+                    updatedBy?: {
+                      data?: {
+                        id?: number;
+                        attributes?: Record<string, never>;
+                      };
+                    };
+                  };
+                }[];
+            };
+            blocked?: boolean;
+            preferedLanguage?: string;
+            /** Format: date-time */
+            createdAt?: string;
+            /** Format: date-time */
+            updatedAt?: string;
+            createdBy?: {
+              data?: {
+                id?: number;
+                attributes?: Record<string, never>;
+              };
+            };
+            updatedBy?: {
+              data?: {
+                id?: number;
+                attributes?: Record<string, never>;
+              };
+            };
+          };
+        };
+      };
+      updatedBy?: {
+        data?: {
+          id?: number;
+          attributes?: Record<string, never>;
+        };
+      };
+    };
+    RestrictedTokenListResponseDataObject: {
+      id?: number;
+      attributes?: components["schemas"]["RestrictedTokenList"];
+    };
+    RestrictedTokenListResponse: {
+      data?: components["schemas"]["RestrictedTokenListResponseDataObject"];
+      meta?: Record<string, never>;
+    };
     SolverRequest: {
       data: {
         displayName: string;
@@ -8695,6 +8941,8 @@ export interface components {
         isServiceFeeEnabled: boolean;
         /** @enum {string} */
         isColocated: "Yes" | "No" | "Partial";
+        activeNetworks?: unknown;
+        hasActiveNetworks?: boolean;
       };
     };
     SolverListResponseDataItem: {
@@ -9023,36 +9271,7 @@ export interface components {
                             address?: string;
                             /** Format: date-time */
                             joinedOn?: string;
-                            bonding_pool?: {
-                              data?: {
-                                id?: number;
-                                attributes?: {
-                                  name?: string;
-                                  solver_bonding_pools?: {
-                                    data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      }[];
-                                  };
-                                  /** Format: date-time */
-                                  createdAt?: string;
-                                  /** Format: date-time */
-                                  updatedAt?: string;
-                                  createdBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                  updatedBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
-                                };
-                              };
-                            };
+                            name?: string;
                             solvers?: {
                               data?: {
                                   id?: number;
@@ -9060,6 +9279,12 @@ export interface components {
                                 }[];
                             };
                             isReducedBondingPool?: boolean;
+                            solver_networks?: {
+                              data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                }[];
+                            };
                             /** Format: date-time */
                             createdAt?: string;
                             /** Format: date-time */
@@ -9082,6 +9307,8 @@ export interface components {
                     isServiceFeeEnabled?: boolean;
                     /** @enum {string} */
                     isColocated?: "Yes" | "No" | "Partial";
+                    activeNetworks?: unknown;
+                    hasActiveNetworks?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9162,6 +9389,12 @@ export interface components {
               isWhiteListed?: boolean;
               isVouched?: boolean;
               isColocated?: boolean;
+              vouchedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: Record<string, never>;
+                };
+              };
               /** Format: date-time */
               createdAt?: string;
               /** Format: date-time */
@@ -9190,6 +9423,8 @@ export interface components {
       isServiceFeeEnabled: boolean;
       /** @enum {string} */
       isColocated: "Yes" | "No" | "Partial";
+      activeNetworks?: unknown;
+      hasActiveNetworks?: boolean;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -9220,10 +9455,10 @@ export interface components {
         address: string;
         /** Format: date-time */
         joinedOn: string;
-        /** @example string or id */
-        bonding_pool?: number | string;
+        name: string;
         solvers?: (number | string)[];
         isReducedBondingPool: boolean;
+        solver_networks?: (number | string)[];
       };
     };
     SolverBondingPoolListResponseDataItem: {
@@ -9245,32 +9480,58 @@ export interface components {
       address: string;
       /** Format: date-time */
       joinedOn: string;
-      bonding_pool?: {
-        data?: {
-          id?: number;
-          attributes?: {
-            name?: string;
-            solver_bonding_pools?: {
-              data?: ({
+      name: string;
+      solvers?: {
+        data?: ({
+            id?: number;
+            attributes?: {
+              displayName?: string;
+              active?: boolean;
+              image?: {
+                data?: {
                   id?: number;
                   attributes?: {
-                    address?: string;
-                    /** Format: date-time */
-                    joinedOn?: string;
-                    bonding_pool?: {
+                    name?: string;
+                    alternativeText?: string;
+                    caption?: string;
+                    width?: number;
+                    height?: number;
+                    formats?: unknown;
+                    hash?: string;
+                    ext?: string;
+                    mime?: string;
+                    /** Format: float */
+                    size?: number;
+                    url?: string;
+                    previewUrl?: string;
+                    provider?: string;
+                    provider_metadata?: unknown;
+                    related?: {
+                      data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        }[];
+                    };
+                    folder?: {
                       data?: {
                         id?: number;
-                        attributes?: Record<string, never>;
-                      };
-                    };
-                    solvers?: {
-                      data?: ({
-                          id?: number;
-                          attributes?: {
-                            displayName?: string;
-                            active?: boolean;
-                            image?: {
-                              data?: {
+                        attributes?: {
+                          name?: string;
+                          pathId?: number;
+                          parent?: {
+                            data?: {
+                              id?: number;
+                              attributes?: Record<string, never>;
+                            };
+                          };
+                          children?: {
+                            data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              }[];
+                          };
+                          files?: {
+                            data?: {
                                 id?: number;
                                 attributes?: {
                                   name?: string;
@@ -9297,53 +9558,72 @@ export interface components {
                                   folder?: {
                                     data?: {
                                       id?: number;
+                                      attributes?: Record<string, never>;
+                                    };
+                                  };
+                                  folderPath?: string;
+                                  /** Format: date-time */
+                                  createdAt?: string;
+                                  /** Format: date-time */
+                                  updatedAt?: string;
+                                  createdBy?: {
+                                    data?: {
+                                      id?: number;
                                       attributes?: {
-                                        name?: string;
-                                        pathId?: number;
-                                        parent?: {
-                                          data?: {
-                                            id?: number;
-                                            attributes?: Record<string, never>;
-                                          };
-                                        };
-                                        children?: {
-                                          data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            }[];
-                                        };
-                                        files?: {
+                                        firstname?: string;
+                                        lastname?: string;
+                                        username?: string;
+                                        /** Format: email */
+                                        email?: string;
+                                        resetPasswordToken?: string;
+                                        registrationToken?: string;
+                                        isActive?: boolean;
+                                        roles?: {
                                           data?: {
                                               id?: number;
                                               attributes?: {
                                                 name?: string;
-                                                alternativeText?: string;
-                                                caption?: string;
-                                                width?: number;
-                                                height?: number;
-                                                formats?: unknown;
-                                                hash?: string;
-                                                ext?: string;
-                                                mime?: string;
-                                                /** Format: float */
-                                                size?: number;
-                                                url?: string;
-                                                previewUrl?: string;
-                                                provider?: string;
-                                                provider_metadata?: unknown;
-                                                related?: {
+                                                code?: string;
+                                                description?: string;
+                                                users?: {
                                                   data?: {
                                                       id?: number;
                                                       attributes?: Record<string, never>;
                                                     }[];
                                                 };
-                                                folder?: {
+                                                permissions?: {
                                                   data?: {
-                                                    id?: number;
-                                                    attributes?: Record<string, never>;
-                                                  };
+                                                      id?: number;
+                                                      attributes?: {
+                                                        action?: string;
+                                                        subject?: string;
+                                                        properties?: unknown;
+                                                        conditions?: unknown;
+                                                        role?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: Record<string, never>;
+                                                          };
+                                                        };
+                                                        /** Format: date-time */
+                                                        createdAt?: string;
+                                                        /** Format: date-time */
+                                                        updatedAt?: string;
+                                                        createdBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: Record<string, never>;
+                                                          };
+                                                        };
+                                                        updatedBy?: {
+                                                          data?: {
+                                                            id?: number;
+                                                            attributes?: Record<string, never>;
+                                                          };
+                                                        };
+                                                      };
+                                                    }[];
                                                 };
-                                                folderPath?: string;
                                                 /** Format: date-time */
                                                 createdAt?: string;
                                                 /** Format: date-time */
@@ -9351,99 +9631,7 @@ export interface components {
                                                 createdBy?: {
                                                   data?: {
                                                     id?: number;
-                                                    attributes?: {
-                                                      firstname?: string;
-                                                      lastname?: string;
-                                                      username?: string;
-                                                      /** Format: email */
-                                                      email?: string;
-                                                      resetPasswordToken?: string;
-                                                      registrationToken?: string;
-                                                      isActive?: boolean;
-                                                      roles?: {
-                                                        data?: {
-                                                            id?: number;
-                                                            attributes?: {
-                                                              name?: string;
-                                                              code?: string;
-                                                              description?: string;
-                                                              users?: {
-                                                                data?: {
-                                                                    id?: number;
-                                                                    attributes?: Record<string, never>;
-                                                                  }[];
-                                                              };
-                                                              permissions?: {
-                                                                data?: {
-                                                                    id?: number;
-                                                                    attributes?: {
-                                                                      action?: string;
-                                                                      subject?: string;
-                                                                      properties?: unknown;
-                                                                      conditions?: unknown;
-                                                                      role?: {
-                                                                        data?: {
-                                                                          id?: number;
-                                                                          attributes?: Record<string, never>;
-                                                                        };
-                                                                      };
-                                                                      /** Format: date-time */
-                                                                      createdAt?: string;
-                                                                      /** Format: date-time */
-                                                                      updatedAt?: string;
-                                                                      createdBy?: {
-                                                                        data?: {
-                                                                          id?: number;
-                                                                          attributes?: Record<string, never>;
-                                                                        };
-                                                                      };
-                                                                      updatedBy?: {
-                                                                        data?: {
-                                                                          id?: number;
-                                                                          attributes?: Record<string, never>;
-                                                                        };
-                                                                      };
-                                                                    };
-                                                                  }[];
-                                                              };
-                                                              /** Format: date-time */
-                                                              createdAt?: string;
-                                                              /** Format: date-time */
-                                                              updatedAt?: string;
-                                                              createdBy?: {
-                                                                data?: {
-                                                                  id?: number;
-                                                                  attributes?: Record<string, never>;
-                                                                };
-                                                              };
-                                                              updatedBy?: {
-                                                                data?: {
-                                                                  id?: number;
-                                                                  attributes?: Record<string, never>;
-                                                                };
-                                                              };
-                                                            };
-                                                          }[];
-                                                      };
-                                                      blocked?: boolean;
-                                                      preferedLanguage?: string;
-                                                      /** Format: date-time */
-                                                      createdAt?: string;
-                                                      /** Format: date-time */
-                                                      updatedAt?: string;
-                                                      createdBy?: {
-                                                        data?: {
-                                                          id?: number;
-                                                          attributes?: Record<string, never>;
-                                                        };
-                                                      };
-                                                      updatedBy?: {
-                                                        data?: {
-                                                          id?: number;
-                                                          attributes?: Record<string, never>;
-                                                        };
-                                                      };
-                                                    };
+                                                    attributes?: Record<string, never>;
                                                   };
                                                 };
                                                 updatedBy?: {
@@ -9455,7 +9643,8 @@ export interface components {
                                               };
                                             }[];
                                         };
-                                        path?: string;
+                                        blocked?: boolean;
+                                        preferedLanguage?: string;
                                         /** Format: date-time */
                                         createdAt?: string;
                                         /** Format: date-time */
@@ -9475,17 +9664,6 @@ export interface components {
                                       };
                                     };
                                   };
-                                  folderPath?: string;
-                                  /** Format: date-time */
-                                  createdAt?: string;
-                                  /** Format: date-time */
-                                  updatedAt?: string;
-                                  createdBy?: {
-                                    data?: {
-                                      id?: number;
-                                      attributes?: Record<string, never>;
-                                    };
-                                  };
                                   updatedBy?: {
                                     data?: {
                                       id?: number;
@@ -9493,131 +9671,29 @@ export interface components {
                                     };
                                   };
                                 };
-                              };
-                            };
-                            organization?: string;
-                            website?: string;
-                            description?: string;
-                            solverId?: string;
-                            solver_networks?: {
-                              data?: {
-                                  id?: number;
-                                  attributes?: {
-                                    solver?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      };
-                                    };
-                                    network?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: {
-                                          name?: string;
-                                          chainId?: number;
-                                          solver_networks?: {
-                                            data?: {
-                                                id?: number;
-                                                attributes?: Record<string, never>;
-                                              }[];
-                                          };
-                                          /** Format: date-time */
-                                          createdAt?: string;
-                                          /** Format: date-time */
-                                          updatedAt?: string;
-                                          createdBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                          updatedBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                        };
-                                      };
-                                    };
-                                    address?: string;
-                                    payoutAddress?: string;
-                                    active?: boolean;
-                                    environment?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: {
-                                          name?: string;
-                                          /** Format: date-time */
-                                          createdAt?: string;
-                                          /** Format: date-time */
-                                          updatedAt?: string;
-                                          createdBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                          updatedBy?: {
-                                            data?: {
-                                              id?: number;
-                                              attributes?: Record<string, never>;
-                                            };
-                                          };
-                                        };
-                                      };
-                                    };
-                                    isWhiteListed?: boolean;
-                                    isVouched?: boolean;
-                                    isColocated?: boolean;
-                                    /** Format: date-time */
-                                    createdAt?: string;
-                                    /** Format: date-time */
-                                    updatedAt?: string;
-                                    createdBy?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      };
-                                    };
-                                    updatedBy?: {
-                                      data?: {
-                                        id?: number;
-                                        attributes?: Record<string, never>;
-                                      };
-                                    };
-                                  };
-                                }[];
-                            };
-                            solver_bonding_pools?: {
-                              data?: {
-                                  id?: number;
-                                  attributes?: Record<string, never>;
-                                }[];
-                            };
-                            isServiceFeeEnabled?: boolean;
-                            /** @enum {string} */
-                            isColocated?: "Yes" | "No" | "Partial";
-                            /** Format: date-time */
-                            createdAt?: string;
-                            /** Format: date-time */
-                            updatedAt?: string;
-                            createdBy?: {
-                              data?: {
-                                id?: number;
-                                attributes?: Record<string, never>;
-                              };
-                            };
-                            updatedBy?: {
-                              data?: {
-                                id?: number;
-                                attributes?: Record<string, never>;
-                              };
+                              }[];
+                          };
+                          path?: string;
+                          /** Format: date-time */
+                          createdAt?: string;
+                          /** Format: date-time */
+                          updatedAt?: string;
+                          createdBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: Record<string, never>;
                             };
                           };
-                        })[];
+                          updatedBy?: {
+                            data?: {
+                              id?: number;
+                              attributes?: Record<string, never>;
+                            };
+                          };
+                        };
+                      };
                     };
-                    isReducedBondingPool?: boolean;
+                    folderPath?: string;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -9635,34 +9711,179 @@ export interface components {
                       };
                     };
                   };
-                })[];
-            };
-            /** Format: date-time */
-            createdAt?: string;
-            /** Format: date-time */
-            updatedAt?: string;
-            createdBy?: {
-              data?: {
-                id?: number;
-                attributes?: Record<string, never>;
+                };
+              };
+              organization?: string;
+              website?: string;
+              description?: string;
+              solverId?: string;
+              solver_networks?: {
+                data?: {
+                    id?: number;
+                    attributes?: {
+                      solver?: {
+                        data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        };
+                      };
+                      network?: {
+                        data?: {
+                          id?: number;
+                          attributes?: {
+                            name?: string;
+                            chainId?: number;
+                            solver_networks?: {
+                              data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                }[];
+                            };
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            createdBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            updatedBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                          };
+                        };
+                      };
+                      address?: string;
+                      payoutAddress?: string;
+                      active?: boolean;
+                      environment?: {
+                        data?: {
+                          id?: number;
+                          attributes?: {
+                            name?: string;
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            createdBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            updatedBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                          };
+                        };
+                      };
+                      isWhiteListed?: boolean;
+                      isVouched?: boolean;
+                      isColocated?: boolean;
+                      vouchedBy?: {
+                        data?: {
+                          id?: number;
+                          attributes?: {
+                            address?: string;
+                            /** Format: date-time */
+                            joinedOn?: string;
+                            name?: string;
+                            solvers?: {
+                              data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                }[];
+                            };
+                            isReducedBondingPool?: boolean;
+                            solver_networks?: {
+                              data?: {
+                                  id?: number;
+                                  attributes?: Record<string, never>;
+                                }[];
+                            };
+                            /** Format: date-time */
+                            createdAt?: string;
+                            /** Format: date-time */
+                            updatedAt?: string;
+                            createdBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                            updatedBy?: {
+                              data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              };
+                            };
+                          };
+                        };
+                      };
+                      /** Format: date-time */
+                      createdAt?: string;
+                      /** Format: date-time */
+                      updatedAt?: string;
+                      createdBy?: {
+                        data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        };
+                      };
+                      updatedBy?: {
+                        data?: {
+                          id?: number;
+                          attributes?: Record<string, never>;
+                        };
+                      };
+                    };
+                  }[];
+              };
+              solver_bonding_pools?: {
+                data?: {
+                    id?: number;
+                    attributes?: Record<string, never>;
+                  }[];
+              };
+              isServiceFeeEnabled?: boolean;
+              /** @enum {string} */
+              isColocated?: "Yes" | "No" | "Partial";
+              activeNetworks?: unknown;
+              hasActiveNetworks?: boolean;
+              /** Format: date-time */
+              createdAt?: string;
+              /** Format: date-time */
+              updatedAt?: string;
+              createdBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: Record<string, never>;
+                };
+              };
+              updatedBy?: {
+                data?: {
+                  id?: number;
+                  attributes?: Record<string, never>;
+                };
               };
             };
-            updatedBy?: {
-              data?: {
-                id?: number;
-                attributes?: Record<string, never>;
-              };
-            };
-          };
-        };
+          })[];
       };
-      solvers?: {
+      isReducedBondingPool: boolean;
+      solver_networks?: {
         data?: {
             id?: number;
             attributes?: Record<string, never>;
           }[];
       };
-      isReducedBondingPool: boolean;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -9693,15 +9914,17 @@ export interface components {
         /** @example string or id */
         solver?: number | string;
         /** @example string or id */
-        network?: number | string;
-        address?: string;
+        network: number | string;
+        address: string;
         payoutAddress?: string;
         active: boolean;
         /** @example string or id */
-        environment?: number | string;
+        environment: number | string;
         isWhiteListed?: boolean;
         isVouched?: boolean;
         isColocated: boolean;
+        /** @example string or id */
+        vouchedBy?: number | string;
       };
     };
     SolverNetworkListResponseDataItem: {
@@ -10027,38 +10250,22 @@ export interface components {
                     isWhiteListed?: boolean;
                     isVouched?: boolean;
                     isColocated?: boolean;
-                    /** Format: date-time */
-                    createdAt?: string;
-                    /** Format: date-time */
-                    updatedAt?: string;
-                    createdBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: Record<string, never>;
-                      };
-                    };
-                    updatedBy?: {
-                      data?: {
-                        id?: number;
-                        attributes?: Record<string, never>;
-                      };
-                    };
-                  };
-                }[];
-            };
-            solver_bonding_pools?: {
-              data?: {
-                  id?: number;
-                  attributes?: {
-                    address?: string;
-                    /** Format: date-time */
-                    joinedOn?: string;
-                    bonding_pool?: {
+                    vouchedBy?: {
                       data?: {
                         id?: number;
                         attributes?: {
+                          address?: string;
+                          /** Format: date-time */
+                          joinedOn?: string;
                           name?: string;
-                          solver_bonding_pools?: {
+                          solvers?: {
+                            data?: {
+                                id?: number;
+                                attributes?: Record<string, never>;
+                              }[];
+                          };
+                          isReducedBondingPool?: boolean;
+                          solver_networks?: {
                             data?: {
                                 id?: number;
                                 attributes?: Record<string, never>;
@@ -10083,13 +10290,6 @@ export interface components {
                         };
                       };
                     };
-                    solvers?: {
-                      data?: {
-                          id?: number;
-                          attributes?: Record<string, never>;
-                        }[];
-                    };
-                    isReducedBondingPool?: boolean;
                     /** Format: date-time */
                     createdAt?: string;
                     /** Format: date-time */
@@ -10109,9 +10309,17 @@ export interface components {
                   };
                 }[];
             };
+            solver_bonding_pools?: {
+              data?: {
+                  id?: number;
+                  attributes?: Record<string, never>;
+                }[];
+            };
             isServiceFeeEnabled?: boolean;
             /** @enum {string} */
             isColocated?: "Yes" | "No" | "Partial";
+            activeNetworks?: unknown;
+            hasActiveNetworks?: boolean;
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -10131,16 +10339,16 @@ export interface components {
           };
         };
       };
-      network?: {
+      network: {
         data?: {
           id?: number;
           attributes?: Record<string, never>;
         };
       };
-      address?: string;
+      address: string;
       payoutAddress?: string;
       active: boolean;
-      environment?: {
+      environment: {
         data?: {
           id?: number;
           attributes?: Record<string, never>;
@@ -10149,6 +10357,12 @@ export interface components {
       isWhiteListed?: boolean;
       isVouched?: boolean;
       isColocated: boolean;
+      vouchedBy?: {
+        data?: {
+          id?: number;
+          attributes?: Record<string, never>;
+        };
+      };
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -11129,6 +11343,255 @@ export type external = Record<string, never>;
 
 export interface operations {
 
+  "get/affiliates": {
+    parameters: {
+      query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
+        sort?: string;
+        /** @description Return page/pageSize (default: true) */
+        "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
+        "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
+        "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
+        "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
+        "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
+        fields?: string;
+        /** @description Relations to return */
+        populate?: string;
+        /** @description Filters to apply */
+        filters?: Record<string, never>;
+        /** @description Locale to apply */
+        locale?: string;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["AffiliateListResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "post/affiliates": {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AffiliateRequest"];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["AffiliateResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "get/affiliates/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["AffiliateResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "put/affiliates/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AffiliateRequest"];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["AffiliateResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "delete/affiliates/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": number;
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
   "get/announcements": {
     parameters: {
       query?: {
@@ -15343,6 +15806,255 @@ export interface operations {
     };
   };
   "delete/product-features/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": number;
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "get/restricted-token-lists": {
+    parameters: {
+      query?: {
+        /** @description Sort by attributes ascending (asc) or descending (desc) */
+        sort?: string;
+        /** @description Return page/pageSize (default: true) */
+        "pagination[withCount]"?: boolean;
+        /** @description Page number (default: 0) */
+        "pagination[page]"?: number;
+        /** @description Page size (default: 25) */
+        "pagination[pageSize]"?: number;
+        /** @description Offset value (default: 0) */
+        "pagination[start]"?: number;
+        /** @description Number of entities to return (default: 25) */
+        "pagination[limit]"?: number;
+        /** @description Fields to return (ex: title,author) */
+        fields?: string;
+        /** @description Relations to return */
+        populate?: string;
+        /** @description Filters to apply */
+        filters?: Record<string, never>;
+        /** @description Locale to apply */
+        locale?: string;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestrictedTokenListListResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "post/restricted-token-lists": {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RestrictedTokenListRequest"];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestrictedTokenListResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "get/restricted-token-lists/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestrictedTokenListResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "put/restricted-token-lists/{id}": {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RestrictedTokenListRequest"];
+      };
+    };
+    responses: {
+      /** @description OK */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RestrictedTokenListResponse"];
+        };
+      };
+      /** @description Bad Request */
+      400: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Unauthorized */
+      401: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Forbidden */
+      403: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+      /** @description Internal Server Error */
+      500: {
+        content: {
+          "application/json": components["schemas"]["Error"];
+        };
+      };
+    };
+  };
+  "delete/restricted-token-lists/{id}": {
     parameters: {
       path: {
         id: number;
