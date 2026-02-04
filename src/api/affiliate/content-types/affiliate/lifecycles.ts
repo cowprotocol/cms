@@ -50,6 +50,9 @@ const hasOwn = (obj: object, key: string) =>
 const trimAndLower = (value?: string | null) =>
   value ? value.trim().toLowerCase() : value;
 
+const trimAndUpper = (value?: string | null) =>
+  value ? value.trim().toUpperCase() : value;
+
 function parseNumber(
   value: unknown,
   field: string,
@@ -145,7 +148,7 @@ export default {
     const data = event.params.data ?? {};
 
     if (data.code) {
-      const normalized = trimAndLower(String(data.code));
+      const normalized = trimAndUpper(String(data.code));
       if (!normalized || !CODE_REGEX.test(normalized)) {
         throw new errors.ValidationError(
           codeErrorMsg
