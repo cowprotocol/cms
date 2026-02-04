@@ -958,6 +958,19 @@ export interface components {
         walletAddress: string;
         signedMessage?: string;
         enabled: boolean;
+        /** Format: float */
+        rewardAmount?: number;
+        /** Format: float */
+        triggerVolume?: number;
+        timeCapDays?: number;
+        /** Format: float */
+        volumeCap?: number;
+        /** Format: float */
+        revenueSplitAffiliatePct?: number;
+        /** Format: float */
+        revenueSplitTraderPct?: number;
+        /** Format: float */
+        revenueSplitDaoPct?: number;
       };
     };
     AffiliateListResponseDataItem: {
@@ -980,6 +993,19 @@ export interface components {
       walletAddress: string;
       signedMessage?: string;
       enabled: boolean;
+      /** Format: float */
+      rewardAmount?: number;
+      /** Format: float */
+      triggerVolume?: number;
+      timeCapDays?: number;
+      /** Format: float */
+      volumeCap?: number;
+      /** Format: float */
+      revenueSplitAffiliatePct?: number;
+      /** Format: float */
+      revenueSplitTraderPct?: number;
+      /** Format: float */
+      revenueSplitDaoPct?: number;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
