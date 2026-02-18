@@ -20,30 +20,6 @@ export default {
       throw new errors.ValidationError(error.message || "Error processing solver data");
     }
   },
-
-  async afterCreate(event) {
-    try {
-      const { result } = event;
-      if (result && result.id) {
-        await calculateActiveNetworksForSolver(result.id);
-        await updateServiceFeeEnabledForSolver(result.id);
-      }
-    } catch (error) {
-      console.error("Error in afterCreate:", error);
-    }
-  },
-
-  async afterUpdate(event) {
-    try {
-      const { result } = event;
-      if (result && result.id) {
-        await calculateActiveNetworksForSolver(result.id);
-        await updateServiceFeeEnabledForSolver(result.id);
-      }
-    } catch (error) {
-      console.error("Error in afterUpdate:", error);
-    }
-  }
 };
 
 interface SolverData {
@@ -84,65 +60,6 @@ async function updateActiveNetworks(event: StrapiEvent) {
       console.error(`Error fetching solver data for id ${where.id}:`, error);
       throw new errors.ApplicationError(`Failed to fetch solver data: ${error.message}`);
     }
-  }
-}
-
-// This function will be called after create/update to ensure relations are established
-export async function calculateActiveNetworksForSolver(solverId: number): Promise<void> {
-  try {
-    const solver = await strapi.entityService.findOne(
-      'api::solver.solver',
-      solverId,
-      { populate: ['solver_networks.network'] }
-    );
-
-    if (solver) {
-      const data: SolverData = {};
-      await calculateActiveNetworks(solver, data);
-
-      if (data.activeNetworks || data.hasActiveNetworks !== undefined) {
-        await strapi.entityService.update(
-          'api::solver.solver',
-          solverId,
-          { data }
-        );
-      }
-    }
-  } catch (error) {
-    console.error(`Error calculating active networks for solver ${solverId}:`, error);
-    throw new errors.ApplicationError(`Failed to calculate active networks: ${error.message}`);
-  }
-}
-
-export async function updateServiceFeeEnabledForSolver(solverId: number): Promise<void> {
-  try {
-    const solver = await strapi.entityService.findOne(
-      'api::solver.solver',
-      solverId,
-      {
-        populate: {
-          solver_bonding_pools: {
-            fields: ['name', 'joinedOn']
-          }
-        }
-      }
-    );
-
-    if (solver) {
-      const data: SolverData = {};
-      await calculateServiceFeeEnabled(solver, data);
-
-      if (data.isServiceFeeEnabled !== undefined) {
-        await strapi.entityService.update(
-          'api::solver.solver',
-          solverId,
-          { data }
-        );
-      }
-    }
-  } catch (error) {
-    console.error(`Error updating service fee enabled for solver ${solverId}:`, error);
-    throw new errors.ApplicationError(`Failed to update service fee status: ${error.message}`);
   }
 }
 
