@@ -54,7 +54,7 @@ async function updateActiveNetworks(event: StrapiEvent) {
       );
 
       if (solver) {
-        await calculateActiveNetworks(solver, solverData);
+        await calculateActiveNetworks(solver as Solver, solverData);
       }
     } catch (error) {
       console.error(`Error fetching solver data for id ${where.id}:`, error);
@@ -114,7 +114,7 @@ async function updateServiceFeeEnabled(event: StrapiEvent): Promise<void> {
       );
 
       if (solver) {
-        await calculateServiceFeeEnabled(solver, solverData);
+        await calculateServiceFeeEnabled(solver as Solver, solverData);
       }
     } catch (error) {
       console.error(`Error fetching solver data for service fee calculation (id ${where.id}):`, error);
