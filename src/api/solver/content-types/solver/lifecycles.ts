@@ -1,4 +1,8 @@
 import { errors } from "@strapi/utils";
+import { getMonthsDifference } from "../../../../utils/date";
+
+const COW_BONDING_POOL_SERVICE_FEE_TH: number = 6;
+const COLOCATED_BONDING_POOL_SERVICE_FEE_TH: number = 3;
 
 export default {
   async beforeCreate(event) {
@@ -114,7 +118,7 @@ async function updateServiceFeeEnabled(event: StrapiEvent): Promise<void> {
       );
 
       if (solver) {
-        await calculateServiceFeeEnabled(solver as Solver, solverData);
+        await setServiceFeeEnabled(solver as Solver, solverData);
       }
     } catch (error) {
       console.error(`Error fetching solver data for service fee calculation (id ${where.id}):`, error);
@@ -124,48 +128,54 @@ async function updateServiceFeeEnabled(event: StrapiEvent): Promise<void> {
   // For create operation, we handle it in afterCreate since we need the ID
 }
 
-async function calculateServiceFeeEnabled(solver: Solver, data: SolverData): Promise<void> {
-  data.isServiceFeeEnabled = false;
-
+/**
+ * Determines if a solver is eligible for service fees based on bonding pool criteria.
+ * Pure function that checks eligibility based on time thresholds:
+ * - 6+ months for non-colocated CoW pools
+ * - 3+ months for colocated pools
+ * @param solver The solver entity to check
+ * @returns Boolean indicating if the solver is eligible for service fees
+ */
+function isEligibleForServiceFee(solver: Solver): boolean {
   if (!solver.solver_bonding_pools || solver.solver_bonding_pools.length === 0) {
-    return;
+    return false;
   }
 
-  try {
-    const currentDate = new Date();
+  const currentDate = new Date();
 
-    for (const bondingPool of solver.solver_bonding_pools) {
-      if (!bondingPool.joinedOn) {
-        continue;
-      }
-
-      const joinedDate = new Date(bondingPool.joinedOn);
-      const monthsDifference = getMonthsDifference(joinedDate, currentDate);
-
-      if (bondingPool.name === "CoW" && solver.isColocated === "No") {
-        if (monthsDifference >= 6) {
-          data.isServiceFeeEnabled = true;
-          return;
-        }
-      }
-      // Colocated bonding pool
-      else if (solver.isColocated === "Yes") {
-        if (monthsDifference >= 3) {
-          data.isServiceFeeEnabled = true;
-          return;
-        }
-      }
-      // For partial colocated, we'll treat it as not colocated
+  for (const bondingPool of solver.solver_bonding_pools) {
+    if (!bondingPool.joinedOn) {
+      continue;
     }
-  } catch (error) {
-    console.error(`Error calculating service fee enabled status:`, error);
-    throw new errors.ApplicationError(`Failed to calculate service fee status: ${error.message}`);
+
+    const joinedDate = new Date(bondingPool.joinedOn);
+    const monthsDifference = getMonthsDifference(joinedDate, currentDate);
+
+    if (bondingPool.name === "CoW" && solver.isColocated === "No") {
+      if (monthsDifference >= COW_BONDING_POOL_SERVICE_FEE_TH) {
+        return true;
+      }
+    }
+    else if (solver.isColocated === "Yes") {
+      if (monthsDifference >= COLOCATED_BONDING_POOL_SERVICE_FEE_TH) {
+        return true;
+      }
+    }
+    // For partial colocated, we'll treat it as not colocated
   }
+
+  return false;
 }
 
-// Helper function to calculate months difference between two dates
-function getMonthsDifference(startDate: Date, endDate: Date): number {
-  const years = endDate.getFullYear() - startDate.getFullYear();
-  const months = endDate.getMonth() - startDate.getMonth();
-  return years * 12 + months;
+/**
+ * Sets the isServiceFeeEnabled flag in the solver data based on eligibility.
+ * Uses the pure function isEligibleForServiceFee to determine eligibility.
+ */
+async function setServiceFeeEnabled(solver: Solver, data: SolverData): Promise<void> {
+  try {
+    data.isServiceFeeEnabled = isEligibleForServiceFee(solver);
+  } catch (error) {
+    console.error(`Error setting service fee enabled status:`, error);
+    throw new errors.ApplicationError(`Failed to set service fee status: ${error.message}`);
+  }
 }
