@@ -19,11 +19,6 @@
     "data": {
       "type": "json"
     },
-    "location": {
-      "type": "enumeration",
-      "enum": ["default", "speechBubble"],
-      "default": "default"
-    },
     "notification_template": {
       "type": "relation",
       "relation": "oneToOne",
