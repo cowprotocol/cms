@@ -41,7 +41,10 @@
     },
     "location": {
       "type": "enumeration",
-      "enum": ["default", "speechBubble"],
+      "enum": [
+        "default",
+        "speechBubble"
+      ],
       "default": "default"
     }
   }
