@@ -18561,6 +18561,14 @@
             "type": "string",
             "format": "date-time"
           },
+          "location": {
+            "type": "string",
+            "enum": [
+              "default",
+              "speechBubble"
+            ],
+            "default": "default"
+          },
           "thumbnail": {
             "type": "object",
             "properties": {
