@@ -10,9 +10,9 @@ Swagger Docs: <https://cms.cow.fi/swagger.html>
 
 # 👨‍💻 Develop
 
-Some requiremets are:
+Some requirements are:
 
-- At least Node v16 (use a LTS version)
+- Node v18 or v20 (use an LTS version)
 - Yarn
 - PostgreSQL (optional), for local dev is easier to use sqlite3 (the default). Alternatively you can use PostgreSQL
 
