@@ -18,24 +18,37 @@ Some requirements are:
 
 ## Run locally using sqlite3
 
-The CMS relies on a database. The simplest is to use `Sqlite` for development.
+The CMS relies on a database. The simplest is to use **Sqlite** for development (it will be created automatically at `data/sqlite.db` when you start the app).
 
-You actually don't need to do anything for this! If you run the project with `yarn dev`, it will automatically create a sqlite database in `data/sqlite.db`
+**Steps:**
 
-```
-yarn dev
-```
+1. **Build the project** (required before running):
 
-Then visit:
+   ```bash
+   yarn build
+   ```
 
-- **Admin**: <http://localhost:1337/admin>
+2. **Create a `.env` file** and set at least `APP_KEYS` (required for the app to start):
 
-On its basic setup, you don't need to add any configuration parameter, however you might want to do so. You can do this by creating a `.env` file.
+   ```bash
+   cp .env.example .env
+   ```
 
-```bash
-# Create an ENV file from the example
-cp .env.example .env
-```
+   Edit `.env` and set `APP_KEYS` to a comma-separated list of secret keys, for example:
+
+   ```
+   APP_KEYS="mySecretKey1,mySecretKey2"
+   ```
+
+   You can leave other values as in the example for local dev, or adjust them as needed (see [Strapi environment config](https://docs.strapi.io/dev-docs/configurations/environment)).
+
+3. **Start the dev server:**
+
+   ```bash
+   yarn dev
+   ```
+
+4.  **Visit** <http://localhost:1337/admin> and create your local admin user.
 
 ## Dev locally using PostreSQL
 
@@ -64,7 +77,7 @@ yarn dev
 
 # 👷‍♀️ Build
 
-Before running the server for the first time, you need to build it:
+Before running the server for the first time, you need to build it (see [Run locally using sqlite3](#run-locally-using-sqlite3) for the full setup). To build:
 
 ```bash
 yarn build
