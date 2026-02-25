@@ -7499,6 +7499,11 @@ export interface components {
       push: boolean;
       /** Format: date-time */
       dueDate?: string;
+      /**
+       * @default default
+       * @enum {string}
+       */
+      location?: "default" | "speechBubble";
       thumbnail?: {
         data?: {
           id?: number;

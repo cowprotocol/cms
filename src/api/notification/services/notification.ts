@@ -11,14 +11,14 @@ const NOTIFICATIONS_LIMIT = 50
 
 const NOTIFICATIONS_POPULATE = {
   notification_template: {
-    fields: ['id', 'title', 'description', 'url', 'push'],
+    fields: ['id', 'title', 'description', 'url', 'push', 'location'],
     populate: {
       thumbnail: {
         fields: ['url']
       }
     }
   }
-}
+} as const
 
 const notificationsTemplateFilter = (push: boolean) => ({
   $or: [
@@ -76,7 +76,8 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         dueDate: notification.notification_template.dueDate,
         url: notification.notification_template.url,
         createdAt: notification.createdAt,
-        thumbnail: notification.notification_template.thumbnail?.url
+        thumbnail: notification.notification_template.thumbnail?.url,
+        location: notification.notification_template?.location ?? 'default'
       }))
     },
     async getPushNotifications() {
@@ -94,7 +95,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
           filters: {
             notification_template: notificationsTemplateFilter(push),
             ...(lastConsumedNotificationDate ? {
-              createdAt: {$gt: lastConsumedNotificationDate}
+              createdAt: { $gt: lastConsumedNotificationDate }
             } : undefined)
           },
           populate: NOTIFICATIONS_POPULATE
@@ -113,7 +114,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
   }
 });
 
-export function templateNotification(description: string, data: {[key: string]: string}): string {
+export function templateNotification(description: string, data: { [key: string]: string }): string {
   let result = description
 
   if (!data) return result

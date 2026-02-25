@@ -38,6 +38,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "location": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "speechBubble"
+      ],
+      "default": "default"
     }
   }
 }
