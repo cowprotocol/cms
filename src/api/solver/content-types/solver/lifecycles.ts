@@ -3,9 +3,10 @@ import { getMonthsDifference } from "../../../../utils/date";
 
 const COW_BONDING_POOL_SERVICE_FEE_TH: number = 6;
 const COLOCATED_BONDING_POOL_SERVICE_FEE_TH: number = 3;
+const COW_CONDING_POOL_NAME: string = "CoW";
 
 export default {
-  async beforeCreate(event) {
+  async afterCreate(event) {
     try {
       await updateActiveNetworks(event);
       await updateServiceFeeEnabled(event);
@@ -15,7 +16,7 @@ export default {
     }
   },
 
-  async beforeUpdate(event) {
+  async afterUpdate(event) {
     try {
       await updateActiveNetworks(event);
       await updateServiceFeeEnabled(event);
@@ -58,7 +59,7 @@ async function updateActiveNetworks(event: StrapiEvent) {
       );
 
       if (solver) {
-        await calculateActiveNetworks(solver as Solver, solverData);
+        await updateActiveNetworksData(solver as Solver, solverData);
       }
     } catch (error) {
       console.error(`Error fetching solver data for id ${where.id}:`, error);
@@ -82,21 +83,35 @@ interface Solver {
   isColocated?: string;
 }
 
-async function calculateActiveNetworks(solver: Solver, data: SolverData): Promise<void> {
-  if (!solver.solver_networks) {
-    data.activeNetworks = [];
-    data.hasActiveNetworks = false;
-    return;
+/**
+ * Extracts active network names from solver networks
+ * @param solverNetworks Array of solver network objects
+ * @returns Array of active network names
+ */
+function getActiveNetworks(solverNetworks?: Array<{
+  active?: boolean;
+  network?: {
+    name?: string;
+  };
+}>): string[] {
+  if (!solverNetworks) {
+    return [];
   }
 
-  // Filter active networks and extract their names
-  const activeNetworkNames = solver.solver_networks
+  return solverNetworks
     .filter(network => network.active)
     .map(network => network.network?.name)
     .filter(Boolean) as string[]; // Remove any undefined values
+}
 
-  data.activeNetworks = activeNetworkNames;
-  data.hasActiveNetworks = activeNetworkNames.length > 0;
+/**
+ * Updates the solver data with active network information
+ * This function mutates the data object by setting activeNetworks and hasActiveNetworks properties
+ */
+async function updateActiveNetworksData(solver: Solver, data: SolverData): Promise<void> {
+  const activeNetworks = getActiveNetworks(solver.solver_networks);
+  data.hasActiveNetworks = activeNetworks.length > 0;
+  data.activeNetworks = activeNetworks;
 }
 
 async function updateServiceFeeEnabled(event: StrapiEvent): Promise<void> {
@@ -144,6 +159,7 @@ function isEligibleForServiceFee(solver: Solver): boolean {
   const currentDate = new Date();
 
   for (const bondingPool of solver.solver_bonding_pools) {
+    // Skip if joinedOn field is not set (not a mandatory field)
     if (!bondingPool.joinedOn) {
       continue;
     }
@@ -151,7 +167,7 @@ function isEligibleForServiceFee(solver: Solver): boolean {
     const joinedDate = new Date(bondingPool.joinedOn);
     const monthsDifference = getMonthsDifference(joinedDate, currentDate);
 
-    if (bondingPool.name === "CoW" && solver.isColocated === "No") {
+    if (bondingPool.name === COW_CONDING_POOL_NAME && solver.isColocated === "No") {
       if (monthsDifference >= COW_BONDING_POOL_SERVICE_FEE_TH) {
         return true;
       }
