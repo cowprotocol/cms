@@ -29,4 +29,4 @@ yarn build:lib
 
 # Publish the library
 echo -e "\n🚀 Publish the library"
-(cd lib && npm publish --access public)
+(cd lib && npm publish --access public --provenance)
