@@ -1,5 +1,9 @@
 name: Publish NPM Package
 
+permissions:
+  id-token: write
+
+
 on:
   workflow_dispatch: # Trigger manually through GitHub Actions interface
 
@@ -8,7 +12,7 @@ on:
       - "v*" # Trigger on version tags (e.g., v1.0.0)
 
 env:
-  NODE_VERSION: lts/hydrogen
+  NODE_VERSION: lts/jod
 
 jobs:
   publish:
@@ -26,10 +30,11 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: "https://registry.npmjs.org"
 
+      # Upgrade npm for trusted publishing (requires npm >= 11.5.1)
+      - run: npm install -g npm@latest
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Publish to npm
         run: scripts/publish-lib.sh
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
