@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.jsx b/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.jsx
+index 854d800..dcd475f 100644
+--- a/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.jsx
++++ b/node_modules/@strapi/plugin-upload/admin/src/components/AssetCard/ImageAssetCard.jsx
+@@ -13,7 +13,7 @@ export const ImageAssetCard = ({ height, width, thumbnail, size, alt, isUrlSigne
+   const thumbnailUrl = isUrlSigned
+     ? thumbnail
+     : appendSearchParamsToUrl({
+-        url: thumbnail,
++        url: thumbnail.startsWith('/') ? location.origin + thumbnail : thumbnail,
+         params: { updatedAt: props.updatedAt },
+       });
+ 

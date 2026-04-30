@@ -7,10 +7,11 @@ export default {
   async getSwaggerDocs(ctx) {
     try {
       const { major, minor, patch } = ctx.params;
-      const version =
+      const version = (
         major && minor && patch
           ? `${major}.${minor}.${patch}`
-          : strapi.plugins.documentation.config("info.version", "1.0.0");
+          : strapi.plugins.documentation.config("info.version", "1.0.0")
+      ) as string;
 
       const openAPISpecsPath = path.join(
         "src",
@@ -27,7 +28,7 @@ export default {
       ctx.send(response);
     } catch (e) {
       strapi.log.error(e);
-      ctx.badRequest(null, e.message);
+      ctx.badRequest(null, (e as Error).message);
     }
   },
 };

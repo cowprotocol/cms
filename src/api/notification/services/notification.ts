@@ -3,13 +3,14 @@
  */
 
 import { factories } from '@strapi/strapi';
+import type { EntityService } from '@strapi/types';
 
-const MODULE_ID = 'api::notification.notification'
-const NOTIFICATIONS_CONSUMER_MODULE_ID = 'api::notifications-consumer.notifications-consumer'
+const MODULE_ID = 'api::notification.notification' as const
+const NOTIFICATIONS_CONSUMER_MODULE_ID = 'api::notifications-consumer.notifications-consumer' as const
 const SINGLETON_ID = 1
 const NOTIFICATIONS_LIMIT = 50
 
-const NOTIFICATIONS_POPULATE = {
+const NOTIFICATIONS_POPULATE: EntityService.Params.Populate.ObjectNotation<typeof MODULE_ID> = {
   notification_template: {
     fields: ['id', 'title', 'description', 'url', 'push', 'location'],
     populate: {
@@ -18,7 +19,7 @@ const NOTIFICATIONS_POPULATE = {
       }
     }
   }
-} as const
+}
 
 const notificationsTemplateFilter = (push: boolean) => ({
   $or: [
@@ -72,7 +73,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         id: notification.id,
         account: notification.account,
         title: notification.notification_template.title,
-        description: templateNotification(notification.notification_template.description, notification.data),
+        description: templateNotification(notification.notification_template.description, notification.data as Record<string, string>),
         dueDate: notification.notification_template.dueDate,
         url: notification.notification_template.url,
         createdAt: notification.createdAt,
@@ -82,9 +83,7 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
     },
     async getPushNotifications() {
       const push = true
-      const notificationsConsumer = await strapi.entityService.findOne(NOTIFICATIONS_CONSUMER_MODULE_ID, SINGLETON_ID, {
-        populate: ['id', 'lastConsumedNotificationDate']
-      })
+      const notificationsConsumer = await strapi.entityService.findOne(NOTIFICATIONS_CONSUMER_MODULE_ID, SINGLETON_ID)
 
       const lastConsumedNotificationDate = notificationsConsumer?.lastConsumedNotificationDate
 

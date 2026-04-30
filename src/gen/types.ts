@@ -7421,6 +7421,8 @@ export interface components {
                 };
               };
             };
+            /** @enum {string} */
+            location?: "default" | "speechBubble";
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -7475,6 +7477,8 @@ export interface components {
         dueDate?: string;
         /** @example string or id */
         thumbnail?: number | string;
+        /** @enum {string} */
+        location?: "default" | "speechBubble";
       };
     };
     NotificationTemplateListResponseDataItem: {
@@ -7499,11 +7503,6 @@ export interface components {
       push: boolean;
       /** Format: date-time */
       dueDate?: string;
-      /**
-       * @default default
-       * @enum {string}
-       */
-      location?: "default" | "speechBubble";
       thumbnail?: {
         data?: {
           id?: number;
@@ -7730,6 +7729,8 @@ export interface components {
           };
         };
       };
+      /** @enum {string} */
+      location?: "default" | "speechBubble";
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
