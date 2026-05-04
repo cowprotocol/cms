@@ -1040,6 +1040,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -1273,6 +1274,7 @@ export interface components {
                                                                     id?: number;
                                                                     attributes?: {
                                                                       action?: string;
+                                                                      actionParameters?: unknown;
                                                                       subject?: string;
                                                                       properties?: unknown;
                                                                       conditions?: unknown;
@@ -1723,6 +1725,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -2662,6 +2665,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -3410,6 +3414,7 @@ export interface components {
                                                               id?: number;
                                                               attributes?: {
                                                                 action?: string;
+                                                                actionParameters?: unknown;
                                                                 subject?: string;
                                                                 properties?: unknown;
                                                                 conditions?: unknown;
@@ -3855,6 +3860,7 @@ export interface components {
                                                       id?: number;
                                                       attributes?: {
                                                         action?: string;
+                                                        actionParameters?: unknown;
                                                         subject?: string;
                                                         properties?: unknown;
                                                         conditions?: unknown;
@@ -4602,6 +4608,7 @@ export interface components {
                                                                   id?: number;
                                                                   attributes?: {
                                                                     action?: string;
+                                                                    actionParameters?: unknown;
                                                                     subject?: string;
                                                                     properties?: unknown;
                                                                     conditions?: unknown;
@@ -4954,6 +4961,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -5172,6 +5180,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -5459,6 +5468,7 @@ export interface components {
                                                     id?: number;
                                                     attributes?: {
                                                       action?: string;
+                                                      actionParameters?: unknown;
                                                       subject?: string;
                                                       properties?: unknown;
                                                       conditions?: unknown;
@@ -5793,6 +5803,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -5930,7 +5941,7 @@ export interface components {
         };
       };
       localizations?: {
-        data?: components["schemas"]["Global"][];
+        data?: components["schemas"]["GlobalListResponseDataItemLocalized"][];
       };
       locale?: string;
     };
@@ -6630,6 +6641,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -6857,6 +6869,7 @@ export interface components {
                                                             id?: number;
                                                             attributes?: {
                                                               action?: string;
+                                                              actionParameters?: unknown;
                                                               subject?: string;
                                                               properties?: unknown;
                                                               conditions?: unknown;
@@ -7304,6 +7317,7 @@ export interface components {
                                                     id?: number;
                                                     attributes?: {
                                                       action?: string;
+                                                      actionParameters?: unknown;
                                                       subject?: string;
                                                       properties?: unknown;
                                                       conditions?: unknown;
@@ -7421,6 +7435,8 @@ export interface components {
                 };
               };
             };
+            /** @enum {string} */
+            location?: "default" | "speechBubble";
             /** Format: date-time */
             createdAt?: string;
             /** Format: date-time */
@@ -7475,6 +7491,8 @@ export interface components {
         dueDate?: string;
         /** @example string or id */
         thumbnail?: number | string;
+        /** @enum {string} */
+        location?: "default" | "speechBubble";
       };
     };
     NotificationTemplateListResponseDataItem: {
@@ -7499,11 +7517,6 @@ export interface components {
       push: boolean;
       /** Format: date-time */
       dueDate?: string;
-      /**
-       * @default default
-       * @enum {string}
-       */
-      location?: "default" | "speechBubble";
       thumbnail?: {
         data?: {
           id?: number;
@@ -7613,6 +7626,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -7730,6 +7744,8 @@ export interface components {
           };
         };
       };
+      /** @enum {string} */
+      location?: "default" | "speechBubble";
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
@@ -7813,6 +7829,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -7980,7 +7997,7 @@ export interface components {
         };
       };
       localizations?: {
-        data?: components["schemas"]["Page"][];
+        data?: components["schemas"]["PageListResponseDataItemLocalized"][];
       };
       locale?: string;
     };
@@ -8114,6 +8131,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -8731,6 +8749,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -8874,6 +8893,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -9103,6 +9123,7 @@ export interface components {
                                               id?: number;
                                               attributes?: {
                                                 action?: string;
+                                                actionParameters?: unknown;
                                                 subject?: string;
                                                 properties?: unknown;
                                                 conditions?: unknown;
@@ -9627,6 +9648,7 @@ export interface components {
                                                       id?: number;
                                                       attributes?: {
                                                         action?: string;
+                                                        actionParameters?: unknown;
                                                         subject?: string;
                                                         properties?: unknown;
                                                         conditions?: unknown;
@@ -10089,6 +10111,7 @@ export interface components {
                                                     id?: number;
                                                     attributes?: {
                                                       action?: string;
+                                                      actionParameters?: unknown;
                                                       subject?: string;
                                                       properties?: unknown;
                                                       conditions?: unknown;
@@ -10558,6 +10581,7 @@ export interface components {
                                                       id?: number;
                                                       attributes?: {
                                                         action?: string;
+                                                        actionParameters?: unknown;
                                                         subject?: string;
                                                         properties?: unknown;
                                                         conditions?: unknown;
@@ -11173,6 +11197,7 @@ export interface components {
                           id?: number;
                           attributes?: {
                             action?: string;
+                            actionParameters?: unknown;
                             subject?: string;
                             properties?: unknown;
                             conditions?: unknown;
@@ -11394,7 +11419,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -11643,7 +11670,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -11892,7 +11921,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -12141,7 +12172,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -12390,7 +12423,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -12639,7 +12674,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -12888,7 +12925,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -13137,7 +13176,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -13386,7 +13427,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -13635,7 +13678,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -13884,7 +13929,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -14078,7 +14125,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -14327,7 +14376,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -14576,7 +14627,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -14955,7 +15008,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -15204,7 +15259,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -15353,7 +15410,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -15652,7 +15711,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -15901,7 +15962,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -16150,7 +16213,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -16399,7 +16464,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -16648,7 +16715,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -16897,7 +16966,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };
@@ -17146,7 +17217,9 @@ export interface operations {
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */
-        filters?: Record<string, never>;
+        filters?: {
+          [key: string]: unknown;
+        };
         /** @description Locale to apply */
         locale?: string;
       };

@@ -52,7 +52,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
 
       return true
     },
-    async getSubscriptions(accounts: string[]) {
+    async getSubscriptions(accounts: string[]): Promise<{id: string, account: string, chatId: string}[]> {
       return strapi.entityService.findMany(
         MODULE_ID,
         {
@@ -65,7 +65,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         }
       )
     },
-    async getAccountSubscriptions(account: string) {
+    async getAccountSubscriptions(account: string): Promise<{id: string, account: string, chatId: string}[]> {
       return strapi.entityService.findMany(
         MODULE_ID,
         {

@@ -1,4 +1,8 @@
 import { errors } from "@strapi/utils";
+import type { EntityService } from "@strapi/types";
+
+const AFFILIATE_MODULE_ID = "api::affiliate.affiliate" as const;
+type AffiliateField = EntityService.Params.Fields.SingleAttribute<typeof AFFILIATE_MODULE_ID>;
 
 const CODE_REGEX = /^[A-Z0-9_-]{5,20}$/;
 const codeErrorMsg = 'affiliate code must be 5-20 chars of A-Z, 0-9, "-" or "_"'
@@ -16,7 +20,7 @@ type AffiliateParamValues = {
 
 type ProgramParamField = keyof AffiliateParamValues;
 
-const PROGRAM_PARAM_FIELDS: readonly ProgramParamField[] = [
+const PROGRAM_PARAM_FIELDS: readonly AffiliateField[] = [
   "rewardAmount",
   "triggerVolume",
   "timeCapDays",
@@ -26,7 +30,7 @@ const PROGRAM_PARAM_FIELDS: readonly ProgramParamField[] = [
   "revenueSplitDaoPct",
 ];
 
-const IMMUTABLE_FIELDS = [
+const IMMUTABLE_FIELDS: AffiliateField[] = [
   "code",
   "walletAddress",
   "signedMessage",
@@ -178,7 +182,7 @@ export default {
     if (!IMMUTABLE_FIELDS.some((field) => hasOwn(data, field))) return;
 
     const existing = await strapi.entityService.findOne(
-      "api::affiliate.affiliate",
+      AFFILIATE_MODULE_ID,
       id,
       { fields: IMMUTABLE_FIELDS }
     );
