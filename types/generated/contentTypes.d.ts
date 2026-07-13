@@ -1126,6 +1126,59 @@ export interface ApiProductFeatureProductFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiResourceResource extends Schema.CollectionType {
+  collectionName: 'resources';
+  info: {
+    description: 'Create programmatic or batch article content';
+    displayName: 'Resource';
+    pluralName: 'resources';
+    singularName: 'resource';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Attribute.DynamicZone<
+      [
+        'shared.media',
+        'shared.quote',
+        'shared.rich-text',
+        'shared.slider',
+        'shared.video-embed'
+      ]
+    >;
+    campaign: Attribute.String & Attribute.Required;
+    cover: Attribute.Media<'images' | 'files' | 'videos'>;
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resource.resource',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 256;
+      }>;
+    publishDate: Attribute.DateTime;
+    publishDateVisible: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    publishedAt: Attribute.DateTime;
+    seo: Attribute.Component<'shared.seo'>;
+    slug: Attribute.UID<'api::resource.resource', 'title'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::resource.resource',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRestrictedTokenListRestrictedTokenList
   extends Schema.CollectionType {
   collectionName: 'restricted_token_lists';
@@ -1835,6 +1888,7 @@ declare module '@strapi/types' {
       'api::notifications-consumer.notifications-consumer': ApiNotificationsConsumerNotificationsConsumer;
       'api::page.page': ApiPagePage;
       'api::product-feature.product-feature': ApiProductFeatureProductFeature;
+      'api::resource.resource': ApiResourceResource;
       'api::restricted-token-list.restricted-token-list': ApiRestrictedTokenListRestrictedTokenList;
       'api::solver-bonding-pool.solver-bonding-pool': ApiSolverBondingPoolSolverBondingPool;
       'api::solver-network.solver-network': ApiSolverNetworkSolverNetwork;
