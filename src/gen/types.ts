@@ -11368,18 +11368,15 @@ export interface components {
     };
     ResourceRequest: {
       data: {
-        title?: string;
+        title: string;
         description: string;
-        slug?: string;
+        slug: string;
+        /** @description URL segment grouping programmatic content (e.g. tokens, eips) */
+        campaign: string;
         /** @example string or id */
         cover?: number | string;
-        categories?: (number | string)[];
-        blocks?: (components["schemas"]["SharedMediaComponent"] | components["schemas"]["SharedQuoteComponent"] | components["schemas"]["SharedRichTextComponent"] | components["schemas"]["SharedSliderComponent"] | components["schemas"]["SharedVideoEmbedComponent"])[];
-        /** @example string or id */
-        authorsBio?: number | string;
+        blocks?: components["schemas"]["SharedRichTextComponent"][];
         seo?: components["schemas"]["SharedSeoComponent"];
-        tags?: (number | string)[];
-        featured: boolean;
         /** Format: date-time */
         publishDate?: string;
         publishDateVisible: boolean;
@@ -11401,9 +11398,9 @@ export interface components {
       };
     };
     Resource: {
-      title?: string;
+      title: string;
       description: string;
-      slug?: string;
+      slug: string;
       cover?: {
         data?: {
           id?: number;
@@ -11631,7 +11628,7 @@ export interface components {
           };
         };
       };
-      blocks?: (components["schemas"]["SharedMediaComponent"] | components["schemas"]["SharedQuoteComponent"] | components["schemas"]["SharedRichTextComponent"] | components["schemas"]["SharedSliderComponent"] | components["schemas"]["SharedVideoEmbedComponent"])[];
+      blocks?: components["schemas"]["SharedRichTextComponent"][];
       seo?: components["schemas"]["SharedSeoComponent"];
       /** Format: date-time */
       publishDate?: string;
@@ -17771,8 +17768,8 @@ export interface operations {
         "pagination[start]"?: number;
         /** @description Number of entities to return (default: 25) */
         "pagination[limit]"?: number;
-        /** @description Fields to return (ex: title,author) */
-        fields?: string;
+        /** @description Fields to return (ex: fields[]=slug&fields[]=campaign) */
+        fields?: string[];
         /** @description Relations to return */
         populate?: string;
         /** @description Filters to apply */

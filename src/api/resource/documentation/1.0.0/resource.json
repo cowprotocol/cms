@@ -130,12 +130,17 @@
         {
           "name": "fields",
           "in": "query",
-          "description": "Fields to return (ex: title,author)",
+          "description": "Fields to return (ex: fields[]=slug&fields[]=campaign)",
           "deprecated": false,
           "required": false,
           "schema": {
-            "type": "string"
-          }
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "form",
+          "explode": true
         },
         {
           "name": "populate",

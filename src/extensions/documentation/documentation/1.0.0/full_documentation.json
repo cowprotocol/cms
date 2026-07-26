@@ -29481,12 +29481,14 @@
         ],
         "properties": {
           "data": {
+            "type": "object",
             "required": [
+              "title",
               "description",
-              "featured",
+              "slug",
+              "campaign",
               "publishDateVisible"
             ],
-            "type": "object",
             "properties": {
               "title": {
                 "type": "string"
@@ -29496,6 +29498,11 @@
               },
               "slug": {
                 "type": "string"
+              },
+              "campaign": {
+                "type": "string",
+                "description": "URL segment grouping programmatic content (e.g. tokens, eips)",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
               },
               "cover": {
                 "oneOf": [
@@ -29508,72 +29515,14 @@
                 ],
                 "example": "string or id"
               },
-              "categories": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
               "blocks": {
                 "type": "array",
                 "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/SharedMediaComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedQuoteComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedRichTextComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedSliderComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/SharedVideoEmbedComponent"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/SharedRichTextComponent"
                 }
-              },
-              "authorsBio": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
               },
               "seo": {
                 "$ref": "#/components/schemas/SharedSeoComponent"
-              },
-              "tags": {
-                "type": "array",
-                "items": {
-                  "oneOf": [
-                    {
-                      "type": "integer"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ],
-                  "example": "string or id"
-                }
-              },
-              "featured": {
-                "type": "boolean"
               },
               "publishDate": {
                 "type": "string",
@@ -29635,7 +29584,9 @@
       "Resource": {
         "type": "object",
         "required": [
+          "title",
           "description",
+          "slug",
           "campaign",
           "publishDateVisible"
         ],
@@ -30274,23 +30225,7 @@
           "blocks": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/SharedMediaComponent"
-                },
-                {
-                  "$ref": "#/components/schemas/SharedQuoteComponent"
-                },
-                {
-                  "$ref": "#/components/schemas/SharedRichTextComponent"
-                },
-                {
-                  "$ref": "#/components/schemas/SharedSliderComponent"
-                },
-                {
-                  "$ref": "#/components/schemas/SharedVideoEmbedComponent"
-                }
-              ]
+              "$ref": "#/components/schemas/SharedRichTextComponent"
             }
           },
           "seo": {
@@ -30351,7 +30286,8 @@
           },
           "campaign": {
             "type": "string",
-            "description": "URL segment grouping programmatic content (e.g. tokens, eips)"
+            "description": "URL segment grouping programmatic content (e.g. tokens, eips)",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
           }
         }
       },
@@ -44141,12 +44077,17 @@
           {
             "name": "fields",
             "in": "query",
-            "description": "Fields to return (ex: title,author)",
+            "description": "Fields to return (ex: fields[]=slug&fields[]=campaign)",
             "deprecated": false,
             "required": false,
             "schema": {
-              "type": "string"
-            }
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
           },
           {
             "name": "populate",

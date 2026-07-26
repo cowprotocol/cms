@@ -1138,15 +1138,7 @@ export interface ApiResourceResource extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    blocks: Attribute.DynamicZone<
-      [
-        'shared.media',
-        'shared.quote',
-        'shared.rich-text',
-        'shared.slider',
-        'shared.video-embed'
-      ]
-    >;
+    blocks: Attribute.DynamicZone<['shared.rich-text']>;
     campaign: Attribute.String & Attribute.Required;
     cover: Attribute.Media<'images' | 'files' | 'videos'>;
     createdAt: Attribute.DateTime;
