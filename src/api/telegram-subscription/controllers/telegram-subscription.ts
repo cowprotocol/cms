@@ -55,7 +55,13 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
         throw new errors.ValidationError('Invalid telegram authentication data')
       }
 
-      const existing = await strapi.entityService.findMany(MODULE_ID, { filters: { account, chatId: data.id } })
+      const existing = await strapi.entityService.findMany(MODULE_ID, {
+        filters: {
+          account: {
+            $eqi: account
+          }, chatId: data.id
+        }
+      })
 
       /**
        * We will only return true if the subscription belongs to the Telegram owner
