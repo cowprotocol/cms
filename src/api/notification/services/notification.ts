@@ -101,7 +101,18 @@ export default factories.createCoreService(MODULE_ID, ({ strapi }) => {
         }
       )
     },
-    updateLastConsumedNotificationDate() {
+    async updateLastConsumedNotificationDate() {
+      const existing = await strapi.entityService.findOne(NOTIFICATIONS_CONSUMER_MODULE_ID, SINGLETON_ID)
+
+      if (!existing) {
+        return strapi.entityService.create(
+          NOTIFICATIONS_CONSUMER_MODULE_ID,
+          {
+            data: { lastConsumedNotificationDate: new Date() }
+          }
+        )
+      }
+
       return strapi.entityService.update(
         NOTIFICATIONS_CONSUMER_MODULE_ID,
         SINGLETON_ID,
