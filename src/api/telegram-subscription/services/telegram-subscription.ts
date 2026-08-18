@@ -33,7 +33,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         MODULE_ID,
         {
           data: {
-            account,
+            account: account.toLowerCase(),
             authDate: data.auth_date,
             firstName: data.first_name,
             hash: data.hash,
@@ -57,9 +57,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         MODULE_ID,
         {
           filters: {
-            account: {
-              $in: accounts
-            }
+            $or: accounts.map(account => ({ account: { $eqi: account } }))
           },
           fields: ['id', 'account', 'chatId']
         }
@@ -70,7 +68,9 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         MODULE_ID,
         {
           filters: {
-            account
+            account: {
+              $eqi: account
+            }
           },
           fields: ['id', 'account', 'chatId']
         }
