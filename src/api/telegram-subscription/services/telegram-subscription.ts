@@ -10,12 +10,17 @@ import { TelegramData } from '../types'
 import { templateNotification } from '../../notification/services/notification'
 
 const MODULE_ID = 'api::telegram-subscription.telegram-subscription'
+const telegramSecret = env('TELEGRAM_SECRET') as string
 
-const SEND_MESSAGE_URL = `https://api.telegram.org/bot${env('TELEGRAM_SECRET')}/sendMessage`
+const SEND_MESSAGE_URL = `https://api.telegram.org/bot${telegramSecret}/sendMessage`
 
 export default factories.createCoreService(MODULE_ID, ({strapi}) => {
   return {
     async verifyTgAuthentication(data: TelegramData) {
+      if (!telegramSecret) {
+        throw new Error('verifyTgAuthentication - telegram secret is not set!')
+      }
+
       const dataString = Object.keys(data).reduce((acc, key) => {
         if (key === 'hash') return acc
 
@@ -23,7 +28,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         return acc
       }, []).sort().join('\n')
 
-      const secretHash = crypto.createHash('sha256').update(env('TELEGRAM_SECRET')).digest('base64')
+      const secretHash = crypto.createHash('sha256').update(telegramSecret).digest('base64')
       const result = crypto.createHmac('sha256', new Buffer(secretHash, 'base64')).update(dataString).digest('hex')
 
       return result === data.hash
