@@ -12,7 +12,8 @@ on:
       - "v*" # Trigger on version tags (e.g., v1.0.0)
 
 env:
-  NODE_VERSION: lts/jod
+  # Strapi 4.x depends on that, we cannot migrate to Strapi 5 now
+  NODE_VERSION: lts/iron
 
 jobs:
   publish:
