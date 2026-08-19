@@ -56,6 +56,15 @@ const myExtraRoutes = [
       middlewares: [],
     },
   },
+  {
+    method: 'POST',
+    path: '/telegram-subscription/accounts-by-chat-via-bot',
+    handler: 'telegram-subscription.getAccountsByChatViaBot',
+    config: {
+      policies: [],
+      middlewares: [],
+    },
+  },
 ];
 
 export default customRouter(defaultRouter, myExtraRoutes);

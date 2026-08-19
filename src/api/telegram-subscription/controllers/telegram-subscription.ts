@@ -53,6 +53,15 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
       await service.unlinkSubscriptionViaBot(account)
 
       return { success: true }
+    },
+    async getAccountsByChatViaBot(context) {
+      const { chatId } = context.request.body as { chatId?: number }
+
+      if (!chatId) {
+        throw new errors.ValidationError('chatId is required')
+      }
+
+      return strapi.service(MODULE_ID).getAccountsByChatId(chatId)
     }
   }
 });

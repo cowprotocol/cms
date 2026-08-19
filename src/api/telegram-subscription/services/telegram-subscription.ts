@@ -82,5 +82,14 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
         }
       )
     },
+    async getAccountsByChatId(chatId: number): Promise<{id: string, account: string, chatId: string}[]> {
+      return strapi.entityService.findMany(
+        MODULE_ID,
+        {
+          filters: { chatId },
+          fields: ['id', 'account', 'chatId']
+        }
+      )
+    },
   }
 });
