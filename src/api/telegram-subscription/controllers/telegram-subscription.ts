@@ -4,72 +4,11 @@
 
 import { factories } from '@strapi/strapi'
 import { errors } from '@strapi/utils'
-import { TelegramData } from '../types'
 
 const MODULE_ID = 'api::telegram-subscription.telegram-subscription'
 
 export default factories.createCoreController(MODULE_ID, ({strapi}) => {
   return {
-    async addSubscription(context) {
-      const {account, data} : { account: string, data: TelegramData } = context.request.body
-
-      const service = strapi.service(MODULE_ID)
-
-      const isAlreadySubscribed = await this.checkSubscription(context)
-
-      if (isAlreadySubscribed) {
-        return true
-      }
-
-      await service.addSubscription(account, data)
-
-      return true
-    },
-    async removeSubscription(context) {
-      const {account} : { account: string, data: TelegramData } = context.request.body
-
-      const service = strapi.service(MODULE_ID)
-
-      const isAlreadySubscribed = await this.checkSubscription(context)
-
-      if (!isAlreadySubscribed) {
-        return true
-      }
-
-      await service.removeSubscriptions(account)
-
-      return true
-    },
-    async checkSubscription(context) {
-      const {account, data} : { account: string, data: TelegramData } = context.request.body
-
-      const service = strapi.service(MODULE_ID)
-
-      const result = await service.verifyTgAuthentication(data)
-
-      /**
-       * Verify if the Telegram authentication data is valid
-       * Which proves that the data belongs to the user
-       */
-      if (!result) {
-        throw new errors.ValidationError('Invalid telegram authentication data')
-      }
-
-      const existing = await strapi.entityService.findMany(MODULE_ID, {
-        filters: {
-          account: {
-            $eqi: account
-          }, chatId: data.id
-        }
-      })
-
-      /**
-       * We will only return true if the subscription belongs to the Telegram owner
-       * And the account is already subscribed
-       * So, it's not possible to check another account's subscription without owning Telegram account
-       */
-      return existing.length > 0
-    },
     async getSubscriptions(context) {
       const { accounts } = context.query
 
@@ -84,8 +23,45 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
 
       return strapi.service(MODULE_ID).getAccountSubscriptions(account)
     },
-    async sendNotifications(context) {
-      return strapi.service(MODULE_ID).sendNotifications()
+    async linkViaBot(context) {
+      const { account, chatId, firstName, username } = context.request.body as {
+        account?: string
+        chatId?: number
+        firstName?: string
+        username?: string
+      }
+
+      if (!account || !chatId) {
+        throw new errors.ValidationError('account and chatId are required')
+      }
+
+      const service = strapi.service(MODULE_ID)
+
+      await service.linkSubscriptionViaBot(account, { chatId, firstName, username })
+
+      return { success: true }
+    },
+    async unlinkViaBot(context) {
+      const { account } = context.request.body as { account?: string }
+
+      if (!account) {
+        throw new errors.ValidationError('account is required')
+      }
+
+      const service = strapi.service(MODULE_ID)
+
+      await service.unlinkSubscriptionViaBot(account)
+
+      return { success: true }
+    },
+    async getAccountsByChatViaBot(context) {
+      const { chatId } = context.request.body as { chatId?: number }
+
+      if (!chatId) {
+        throw new errors.ValidationError('chatId is required')
+      }
+
+      return strapi.service(MODULE_ID).getAccountsByChatId(chatId)
     }
   }
 });

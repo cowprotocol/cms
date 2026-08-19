@@ -40,8 +40,8 @@ const myExtraRoutes = [
   },
   {
     method: 'POST',
-    path: '/add-tg-subscription',
-    handler: 'telegram-subscription.addSubscription',
+    path: '/telegram-subscription/link-via-bot',
+    handler: 'telegram-subscription.linkViaBot',
     config: {
       policies: [],
       middlewares: [],
@@ -49,8 +49,8 @@ const myExtraRoutes = [
   },
   {
     method: 'POST',
-    path: '/remove-tg-subscription',
-    handler: 'telegram-subscription.removeSubscription',
+    path: '/telegram-subscription/unlink-via-bot',
+    handler: 'telegram-subscription.unlinkViaBot',
     config: {
       policies: [],
       middlewares: [],
@@ -58,17 +58,8 @@ const myExtraRoutes = [
   },
   {
     method: 'POST',
-    path: '/check-tg-subscription',
-    handler: 'telegram-subscription.checkSubscription',
-    config: {
-      policies: [],
-      middlewares: [],
-    },
-  },
-  {
-    method: 'GET',
-    path: '/send-tg-notifications',
-    handler: 'telegram-subscription.sendNotifications',
+    path: '/telegram-subscription/accounts-by-chat-via-bot',
+    handler: 'telegram-subscription.getAccountsByChatViaBot',
     config: {
       policies: [],
       middlewares: [],

@@ -124,3 +124,5 @@ data/*
 # IDE
 ############################
 .vscode
+.worktrees/
+.strapi/
