@@ -42,15 +42,15 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
       return { success: true }
     },
     async unlinkViaBot(context) {
-      const { account } = context.request.body as { account?: string }
+      const { account, chatId } = context.request.body as { account?: string; chatId?: number }
 
-      if (!account) {
-        throw new errors.ValidationError('account is required')
+      if (!account || !chatId) {
+        throw new errors.ValidationError('account and chatId are required')
       }
 
       const service = strapi.service(MODULE_ID)
 
-      await service.unlinkSubscriptionViaBot(account)
+      await service.unlinkSubscriptionViaBot(account, chatId)
 
       return { success: true }
     },
