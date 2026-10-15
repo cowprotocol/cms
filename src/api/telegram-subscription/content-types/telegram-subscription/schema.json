@@ -20,20 +20,11 @@
     "authDate": {
       "type": "biginteger"
     },
-    "firstName": {
-      "type": "string"
-    },
     "hash": {
       "type": "string"
     },
     "chatId": {
       "type": "biginteger"
-    },
-    "photoUrl": {
-      "type": "string"
-    },
-    "username": {
-      "type": "string"
     }
   }
 }

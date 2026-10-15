@@ -10,7 +10,7 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
   return {
     async linkSubscriptionViaBot(
       account: string,
-      telegram: { chatId: number; firstName?: string; username?: string }
+      telegram: { chatId: number }
     ) {
       const normalizedAccount = account.toLowerCase()
       const existing = await this.getAccountSubscriptions(normalizedAccount)
@@ -33,8 +33,6 @@ export default factories.createCoreService(MODULE_ID, ({strapi}) => {
           data: {
             account: normalizedAccount,
             chatId: telegram.chatId,
-            firstName: telegram.firstName,
-            username: telegram.username,
           }
         })
     },
