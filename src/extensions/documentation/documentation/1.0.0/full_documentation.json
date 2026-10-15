@@ -29737,9 +29737,6 @@
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "firstName": {
-                "type": "string"
-              },
               "hash": {
                 "type": "string"
               },
@@ -29747,9 +29744,6 @@
                 "type": "string",
                 "pattern": "^\\d*$",
                 "example": "123456789"
-              },
-              "photoUrl": {
-                "type": "string"
               }
             }
           }
@@ -29815,9 +29809,6 @@
             "pattern": "^\\d*$",
             "example": "123456789"
           },
-          "firstName": {
-            "type": "string"
-          },
           "hash": {
             "type": "string"
           },
@@ -29825,9 +29816,6 @@
             "type": "string",
             "pattern": "^\\d*$",
             "example": "123456789"
-          },
-          "photoUrl": {
-            "type": "string"
           },
           "createdAt": {
             "type": "string",

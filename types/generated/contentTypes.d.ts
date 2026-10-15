@@ -1412,9 +1412,7 @@ export interface ApiTelegramSubscriptionTelegramSubscription
       'admin::user'
     > &
       Attribute.Private;
-    firstName: Attribute.String;
     hash: Attribute.String;
-    photoUrl: Attribute.String;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::telegram-subscription.telegram-subscription',

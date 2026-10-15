@@ -11139,11 +11139,9 @@ export interface components {
         account: string;
         /** @example 123456789 */
         authDate?: string;
-        firstName?: string;
         hash?: string;
         /** @example 123456789 */
         chatId?: string;
-        photoUrl?: string;
       };
     };
     TelegramSubscriptionListResponseDataItem: {
@@ -11165,11 +11163,9 @@ export interface components {
       account: string;
       /** @example 123456789 */
       authDate?: string;
-      firstName?: string;
       hash?: string;
       /** @example 123456789 */
       chatId?: string;
-      photoUrl?: string;
       /** Format: date-time */
       createdAt?: string;
       /** Format: date-time */
