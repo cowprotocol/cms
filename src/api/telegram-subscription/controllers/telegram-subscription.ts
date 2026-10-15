@@ -24,11 +24,10 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
       return strapi.service(MODULE_ID).getAccountSubscriptions(account)
     },
     async linkViaBot(context) {
-      const { account, chatId, firstName, username } = context.request.body as {
+      const { account, chatId, firstName } = context.request.body as {
         account?: string
         chatId?: number
         firstName?: string
-        username?: string
       }
 
       if (!account || !chatId) {
@@ -37,7 +36,7 @@ export default factories.createCoreController(MODULE_ID, ({strapi}) => {
 
       const service = strapi.service(MODULE_ID)
 
-      await service.linkSubscriptionViaBot(account, { chatId, firstName, username })
+      await service.linkSubscriptionViaBot(account, { chatId, firstName })
 
       return { success: true }
     },

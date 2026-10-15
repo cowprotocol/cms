@@ -1422,7 +1422,6 @@ export interface ApiTelegramSubscriptionTelegramSubscription
       'admin::user'
     > &
       Attribute.Private;
-    username: Attribute.String;
   };
 }
 

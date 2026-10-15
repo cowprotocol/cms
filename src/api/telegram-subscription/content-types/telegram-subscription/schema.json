@@ -31,9 +31,6 @@
     },
     "photoUrl": {
       "type": "string"
-    },
-    "username": {
-      "type": "string"
     }
   }
 }
