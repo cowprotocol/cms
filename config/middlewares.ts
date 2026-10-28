@@ -6,6 +6,7 @@ export default [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
+  'global::cleanup-uploads',
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
